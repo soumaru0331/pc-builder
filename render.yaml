@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: pc-builder
+    runtime: docker
+    plan: free
+    healthCheckPath: /

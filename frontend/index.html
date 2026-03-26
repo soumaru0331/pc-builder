@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PC Builder Tool</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+<div id="root">
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="logo">🖥️ PC Builder</div>
+  <div class="nav-links">
+    <button :class="{active: view==='home'}"    @click="view='home'">🏠 ホーム</button>
+    <button :class="{active: view==='builder'}" @click="goBuilder">🔧 構成ビルダー</button>
+    <button :class="{active: view==='suggest'}" @click="view='suggest'">💡 サジェスト</button>
+    <button :class="{active: view==='builds'}"  @click="view='builds';loadBuilds()">📋 保存済み</button>
+    <button :class="{active: view==='partsdb'}" @click="loadPartsDb();view='partsdb'">🗄️ パーツDB</button>
+  </div>
+</nav>
+
+<div id="app">
+
+<!-- ════════════════════════════════ HOME ════════════════════════════════ -->
+<div class="view container" :class="{active: view==='home'}">
+  <h1 style="font-size:1.6rem;font-weight:800;color:var(--primary);margin-bottom:8px;">PC Builder Tool</h1>
+  <p style="color:var(--muted);margin-bottom:24px;">自作PCの構成を簡単に組んで、互換性チェックや最安値検索ができます。</p>
+
+  <!-- Stats -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;">
+    <div class="stat-card" style="background:linear-gradient(135deg,#1E3A5F,#2E86AB);">
+      <div class="stat-icon">📦</div>
+      <div><div class="stat-val">{{stats.parts}}</div><div class="stat-label">パーツ登録数</div></div>
+    </div>
+    <div class="stat-card" style="background:linear-gradient(135deg,#27AE60,#2ECC71);">
+      <div class="stat-icon">🖥️</div>
+      <div><div class="stat-val">{{stats.builds}}</div><div class="stat-label">保存済み構成</div></div>
+    </div>
+    <div class="stat-card" style="background:linear-gradient(135deg,#E67E22,#F39C12);">
+      <div class="stat-icon">🏷️</div>
+      <div><div class="stat-val">{{stats.brands}}</div><div class="stat-label">ブランド数</div></div>
+    </div>
+    <div class="stat-card" style="background:linear-gradient(135deg,#8E44AD,#9B59B6);">
+      <div class="stat-icon">⚡</div>
+      <div><div class="stat-val">8</div><div class="stat-label">カテゴリ</div></div>
+    </div>
+  </div>
+
+  <!-- Quick actions -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+    <div class="card" style="cursor:pointer;transition:box-shadow .2s" @click="newBuildAndGo" @mouseover="$event.currentTarget.style.boxShadow='0 4px 20px rgba(46,134,171,.2)'" @mouseleave="$event.currentTarget.style.boxShadow=''">
+      <div style="font-size:2.5rem;margin-bottom:8px;">🆕</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--primary);">新しい構成を作る</div>
+      <div style="font-size:.85rem;color:var(--muted);margin-top:4px;">一から自由に構成を組み立てます</div>
+    </div>
+    <div class="card" style="cursor:pointer;transition:box-shadow .2s" @click="view='suggest'" @mouseover="$event.currentTarget.style.boxShadow='0 4px 20px rgba(46,134,171,.2)'" @mouseleave="$event.currentTarget.style.boxShadow=''">
+      <div style="font-size:2.5rem;margin-bottom:8px;">🤖</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--primary);">サジェストで選ぶ</div>
+      <div style="font-size:.85rem;color:var(--muted);margin-top:4px;">予算・用途を入力して最適構成を提案</div>
+    </div>
+  </div>
+
+  <!-- Recent builds -->
+  <div class="card" v-if="recentBuilds.length">
+    <div style="font-weight:700;color:var(--primary);margin-bottom:12px;">📋 最近の構成</div>
+    <div v-for="b in recentBuilds" :key="b.id"
+         style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer"
+         @click="loadBuildAndGo(b.id)">
+      <div style="flex:1">
+        <div style="font-weight:600">{{b.name}}</div>
+        <div style="font-size:.78rem;color:var(--muted)">{{b.purpose}} · {{formatDate(b.updated_at)}}</div>
+      </div>
+      <div style="font-size:.9rem;color:var(--primary);font-weight:700">¥{{(b.total_price||0).toLocaleString()}}</div>
+    </div>
+  </div>
+
+  <!-- Feature cards -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;">
+    <div class="card" v-for="f in features" :key="f.title">
+      <div style="font-size:1.8rem;margin-bottom:6px">{{f.icon}}</div>
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">{{f.title}}</div>
+      <div style="font-size:.8rem;color:var(--muted)">{{f.desc}}</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ BUILDER ════════════════════════════ -->
+<div class="view" :class="{active: view==='builder'}" style="padding:12px">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+    <input class="form-input" style="max-width:280px" v-model="currentBuild.name" placeholder="構成名" @blur="saveBuildName"/>
+    <select class="form-select" style="max-width:160px" v-model="currentBuild.purpose" @change="saveBuildName">
+      <option value="gaming">ゲーミング</option>
+      <option value="workstation">ワークステーション</option>
+      <option value="office">オフィス</option>
+      <option value="streaming">配信・実況</option>
+      <option value="balanced">バランス型</option>
+      <option value="budget">コスパ重視</option>
+    </select>
+    <button class="btn btn-ghost btn-sm" @click="checkFinalPrices">🏷️ セール確認</button>
+    <button class="btn btn-accent btn-sm" @click="exportExcel" :disabled="!currentBuild.id">📊 Excel出力</button>
+    <button class="btn btn-primary btn-sm" @click="exportPdf" :disabled="!currentBuild.id">📄 PDF出力</button>
+  </div>
+
+  <div id="builder-layout">
+    <!-- Category Sidebar -->
+    <div id="cat-sidebar" class="card" style="padding:10px;overflow-y:auto">
+      <div style="font-weight:700;font-size:.85rem;color:var(--muted);padding:4px 8px;margin-bottom:4px;">カテゴリ</div>
+      <button v-for="cat in categories" :key="cat.key"
+              class="cat-btn"
+              :class="{'active': selectedCat===cat.key, 'has-part': getSelectedPart(cat.key), 'has-error': catHasError(cat.key)}"
+              @click="selectCategory(cat.key)">
+        <span>{{cat.icon}}</span>
+        <span style="font-size:.88rem">{{cat.label}}</span>
+        <span class="cat-status" v-if="getSelectedPart(cat.key)">✓</span>
+        <span class="cat-status" v-else-if="catHasError(cat.key)">!</span>
+      </button>
+    </div>
+
+    <!-- Parts List -->
+    <div id="parts-panel" class="card" style="padding:12px">
+      <div style="font-weight:700;color:var(--primary);font-size:1rem;margin-bottom:8px">
+        {{currentCatLabel}} を選択
+        <span v-if="selectedParts[selectedCat]" style="font-size:.8rem;color:var(--success);margin-left:8px">
+          ✓ {{selectedParts[selectedCat].brand}} {{selectedParts[selectedCat].model}}
+        </span>
+      </div>
+      <div id="parts-search">
+        <input class="form-input" v-model="searchQ" placeholder="🔍 名前・ブランドで検索…" @input="filterParts"/>
+        <select class="form-select" style="max-width:160px" v-model="sortBy" @change="filterParts">
+          <option value="score">スコア順</option>
+          <option value="price_asc">価格 安い順</option>
+          <option value="price_desc">価格 高い順</option>
+          <option value="name">名前順</option>
+          <template v-if="selectedCat==='memory'">
+            <option value="mem_total">合計容量 大きい順</option>
+            <option value="mem_single">1枚容量 大きい順</option>
+            <option value="mem_speed">クロック速度 速い順</option>
+          </template>
+          <template v-if="selectedCat==='cooler'">
+            <option value="cooler_tdp">冷却性能 (TDP対応) 高い順</option>
+            <option value="cooler_aio">ラジエーターサイズ 大きい順</option>
+            <option value="cooler_height">高さ 低い順</option>
+          </template>
+        </select>
+      </div>
+      <!-- CPU 世代フィルター -->
+      <div v-if="selectedCat==='cpu'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">世代:</span>
+        <select class="form-select" style="flex:1;min-width:180px;font-size:.82rem" v-model="genFilter" @change="filterParts">
+          <option value="">すべて</option>
+          <optgroup label="Intel">
+            <option value="Intel Core Ultra (Arrow Lake)">Core Ultra 200系 (Arrow Lake)</option>
+            <option value="Intel 14世代">14世代 (Raptor Lake R)</option>
+            <option value="Intel 13世代">13世代 (Raptor Lake)</option>
+            <option value="Intel 12世代">12世代 (Alder Lake)</option>
+            <option value="Intel 11世代">11世代 (Rocket Lake)</option>
+            <option value="Intel 10世代">10世代 (Comet Lake)</option>
+            <option value="Intel 8-9世代">8-9世代 (Coffee Lake)</option>
+          </optgroup>
+          <optgroup label="AMD">
+            <option value="AMD Ryzen 9000系">Ryzen 9000系 (AM5)</option>
+            <option value="AMD Ryzen 8000系">Ryzen 8000系 APU (AM5)</option>
+            <option value="AMD Ryzen 7000系">Ryzen 7000系 (AM5)</option>
+            <option value="AMD Ryzen 5000系">Ryzen 5000系 (AM4)</option>
+            <option value="AMD Ryzen 3000系">Ryzen 3000系 (AM4)</option>
+            <option value="AMD Ryzen 2000系">Ryzen 2000系 (AM4)</option>
+          </optgroup>
+        </select>
+        <button class="btn btn-sm btn-ghost" @click="recalcBenchmarks" :disabled="recalcLoading"
+                title="スコアをDBで再計算" style="white-space:nowrap;font-size:.78rem">
+          <span v-if="recalcLoading">再計算中…</span>
+          <span v-else>🔄 スコア更新</span>
+        </button>
+      </div>
+      <!-- メモリフィルター -->
+      <div v-if="selectedCat==='memory'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">世代:</span>
+        <select class="form-select" style="max-width:110px;font-size:.82rem" v-model="memGenFilter" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="DDR5">DDR5</option>
+          <option value="DDR4">DDR4</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">合計容量:</span>
+        <select class="form-select" style="max-width:130px;font-size:.82rem" v-model="memCapFilter" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="8">8GB</option>
+          <option value="16">16GB</option>
+          <option value="32">32GB</option>
+          <option value="64">64GB</option>
+          <option value="128">128GB以上</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">カラー:</span>
+        <select class="form-select" style="max-width:110px;font-size:.82rem" v-model="catFilters.color" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="black">ブラック</option>
+          <option value="white">ホワイト</option>
+          <option value="silver">シルバー</option>
+          <option value="red">レッド</option>
+        </select>
+      </div>
+      <!-- GPU フィルター -->
+      <div v-if="selectedCat==='gpu'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">シリーズ:</span>
+        <select class="form-select" style="font-size:.82rem;min-width:130px" v-model="catFilters.gpu_series" @change="filterParts">
+          <option value="">すべて</option>
+          <optgroup label="NVIDIA">
+            <option value="RTX 50系">RTX 50系 (最新)</option>
+            <option value="RTX 40系">RTX 40系</option>
+            <option value="RTX 30系">RTX 30系</option>
+            <option value="RTX 20系">RTX 20系</option>
+            <option value="GTX 16系">GTX 16系</option>
+            <option value="GTX 10系">GTX 10系</option>
+          </optgroup>
+          <optgroup label="AMD">
+            <option value="RX 9000系">RX 9000系 (最新)</option>
+            <option value="RX 7000系">RX 7000系</option>
+            <option value="RX 6000系">RX 6000系</option>
+            <option value="RX 5000系">RX 5000系</option>
+          </optgroup>
+          <optgroup label="Intel">
+            <option value="Intel Arc">Intel Arc</option>
+          </optgroup>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">VRAM:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:100px" v-model="catFilters.gpu_vram" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="6">6GB</option>
+          <option value="8">8GB</option>
+          <option value="10">10GB</option>
+          <option value="12">12GB</option>
+          <option value="16">16GB</option>
+          <option value="24">24GB</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">カラー:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:110px" v-model="catFilters.color" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="black">ブラック</option>
+          <option value="white">ホワイト</option>
+        </select>
+      </div>
+      <!-- マザーボード フィルター -->
+      <div v-if="selectedCat==='motherboard'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">ソケット:</span>
+        <select class="form-select" style="font-size:.82rem;min-width:130px" v-model="catFilters.mb_socket" @change="filterParts">
+          <option value="">すべて</option>
+          <optgroup label="Intel">
+            <option value="LGA1851">LGA1851 (Arrow Lake)</option>
+            <option value="LGA1700">LGA1700 (12-14世代)</option>
+            <option value="LGA1200">LGA1200 (10-11世代)</option>
+            <option value="LGA1151">LGA1151 (6-9世代)</option>
+          </optgroup>
+          <optgroup label="AMD">
+            <option value="AM5">AM5 (Ryzen 7000/9000)</option>
+            <option value="AM4">AM4 (Ryzen 1000-5000)</option>
+          </optgroup>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">チップセット:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:120px" v-model="catFilters.mb_chipset" @change="filterParts">
+          <option value="">すべて</option>
+          <optgroup label="Intel LGA1851 (Arrow Lake)">
+            <option value="Z890">Z890</option>
+            <option value="B860">B860</option>
+          </optgroup>
+          <optgroup label="Intel LGA1700 (12-14世代)">
+            <option value="Z790">Z790</option>
+            <option value="H770">H770</option>
+            <option value="B760">B760</option>
+            <option value="Z690">Z690</option>
+            <option value="H670">H670</option>
+            <option value="B660">B660</option>
+            <option value="H610">H610</option>
+          </optgroup>
+          <optgroup label="Intel LGA1200 (10-11世代)">
+            <option value="Z590">Z590</option>
+            <option value="B560">B560</option>
+            <option value="H570">H570</option>
+            <option value="Z490">Z490</option>
+            <option value="B460">B460</option>
+            <option value="H470">H470</option>
+          </optgroup>
+          <optgroup label="Intel LGA1151 (6-9世代)">
+            <option value="Z390">Z390</option>
+            <option value="Z370">Z370</option>
+            <option value="B365">B365</option>
+            <option value="B360">B360</option>
+            <option value="H370">H370</option>
+            <option value="H310">H310</option>
+            <option value="Z270">Z270</option>
+            <option value="B250">B250</option>
+            <option value="H270">H270</option>
+          </optgroup>
+          <optgroup label="AMD AM5 (Ryzen 7000/9000)">
+            <option value="X870E">X870E (最上位)</option>
+            <option value="X870">X870</option>
+            <option value="X670E">X670E</option>
+            <option value="X670">X670</option>
+            <option value="B650E">B650E</option>
+            <option value="B650">B650</option>
+            <option value="A620">A620</option>
+          </optgroup>
+          <optgroup label="AMD AM4 (Ryzen 1000-5000)">
+            <option value="X570">X570</option>
+            <option value="B550">B550</option>
+            <option value="A520">A520</option>
+            <option value="X470">X470</option>
+            <option value="B450">B450</option>
+            <option value="X370">X370</option>
+            <option value="B350">B350</option>
+            <option value="A320">A320</option>
+          </optgroup>
+          <optgroup label="AMD AM4 (旧世代)">
+            <option value="970">970 (AM3+)</option>
+          </optgroup>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">サイズ:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:110px" v-model="catFilters.mb_form" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="ATX">ATX</option>
+          <option value="mATX">Micro-ATX</option>
+          <option value="mITX">Mini-ITX</option>
+          <option value="eATX">E-ATX</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">Wi-Fi:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:90px" v-model="catFilters.mb_wifi" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="yes">Wi-Fi搭載</option>
+          <option value="no">Wi-Fiなし</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">USB-C:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:90px" v-model="catFilters.mb_usbc" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="1">1個以上</option>
+          <option value="2">2個以上</option>
+        </select>
+      </div>
+      <!-- ストレージ フィルター -->
+      <div v-if="selectedCat==='storage'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">種類:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:100px" v-model="catFilters.sto_type" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="SSD">SSD</option>
+          <option value="HDD">HDD</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">容量:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:110px" v-model="catFilters.sto_cap" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="250">〜250GB</option>
+          <option value="500">500GB</option>
+          <option value="1000">1TB</option>
+          <option value="2000">2TB</option>
+          <option value="4000">4TB以上</option>
+        </select>
+      </div>
+      <!-- 電源 フィルター -->
+      <div v-if="selectedCat==='psu'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">容量:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:140px" v-model="catFilters.psu_watt" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="450">〜450W</option>
+          <option value="550">550W前後</option>
+          <option value="650">650W前後</option>
+          <option value="750">750W前後</option>
+          <option value="850">850W前後</option>
+          <option value="1000">1000W以上</option>
+        </select>
+      </div>
+      <!-- ケース フィルター -->
+      <div v-if="selectedCat==='case'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">対応サイズ:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:140px" v-model="catFilters.case_form" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="ATX">ATX対応</option>
+          <option value="mATX">Micro-ATX対応</option>
+          <option value="mITX">Mini-ITX対応</option>
+          <option value="eATX">E-ATX対応</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">カラー:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:110px" v-model="catFilters.color" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="black">ブラック</option>
+          <option value="white">ホワイト</option>
+        </select>
+      </div>
+      <!-- クーラー フィルター -->
+      <div v-if="selectedCat==='cooler'" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)">タイプ:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:145px" v-model="catFilters.cooler_type" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="Air">空冷</option>
+          <option value="AIO_120">簡易水冷 120mm</option>
+          <option value="AIO_240">簡易水冷 240mm</option>
+          <option value="AIO_280">簡易水冷 280mm</option>
+          <option value="AIO_360">簡易水冷 360mm</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">スタイル:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:155px" v-model="catFilters.cooler_airflow" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="tower">タワー (サイドフロー)</option>
+          <option value="top_flow">トップフロー</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">LCD:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:110px" v-model="catFilters.cooler_lcd" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="1">LCDあり</option>
+        </select>
+        <span style="font-size:.78rem;color:var(--muted)">カラー:</span>
+        <select class="form-select" style="font-size:.82rem;max-width:110px" v-model="catFilters.color" @change="filterParts">
+          <option value="">すべて</option>
+          <option value="black">ブラック</option>
+          <option value="white">ホワイト</option>
+          <option value="tan">タン (Noctua)</option>
+        </select>
+      </div>
+      <div id="parts-list">
+        <div v-if="loadingParts" style="display:flex;justify-content:center;padding:30px"><div class="spinner"></div></div>
+        <div v-else-if="filteredParts.length===0" style="text-align:center;color:var(--muted);padding:30px">パーツが見つかりません</div>
+        <div v-else v-for="part in filteredParts" :key="part.id"
+             class="part-card"
+             :class="{selected: selectedParts[selectedCat]?.id === part.id}"
+             @click="selectPart(part)">
+          <div class="part-icon">{{getCatIcon(part.category)}}</div>
+          <div class="part-info">
+            <div class="part-name">{{part.brand}} {{part.name}} {{part.model}}</div>
+            <div class="part-sub">{{getPartSubtext(part)}}</div>
+            <div class="part-score-bar" v-if="part.benchmark_score">
+              <div class="part-score-fill" :style="{width: (part.benchmark_score/maxScore*100)+'%'}"></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+            <!-- 価格表示 -->
+            <div v-if="isPriceLoading(part)" class="part-price" style="color:var(--muted);font-size:.8rem">
+              <span class="spinner" style="width:11px;height:11px;border-width:2px;display:inline-block;vertical-align:middle"></span> 取得中
+            </div>
+            <div v-else class="part-price">
+              ¥{{(getDisplayPrice(part) ?? part.reference_price).toLocaleString()}}
+              <span v-if="isPriceUsed(part)" style="font-size:.68rem;color:var(--muted);display:block;text-align:right">中古</span>
+              <span v-else-if="getDisplayPrice(part)===null" style="font-size:.68rem;color:var(--muted);display:block;text-align:right">参考価格</span>
+            </div>
+            <button class="btn btn-sm btn-ghost" @click.stop="showPriceModal(part)">💴 価格確認</button>
+            <button v-if="part.benchmark_score" class="btn btn-sm" style="background:#F0F4F8;color:var(--text)" @click.stop="">
+              Score: {{part.benchmark_score}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Build Summary Panel -->
+    <div id="build-panel" class="card" style="padding:12px">
+      <div class="build-header">🖥️ 現在の構成</div>
+
+      <!-- Selected parts -->
+      <div v-if="Object.keys(selectedParts).length===0" style="text-align:center;color:var(--muted);padding:20px;font-size:.85rem">
+        左からパーツを選択してください
+      </div>
+      <div v-for="cat in categories" :key="cat.key">
+        <div v-if="selectedParts[cat.key]" class="build-part-row">
+          <span class="bpr-cat">{{cat.icon}} {{cat.label}}</span>
+          <span class="bpr-name">{{selectedParts[cat.key].brand}} {{selectedParts[cat.key].model}}</span>
+          <span class="bpr-price">¥{{getEffectivePrice(selectedParts[cat.key]).toLocaleString()}}</span>
+          <button class="bpr-del" @click="removePart(cat.key)">✕</button>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div id="total-bar">
+        <span>合計</span>
+        <span class="total-amount">¥{{totalPrice.toLocaleString()}}</span>
+      </div>
+
+      <!-- Power gauge -->
+      <div class="power-gauge-wrap card" style="padding:10px">
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-weight:600">⚡ 推定消費電力</span>
+          <span>{{totalTdp}}W / {{psuWattage}}W</span>
+        </div>
+        <div class="power-gauge-bar">
+          <div class="power-gauge-fill" :style="{width: powerPercent+'%', background: powerColor}"></div>
+        </div>
+        <div style="font-size:.75rem;color:var(--muted);margin-top:3px">
+          推奨電源: <strong>{{Math.ceil(totalTdp*1.3)}}W以上</strong>
+        </div>
+      </div>
+
+      <!-- Compat check -->
+      <div style="font-weight:700;font-size:.85rem;color:var(--primary);margin-bottom:6px">🔍 互換性チェック</div>
+      <div v-if="compatLoading" style="display:flex;justify-content:center;padding:10px"><div class="spinner" style="width:20px;height:20px;border-width:2px"></div></div>
+      <div v-else-if="compatIssues.length===0" style="font-size:.82rem;color:var(--muted)">パーツを追加すると確認します</div>
+      <div v-else>
+        <div v-for="issue in compatIssues" :key="issue.category" class="compat-issue" :class="issue.level" style="margin-bottom:4px">
+          {{issue.message}}
+        </div>
+      </div>
+
+      <!-- 構成確認ボタン -->
+      <div v-if="Object.keys(selectedParts).length > 0" style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
+        <button class="btn btn-primary" style="width:100%;font-size:.95rem;padding:10px"
+                @click="openReview">
+          📋 構成を確認する
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ SUGGEST ════════════════════════════ -->
+<div class="view container" :class="{active: view==='suggest'}">
+  <h2 style="font-size:1.3rem;font-weight:800;color:var(--primary);margin-bottom:16px">💡 構成サジェスト</h2>
+  <div style="display:grid;grid-template-columns:320px 1fr;gap:20px">
+    <!-- Input panel -->
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:16px">条件を入力してください</div>
+      <div class="form-group">
+        <label class="form-label">予算</label>
+        <div style="display:flex;align-items:center;gap:6px">
+          <input class="form-input" type="number" v-model.number="suggestForm.budget" placeholder="100000" step="5000"/>
+          <span style="white-space:nowrap">円</span>
+        </div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:3px">
+          ¥{{(suggestForm.budget||0).toLocaleString()}}</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">用途</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <label v-for="p in purposes" :key="p.val" style="cursor:pointer">
+            <input type="radio" v-model="suggestForm.purpose" :value="p.val" style="display:none"/>
+            <div :style="{padding:'10px',borderRadius:'8px',border:'1.5px solid',borderColor: suggestForm.purpose===p.val ? 'var(--accent)' : 'var(--border)', background: suggestForm.purpose===p.val ? '#EFF8FF' : '#fff', textAlign:'center', fontSize:'.85rem', fontWeight: suggestForm.purpose===p.val ? '700' : '400'}">
+              {{p.icon}} {{p.label}}
+            </div>
+          </label>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="width:100%" @click="runSuggest" :disabled="suggestLoading">
+        <span v-if="suggestLoading"><div class="spinner" style="width:16px;height:16px;border-width:2px;display:inline-block"></div> 計算中…</span>
+        <span v-else>🔍 おすすめ構成を提案する</span>
+      </button>
+    </div>
+
+    <!-- Results -->
+    <div>
+      <div v-if="!suggestResults.length && !suggestLoading" style="display:flex;align-items:center;justify-content:center;height:200px;color:var(--muted)">
+        左で条件を設定して「提案する」をクリックしてください
+      </div>
+      <div v-else style="display:flex;flex-direction:column;gap:16px">
+        <div v-for="(plan, idx) in suggestResults" :key="idx" class="suggest-card" :class="{selected: selectedSuggest===idx}" @click="selectedSuggest=idx">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div>
+              <span class="suggest-label">{{plan.label}}</span>
+              <div class="suggest-total">¥{{plan.total_price.toLocaleString()}}</div>
+            </div>
+            <div>
+              <span v-if="plan.compatible" class="chip chip-green">互換性OK</span>
+              <span v-else class="chip chip-red">要確認</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">
+            <div v-for="(part,cat) in plan.parts" :key="cat" style="background:var(--bg);border-radius:7px;padding:8px;font-size:.78rem">
+              <div style="color:var(--muted);font-size:.7rem">{{getCatLabel(cat)}}</div>
+              <div style="font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{part.brand}}</div>
+              <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)">{{part.model}}</div>
+              <div style="color:var(--primary);font-weight:700;margin-top:2px">¥{{part.reference_price.toLocaleString()}}</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-accent btn-sm" @click.stop="loadSuggestIntoBuild(plan)">この構成で始める</button>
+            <button class="btn btn-ghost btn-sm" @click.stop="showSuggestCompat(plan)">互換性確認</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ SAVED BUILDS ═══════════════════════ -->
+<div class="view container" :class="{active: view==='builds'}">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+    <h2 style="font-size:1.3rem;font-weight:800;color:var(--primary);margin:0">📋 保存済み構成</h2>
+    <button class="btn btn-primary" @click="newBuildAndGo">＋ 新しい構成を作る</button>
+  </div>
+
+  <!-- 空の状態 -->
+  <div v-if="savedBuilds.length===0" style="text-align:center;padding:80px 20px;color:var(--muted)">
+    <div style="font-size:3rem;margin-bottom:12px">📭</div>
+    <div style="font-size:1rem;font-weight:600;margin-bottom:8px">まだ構成がありません</div>
+    <div style="font-size:.85rem;margin-bottom:20px">構成ビルダーでパーツを選んで保存しましょう</div>
+    <button class="btn btn-primary" @click="newBuildAndGo">🔧 構成を作る</button>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px">
+    <div v-for="b in savedBuilds" :key="b.id" class="build-card" @click="loadBuildAndGo(b.id)">
+
+      <!-- カードヘッダー -->
+      <div class="build-card-header">
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:800;font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{b.name}}</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap">
+            <span class="build-purpose-badge">{{b.purpose || '汎用'}}</span>
+            <span style="font-size:.75rem;color:var(--muted)">{{formatDate(b.updated_at)}}</span>
+          </div>
+        </div>
+        <button class="btn btn-danger btn-sm btn-icon" style="flex-shrink:0" @click.stop="deleteBuild(b.id)" title="削除">🗑️</button>
+      </div>
+
+      <!-- パーツアイコン一覧 -->
+      <div class="build-parts-icons">
+        <template v-for="cat in categories" :key="cat.key">
+          <div class="build-part-icon" :class="b.categories_filled?.includes(cat.key) ? 'filled' : 'empty'"
+               :title="b.part_summary?.find(p=>p.category===cat.key)?.label || cat.label">
+            <span>{{cat.icon}}</span>
+          </div>
+        </template>
+      </div>
+      <!-- パーツ名プレビュー (選択済みのみ3件まで) -->
+      <div style="min-height:44px;margin-bottom:10px">
+        <div v-for="ps in (b.part_summary||[]).slice(0,3)" :key="ps.category"
+             style="font-size:.75rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.6">
+          <span style="font-size:.7rem;opacity:.7">{{getCatIcon(ps.category)}}</span> {{ps.label}}
+        </div>
+        <div v-if="(b.part_summary||[]).length > 3" style="font-size:.72rem;color:var(--muted);opacity:.7">
+          他 {{(b.part_summary||[]).length - 3}} パーツ…
+        </div>
+        <div v-if="(b.part_summary||[]).length === 0" style="font-size:.78rem;color:var(--muted)">
+          パーツが選択されていません
+        </div>
+      </div>
+
+      <!-- 価格・アクションフッター -->
+      <div class="build-card-footer">
+        <div>
+          <div style="font-size:.72rem;color:var(--muted);margin-bottom:2px">合計金額</div>
+          <div style="font-size:1.35rem;font-weight:900;color:var(--primary);letter-spacing:-.5px">
+            ¥{{(b.total_price||0).toLocaleString()}}
+          </div>
+          <div style="font-size:.72rem;color:var(--muted)">{{b.part_count||0}} / {{categories.length}} パーツ選択済み</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+          <button class="btn btn-primary btn-sm" @click.stop="loadBuildAndGo(b.id)">✏️ 編集</button>
+          <div style="display:flex;gap:4px">
+            <button class="btn btn-sm btn-ghost" @click.stop="exportExcelById(b.id)" title="Excel出力">📊</button>
+            <button class="btn btn-sm btn-ghost" @click.stop="exportPdfById(b.id)" title="PDF出力">📄</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ PARTS DB ═══════════════════════════ -->
+<div class="view container" :class="{active: view==='partsdb'}">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+    <h2 style="font-size:1.3rem;font-weight:800;color:var(--primary);margin:0">🗄️ パーツDB管理</h2>
+    <select class="form-select" style="max-width:160px" v-model="dbFilter.category" @change="loadPartsDb">
+      <option value="">全カテゴリ</option>
+      <option v-for="cat in categories" :key="cat.key" :value="cat.key">{{cat.label}}</option>
+    </select>
+    <input class="form-input" style="max-width:220px" v-model="dbFilter.q" placeholder="🔍 検索…" @input="loadPartsDb"/>
+    <button class="btn btn-primary" @click="openAddPartModal">＋ 手動追加</button>
+    <button class="btn btn-accent" @click="openSyncModal">🔄 価格.com 自動同期</button>
+    <span style="font-size:.82rem;color:var(--muted)">登録数: {{dbParts.length}}件</span>
+  </div>
+  <div style="overflow-x:auto">
+    <table id="parts-db-table">
+      <thead>
+        <tr>
+          <th @click="sortDbBy('category')" style="cursor:pointer;user-select:none">カテゴリ<span style="font-size:.7rem;margin-left:2px">{{dbSort.col==='category'?(dbSort.asc?'▲':'▼'):''}}</span></th>
+          <th @click="sortDbBy('brand')" style="cursor:pointer;user-select:none">ブランド<span style="font-size:.7rem;margin-left:2px">{{dbSort.col==='brand'?(dbSort.asc?'▲':'▼'):''}}</span></th>
+          <th @click="sortDbBy('name')" style="cursor:pointer;user-select:none">名前<span style="font-size:.7rem;margin-left:2px">{{dbSort.col==='name'?(dbSort.asc?'▲':'▼'):''}}</span></th>
+          <th>モデル</th>
+          <th @click="sortDbBy('tdp')" style="cursor:pointer;user-select:none">TDP(W)<span style="font-size:.7rem;margin-left:2px">{{dbSort.col==='tdp'?(dbSort.asc?'▲':'▼'):''}}</span></th>
+          <th @click="sortDbBy('benchmark_score')" style="cursor:pointer;user-select:none">スコア<span style="font-size:.7rem;margin-left:2px">{{dbSort.col==='benchmark_score'?(dbSort.asc?'▲':'▼'):''}}</span></th>
+          <th @click="sortDbBy('reference_price')" style="cursor:pointer;user-select:none">参考価格<span style="font-size:.7rem;margin-left:2px">{{dbSort.col==='reference_price'?(dbSort.asc?'▲':'▼'):''}}</span></th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="p in dbSortedParts" :key="p.id">
+          <td><span class="chip chip-blue">{{getCatLabel(p.category)}}</span></td>
+          <td>{{p.brand}}</td>
+          <td>{{p.name}}</td>
+          <td style="font-size:.8rem;color:var(--muted)">{{p.model}}</td>
+          <td>{{p.tdp}}</td>
+          <td>{{p.benchmark_score}}</td>
+          <td style="font-weight:700;color:var(--primary)">¥{{p.reference_price.toLocaleString()}}</td>
+          <td>
+            <button class="btn btn-sm btn-ghost" @click="openEditPartModal(p)">✏️</button>
+            <button class="btn btn-sm btn-danger" @click="deletePart(p.id)" style="margin-left:4px">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- #app -->
+
+<!-- ═══════════════════════ PRICE MODAL ════════════════════════════════ -->
+<div class="modal-overlay" v-if="priceModal.show" @click.self="priceModal.show=false" style="z-index:400">
+  <div class="modal-box" style="position:relative">
+    <button class="modal-close" @click="priceModal.show=false">✕</button>
+    <div class="modal-title">💴 {{priceModal.partName}} — 価格情報</div>
+
+    <div v-if="priceModal.loading" style="display:flex;justify-content:center;padding:30px"><div class="spinner"></div></div>
+    <div v-else>
+      <div v-if="priceModal.saleDetected" class="sale-badge" style="display:inline-block;margin-bottom:12px">{{priceModal.saleMessage}}</div>
+
+      <!-- new prices -->
+      <div class="tab-bar">
+        <button class="tab-btn" :class="{active:priceModal.tab==='new'}"  @click="priceModal.tab='new'">🆕 新品 ({{priceModal.newPrices.length}}件)</button>
+        <button class="tab-btn" :class="{active:priceModal.tab==='used'}" @click="priceModal.tab='used'">♻️ 中古 ({{priceModal.usedPrices.length}}件)</button>
+      </div>
+
+      <div v-if="priceModal.tab==='new'">
+        <div v-if="priceModal.newPrices.length===0" style="color:var(--muted);text-align:center;padding:20px">新品価格が見つかりませんでした</div>
+        <div v-else class="price-row" v-for="(r,i) in priceModal.newPrices" :key="i">
+          <span class="price-source">{{r.source}}</span>
+          <span class="price-badge-new">新品</span>
+          <a :href="r.url" target="_blank" class="price-title" style="color:var(--accent)">{{r.title||'—'}}</a>
+          <span class="price-val" :class="{cheapest: i===0}">¥{{r.price.toLocaleString()}}</span>
+          <button class="btn btn-sm btn-success" @click="usePrice(r.price, false)">選択</button>
+        </div>
+      </div>
+      <div v-else>
+        <div v-if="priceModal.usedPrices.length===0" style="color:var(--muted);text-align:center;padding:20px">中古価格が見つかりませんでした</div>
+        <div v-else class="price-row" v-for="(r,i) in priceModal.usedPrices" :key="i">
+          <span class="price-source">{{r.source}}</span>
+          <span class="price-badge-used">中古</span>
+          <a :href="r.url" target="_blank" class="price-title" style="color:var(--accent)">{{r.title||'—'}}</a>
+          <span class="price-val" :class="{cheapest: i===0}">¥{{r.price.toLocaleString()}}</span>
+          <button class="btn btn-sm btn-accent" @click="usePrice(r.price, true)">選択</button>
+        </div>
+      </div>
+
+      <!-- 手動検索リンク (スクレイピング失敗時も常に表示) -->
+      <div style="margin-top:16px;padding:12px;background:var(--bg);border-radius:8px" v-if="priceModal.searchLinks">
+        <div style="font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:8px">
+          🔗 各サイトで直接検索（自動取得できない場合はこちら）
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <a v-for="(url,site) in priceModal.searchLinks" :key="site"
+             :href="url" target="_blank"
+             style="padding:4px 10px;background:#fff;border:1px solid var(--border);border-radius:6px;font-size:.78rem;color:var(--accent);text-decoration:none;transition:border-color .15s"
+             @mouseover="$event.target.style.borderColor='var(--accent)'"
+             @mouseleave="$event.target.style.borderColor='var(--border)'">
+            {{siteLabel(site)}}
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn btn-ghost btn-sm" @click="fetchPrice(priceModal.partId, true)">🔄 再取得</button>
+        <button class="btn btn-primary btn-sm" @click="priceModal.show=false">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PART FORM MODAL ════════════════════════════ -->
+<div class="modal-overlay" v-if="partFormModal.show" @click.self="partFormModal.show=false">
+  <div class="modal-box" style="position:relative">
+    <button class="modal-close" @click="partFormModal.show=false">✕</button>
+    <div class="modal-title">{{partFormModal.isEdit ? '✏️ パーツ編集' : '＋ パーツ追加'}}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="form-group">
+        <label class="form-label">カテゴリ *</label>
+        <select class="form-select" v-model="partFormModal.data.category">
+          <option v-for="cat in categories" :key="cat.key" :value="cat.key">{{cat.label}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ブランド *</label>
+        <input class="form-input" v-model="partFormModal.data.brand" placeholder="例: Intel, AMD, ASUS"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">名前 *</label>
+        <input class="form-input" v-model="partFormModal.data.name" placeholder="例: Core i9-14900K"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">モデル番号</label>
+        <input class="form-input" v-model="partFormModal.data.model" placeholder="例: BX8071514900K"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">TDP (W)</label>
+        <input class="form-input" type="number" v-model.number="partFormModal.data.tdp"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ベンチスコア</label>
+        <input class="form-input" type="number" v-model.number="partFormModal.data.benchmark_score"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">参考価格 (円)</label>
+        <input class="form-input" type="number" v-model.number="partFormModal.data.reference_price"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">発売年</label>
+        <input class="form-input" type="number" v-model.number="partFormModal.data.release_year" placeholder="2024"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">スペック (JSON)</label>
+      <textarea class="form-textarea" v-model="partFormModal.specsJson" rows="4" placeholder='{"socket":"LGA1700","cores":24}'></textarea>
+      <div style="font-size:.75rem;color:var(--muted);margin-top:3px">JSON形式で入力してください</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">メモ</label>
+      <input class="form-input" v-model="partFormModal.data.notes"/>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+      <button class="btn btn-ghost" @click="partFormModal.show=false">キャンセル</button>
+      <button class="btn btn-primary" @click="savePart">{{partFormModal.isEdit ? '更新する' : '追加する'}}</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ COMPAT MODAL ══════════════════════════════ -->
+<div class="modal-overlay" v-if="compatModal.show" @click.self="compatModal.show=false">
+  <div class="modal-box" style="position:relative">
+    <button class="modal-close" @click="compatModal.show=false">✕</button>
+    <div class="modal-title">🔍 互換性チェック結果</div>
+    <div v-for="issue in compatModal.issues" :key="issue.category" class="compat-issue" :class="issue.level" style="margin-bottom:6px">
+      {{issue.message}}
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SYNC MODAL ═══════════════════════════════ -->
+<div class="modal-overlay" v-if="syncModal.show" @click.self="syncModal.show=false">
+  <div class="modal-box" style="position:relative;max-width:700px">
+    <button class="modal-close" @click="syncModal.show=false">✕</button>
+    <div class="modal-title">🔄 価格.com 自動パーツ同期</div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:16px">
+      価格.comの各カテゴリページから自動でパーツ情報を取得・登録します。<br>
+      取得ページ数が多いほど時間がかかります（1カテゴリ 約30秒〜）。
+    </p>
+
+    <!-- カテゴリ選択 -->
+    <div style="margin-bottom:14px">
+      <div style="font-weight:700;font-size:.88rem;margin-bottom:8px">同期するカテゴリ</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <label v-for="cat in syncCats" :key="cat.key" style="cursor:pointer;display:flex;align-items:center;gap:5px;font-size:.85rem">
+          <input type="checkbox" v-model="syncModal.selected" :value="cat.key"/>
+          {{cat.icon}} {{cat.label}}
+        </label>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" @click="syncModal.selected=syncCats.map(c=>c.key)">全選択</button>
+        <button class="btn btn-ghost btn-sm" @click="syncModal.selected=[]">全解除</button>
+      </div>
+    </div>
+
+    <!-- ページ数 -->
+    <div class="form-group" style="max-width:200px">
+      <label class="form-label">取得ページ数 (多いほど件数↑・時間↑)</label>
+      <select class="form-select" v-model.number="syncModal.maxPages">
+        <option :value="1">1ページ (約40件/カテゴリ)</option>
+        <option :value="3">3ページ (約120件) ★推奨</option>
+        <option :value="5">5ページ (約200件)</option>
+        <option :value="10">10ページ (約400件)</option>
+        <option :value="20">20ページ (約800件・時間大)</option>
+        <option :value="50">50ページ (全件・非常に時間大)</option>
+      </select>
+    </div>
+
+    <!-- 実行ボタン -->
+    <div v-if="!syncModal.running && !syncModal.started">
+      <button class="btn btn-accent" @click="startSync" :disabled="syncModal.selected.length===0">
+        🚀 同期開始 ({{syncModal.selected.length}}カテゴリ)
+      </button>
+    </div>
+
+    <!-- 進捗表示 -->
+    <div v-if="syncModal.started">
+      <div style="font-weight:700;margin-bottom:10px">
+        {{syncModal.running ? '⏳ 同期中...' : '✅ 完了'}}
+      </div>
+      <div v-for="(status, cat) in syncModal.progress" :key="cat"
+           style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);font-size:.85rem">
+        <span style="width:100px;color:var(--muted)">{{getCatLabel(cat)}}</span>
+        <span :style="{color: status.includes('完了') ? 'var(--success)' : status.includes('エラー') ? 'var(--danger)' : 'var(--accent)'}">
+          {{status}}
+        </span>
+      </div>
+      <div v-if="!syncModal.running" style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn btn-primary btn-sm" @click="loadPartsDb();syncModal.show=false">DBを確認する</button>
+        <button class="btn btn-ghost btn-sm" @click="syncModal.started=false">再度実行</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SALES MODAL ══════════════════════════════ -->
+<div class="modal-overlay" v-if="salesModal.show" @click.self="salesModal.show=false">
+  <div class="modal-box" style="position:relative">
+    <button class="modal-close" @click="salesModal.show=false">✕</button>
+    <div class="modal-title">🏷️ セール・最安値チェック</div>
+    <div v-if="salesModal.loading" style="display:flex;justify-content:center;padding:30px"><div class="spinner"></div></div>
+    <div v-else-if="salesModal.results.length===0" style="text-align:center;color:var(--muted);padding:30px">
+      現在セール中のパーツは見つかりませんでした
+    </div>
+    <div v-else>
+      <div style="margin-bottom:12px;color:var(--success);font-weight:600">{{salesModal.results.length}}件のお得情報が見つかりました！</div>
+      <div v-for="r in salesModal.results" :key="r.part_id" class="card" style="margin-bottom:10px">
+        <div style="font-weight:700;margin-bottom:6px">{{r.part_name}}</div>
+        <div class="sale-badge" style="display:inline-block;margin-bottom:8px">{{r.sale_message}}</div>
+        <div v-if="r.cheapest_new" class="price-row">
+          <span class="price-badge-new">新品最安</span>
+          <a :href="r.cheapest_new.url" target="_blank" style="flex:1;color:var(--accent)">{{r.cheapest_new.source}}</a>
+          <span class="price-val cheapest">¥{{r.cheapest_new.price.toLocaleString()}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ REVIEW MODAL ══════════════════════════════ -->
+<div class="modal-overlay" v-if="reviewModal.show" @click.self="reviewModal.show=false">
+  <div class="modal-box" style="position:relative;max-width:820px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden">
+    <button class="modal-close" @click="reviewModal.show=false">✕</button>
+    <div class="modal-title" style="flex-shrink:0">📋 構成レビュー — {{currentBuild.name}}</div>
+
+    <div style="overflow-y:auto;flex:1;padding-right:4px">
+
+      <!-- ステータスバー -->
+      <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+        <div :style="{padding:'8px 16px',borderRadius:'8px',fontWeight:'700',fontSize:'.88rem',
+          background: reviewModal.errorCount===0 ? '#D4EDDA' : '#F8D7DA',
+          color: reviewModal.errorCount===0 ? '#155724' : '#721C24'}">
+          {{reviewModal.errorCount===0 ? '✅ 互換性OK' : '❌ 互換性エラー '+reviewModal.errorCount+'件'}}
+        </div>
+        <div style="padding:8px 16px;border-radius:8px;background:#D1ECF1;color:#0C5460;font-weight:700;font-size:.88rem">
+          ⚡ 推定消費電力: {{totalTdp}}W → 推奨 {{Math.ceil(totalTdp*1.3)}}W以上
+        </div>
+        <div style="padding:8px 16px;border-radius:8px;background:#FFF3CD;color:#856404;font-weight:700;font-size:.88rem">
+          💴 合計: ¥{{totalPrice.toLocaleString()}}
+        </div>
+      </div>
+
+      <!-- パーツ一覧テーブル -->
+      <table style="width:100%;border-collapse:collapse;margin-bottom:18px;font-size:.87rem">
+        <thead>
+          <tr style="background:var(--bg);border-bottom:2px solid var(--border)">
+            <th style="padding:8px 6px;text-align:left;color:var(--muted);font-weight:600">カテゴリ</th>
+            <th style="padding:8px 6px;text-align:left;color:var(--muted);font-weight:600">製品名</th>
+            <th style="padding:8px 6px;text-align:left;color:var(--muted);font-weight:600">主要スペック</th>
+            <th style="padding:8px 6px;text-align:right;color:var(--muted);font-weight:600">価格</th>
+            <th style="padding:8px 6px;text-align:center;color:var(--muted);font-weight:600">購入先</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="cat in categories" :key="cat.key">
+          <tr v-if="selectedParts[cat.key]"
+              style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px 6px;white-space:nowrap">
+              <span style="font-size:1rem">{{cat.icon}}</span>
+              <span style="margin-left:5px;color:var(--muted);font-size:.82rem">{{cat.label}}</span>
+            </td>
+            <td style="padding:10px 6px">
+              <div style="font-weight:600;color:var(--text)">{{selectedParts[cat.key].brand}} {{selectedParts[cat.key].name}}</div>
+              <div style="font-size:.75rem;color:var(--muted)">{{selectedParts[cat.key].model}}</div>
+            </td>
+            <td style="padding:10px 6px;color:var(--muted);font-size:.78rem;max-width:260px">
+              {{getPartSubtext(selectedParts[cat.key])}}
+            </td>
+            <td style="padding:10px 6px;text-align:right;font-weight:700;color:var(--primary);white-space:nowrap">
+              <span v-if="reviewModal.fetchingCats.includes(cat.key)"
+                    style="font-size:.8rem;color:var(--muted);font-weight:400">
+                <span class="spinner" style="width:12px;height:12px;border-width:2px;display:inline-block;vertical-align:middle"></span> 取得中…
+              </span>
+              <span v-else>
+                ¥{{getEffectivePrice(selectedParts[cat.key]).toLocaleString()}}
+                <span v-if="customPrices[cat.key]?.is_used"
+                      style="display:block;font-size:.7rem;font-weight:400;color:var(--muted)">中古</span>
+                <span v-else-if="!customPrices[cat.key]"
+                      style="display:block;font-size:.7rem;font-weight:400;color:var(--muted)">参考価格</span>
+              </span>
+            </td>
+            <td style="padding:10px 6px;text-align:center">
+              <button class="btn btn-sm btn-ghost" style="white-space:nowrap;font-size:.78rem"
+                      @click="showPriceModal(selectedParts[cat.key])">
+                💴 価格・購入先
+              </button>
+            </td>
+          </tr>
+          </template>
+        </tbody>
+        <tfoot>
+          <tr style="background:var(--bg)">
+            <td colspan="3" style="padding:10px 6px;font-weight:700;color:var(--text)">合計</td>
+            <td style="padding:10px 6px;text-align:right;font-size:1.15rem;font-weight:800;color:var(--primary)">
+              ¥{{totalPrice.toLocaleString()}}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- 未選択カテゴリ -->
+      <div v-if="reviewModal.missingCats.length > 0"
+           style="background:#FFF3CD;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:.84rem">
+        <span style="font-weight:700;color:#856404">⚠️ 未選択:</span>
+        <span style="color:#856404;margin-left:6px">{{reviewModal.missingCats.map(c=>c.label).join(' / ')}}</span>
+      </div>
+
+      <!-- 互換性チェック詳細 -->
+      <div style="margin-bottom:16px">
+        <div style="font-weight:700;font-size:.9rem;color:var(--primary);margin-bottom:8px">🔍 互換性チェック詳細</div>
+        <div v-for="issue in compatIssues" :key="issue.category"
+             class="compat-issue" :class="issue.level" style="margin-bottom:5px;font-size:.84rem">
+          {{issue.message}}
+        </div>
+        <div v-if="compatIssues.length===0" style="color:var(--muted);font-size:.84rem">
+          パーツが2個以上選択されると確認します
+        </div>
+      </div>
+
+    </div><!-- scroll area end -->
+
+    <!-- フッターボタン -->
+    <div style="flex-shrink:0;border-top:1px solid var(--border);padding-top:14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px">
+      <button class="btn btn-ghost" @click="checkFinalPrices();reviewModal.show=false">🏷️ セール確認</button>
+      <button class="btn btn-accent btn-sm" style="padding:8px 16px" @click="exportExcel" :disabled="!currentBuild.id">📊 Excel出力</button>
+      <button class="btn btn-primary" style="padding:8px 20px" @click="exportPdf" :disabled="!currentBuild.id">📄 PDF出力</button>
+      <button class="btn btn-ghost" @click="reviewModal.show=false">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast-container">
+  <div v-for="t in toasts" :key="t.id" class="toast" :class="t.type">{{t.msg}}</div>
+</div>
+
+</div><!-- #root -->
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

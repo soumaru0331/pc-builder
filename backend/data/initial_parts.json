@@ -1,0 +1,7660 @@
+[
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 9 285K",
+    "model": "BX80768285K",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 24,
+      "threads": 24,
+      "base_clock": 3.7,
+      "boost_clock": 5.7,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 125,
+    "benchmark_score": 3100,
+    "reference_price": 90000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 7 265K",
+    "model": "BX80768265K",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 20,
+      "threads": 20,
+      "base_clock": 3.9,
+      "boost_clock": 5.5,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 125,
+    "benchmark_score": 2600,
+    "reference_price": 68000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 5 245K",
+    "model": "BX80768245K",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 14,
+      "threads": 14,
+      "base_clock": 4.2,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 125,
+    "benchmark_score": 2000,
+    "reference_price": 48000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 5 245KF",
+    "model": "BX80768245KF",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 14,
+      "threads": 14,
+      "base_clock": 4.2,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 125,
+    "benchmark_score": 2000,
+    "reference_price": 45000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-14900KS",
+    "model": "BX8071514900KS",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 3.2,
+      "boost_clock": 6.2,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 150,
+    "benchmark_score": 2900,
+    "reference_price": 88000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-14900K",
+    "model": "BX8071514900K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 3.2,
+      "boost_clock": 6.0,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 125,
+    "benchmark_score": 2800,
+    "reference_price": 78000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-14700K",
+    "model": "BX8071514700K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 20,
+      "threads": 28,
+      "base_clock": 3.4,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 125,
+    "benchmark_score": 2400,
+    "reference_price": 60000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-14600K",
+    "model": "BX8071514600K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "base_clock": 3.5,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 125,
+    "benchmark_score": 1900,
+    "reference_price": 42000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-14600KF",
+    "model": "BX8071514600KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "base_clock": 3.5,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 125,
+    "benchmark_score": 1900,
+    "reference_price": 38000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-13600K",
+    "model": "BX8071513600K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "base_clock": 3.5,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 125,
+    "benchmark_score": 1850,
+    "reference_price": 35000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-13600KF",
+    "model": "BX8071513600KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "base_clock": 3.5,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 125,
+    "benchmark_score": 1850,
+    "reference_price": 32000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-13700K",
+    "model": "BX8071513700K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 16,
+      "threads": 24,
+      "base_clock": 3.4,
+      "boost_clock": 5.4,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 125,
+    "benchmark_score": 2200,
+    "reference_price": 48000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-13900K",
+    "model": "BX8071513900K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 3.0,
+      "boost_clock": 5.8,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 125,
+    "benchmark_score": 2750,
+    "reference_price": 65000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-13400F",
+    "model": "BX8071513400F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 10,
+      "threads": 16,
+      "base_clock": 2.5,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1500,
+    "reference_price": 26000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-13500",
+    "model": "BX8071513500",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "base_clock": 2.5,
+      "boost_clock": 4.8,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1700,
+    "reference_price": 32000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-13100F",
+    "model": "BX8071513100F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.4,
+      "boost_clock": 4.5,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 58,
+    "benchmark_score": 700,
+    "reference_price": 13000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-12900K",
+    "model": "BX8071512900K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 16,
+      "threads": 24,
+      "base_clock": 3.2,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 125,
+    "benchmark_score": 2100,
+    "reference_price": 45000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-12700K",
+    "model": "BX8071512700K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 12,
+      "threads": 20,
+      "base_clock": 3.6,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 125,
+    "benchmark_score": 1800,
+    "reference_price": 38000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-12600K",
+    "model": "BX8071512600K",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 10,
+      "threads": 16,
+      "base_clock": 3.7,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 125,
+    "benchmark_score": 1600,
+    "reference_price": 28000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-12400F",
+    "model": "BX8071512400F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 2.5,
+      "boost_clock": 4.4,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1200,
+    "reference_price": 18000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-12100F",
+    "model": "BX8071512100F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.3,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 58,
+    "benchmark_score": 650,
+    "reference_price": 10000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-11900K",
+    "model": "BX8070811900K",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.5,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 125,
+    "benchmark_score": 1550,
+    "reference_price": 22000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-11700K",
+    "model": "BX8070811700K",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.6,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 125,
+    "benchmark_score": 1500,
+    "reference_price": 20000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-11400F",
+    "model": "BX8070811400F",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 2.6,
+      "boost_clock": 4.4,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1050,
+    "reference_price": 11000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-10900K",
+    "model": "BX8070110900K",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 10,
+      "threads": 20,
+      "base_clock": 3.7,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2933
+    },
+    "tdp": 125,
+    "benchmark_score": 1400,
+    "reference_price": 16000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-10700K",
+    "model": "BX8070110700K",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.8,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2933
+    },
+    "tdp": 125,
+    "benchmark_score": 1250,
+    "reference_price": 14000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-10400F",
+    "model": "BX8070110400F",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 2.9,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 900,
+    "reference_price": 9000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-9900K",
+    "model": "BX806849900K",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.6,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 1100,
+    "reference_price": 14000,
+    "release_year": 2018
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-8700K",
+    "model": "BX80684I78700K",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.7,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 850,
+    "reference_price": 9000,
+    "release_year": 2017
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-8600K",
+    "model": "BX80684I58600K",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 6,
+      "threads": 6,
+      "base_clock": 3.6,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 700,
+    "reference_price": 7000,
+    "release_year": 2017
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 9950X",
+    "model": "100-100001277WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 16,
+      "threads": 32,
+      "base_clock": 4.3,
+      "boost_clock": 5.7,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 170,
+    "benchmark_score": 3000,
+    "reference_price": 95000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 9900X",
+    "model": "100-100001196WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 12,
+      "threads": 24,
+      "base_clock": 4.4,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 120,
+    "benchmark_score": 2600,
+    "reference_price": 72000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 9700X",
+    "model": "100-100001404WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.8,
+      "boost_clock": 5.5,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 2000,
+    "reference_price": 50000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 9600X",
+    "model": "100-100001405WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.9,
+      "boost_clock": 5.4,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 1700,
+    "reference_price": 40000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 7950X3D",
+    "model": "100-100000884WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 16,
+      "threads": 32,
+      "base_clock": 4.2,
+      "boost_clock": 5.7,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 120,
+    "benchmark_score": 3200,
+    "reference_price": 98000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 7900X3D",
+    "model": "100-100000909WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 12,
+      "threads": 24,
+      "base_clock": 4.4,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 120,
+    "benchmark_score": 2700,
+    "reference_price": 78000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 7800X3D",
+    "model": "100-100000910WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 4.5,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 120,
+    "benchmark_score": 2200,
+    "reference_price": 55000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 7950X",
+    "model": "100-100000514WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 16,
+      "threads": 32,
+      "base_clock": 4.5,
+      "boost_clock": 5.7,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 170,
+    "benchmark_score": 2900,
+    "reference_price": 80000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 7900X",
+    "model": "100-100000589WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 12,
+      "threads": 24,
+      "base_clock": 4.7,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 170,
+    "benchmark_score": 2500,
+    "reference_price": 60000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 7700X",
+    "model": "100-100000591WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 4.5,
+      "boost_clock": 5.4,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 105,
+    "benchmark_score": 1900,
+    "reference_price": 40000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 7700",
+    "model": "100-100000592WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.8,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1800,
+    "reference_price": 38000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 7600X",
+    "model": "100-100000593WOF",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 4.7,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 105,
+    "benchmark_score": 1600,
+    "reference_price": 32000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 7600",
+    "model": "100-100001015BOX",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.8,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1500,
+    "reference_price": 27000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 7500F",
+    "model": "100-100001141BOX",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.7,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1450,
+    "reference_price": 24000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 5950X",
+    "model": "100-100000059WOF",
+    "specs": {
+      "socket": "AM4",
+      "cores": 16,
+      "threads": 32,
+      "base_clock": 3.4,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 2400,
+    "reference_price": 45000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 5900X",
+    "model": "100-100000061WOF",
+    "specs": {
+      "socket": "AM4",
+      "cores": 12,
+      "threads": 24,
+      "base_clock": 3.7,
+      "boost_clock": 4.8,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 2100,
+    "reference_price": 35000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 5800X3D",
+    "model": "100-100000651WOF",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.4,
+      "boost_clock": 4.5,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 1800,
+    "reference_price": 30000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 5800X",
+    "model": "100-100000063WOF",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.8,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 1700,
+    "reference_price": 24000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 5600X",
+    "model": "100-100000065BOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.7,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1400,
+    "reference_price": 18000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 5600",
+    "model": "100-100000927BOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.5,
+      "boost_clock": 4.4,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1300,
+    "reference_price": 13000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 5500",
+    "model": "100-100000457BOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.6,
+      "boost_clock": 4.2,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1100,
+    "reference_price": 9000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 5600G",
+    "model": "100-100000252BOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.9,
+      "boost_clock": 4.4,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1150,
+    "reference_price": 15000,
+    "release_year": 2021,
+    "notes": "内蔵GPU搭載 (Radeon Graphics)"
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 3700X",
+    "model": "100-100000071BOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.6,
+      "boost_clock": 4.4,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1350,
+    "reference_price": 13000,
+    "release_year": 2019
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 3600",
+    "model": "100-100000031BOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.6,
+      "boost_clock": 4.2,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1050,
+    "reference_price": 8000,
+    "release_year": 2019
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 2700X",
+    "model": "YD270XBGAFBOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.7,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2933
+    },
+    "tdp": 105,
+    "benchmark_score": 900,
+    "reference_price": 7000,
+    "release_year": 2018
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 2600",
+    "model": "YD2600BBAFBOX",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.4,
+      "boost_clock": 3.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2933
+    },
+    "tdp": 65,
+    "benchmark_score": 800,
+    "reference_price": 5000,
+    "release_year": 2018
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "FX-8350",
+    "model": "FD8350FRHKBOX",
+    "specs": {
+      "socket": "AM3+",
+      "cores": 8,
+      "threads": 8,
+      "base_clock": 4.0,
+      "boost_clock": 4.2,
+      "memory_type": [
+        "DDR3"
+      ],
+      "max_memory_speed": 1866
+    },
+    "tdp": 125,
+    "benchmark_score": 400,
+    "reference_price": 4000,
+    "release_year": 2012
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 7 265KF",
+    "model": "Core Ultra 7 265KF",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 20,
+      "threads": 20,
+      "base_clock": 3.9,
+      "boost_clock": 5.5,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 125,
+    "benchmark_score": 2700,
+    "reference_price": 49000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 7 265F",
+    "model": "Core Ultra 7 265F",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 20,
+      "threads": 20,
+      "base_clock": 2.4,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 65,
+    "benchmark_score": 2300,
+    "reference_price": 55000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 7 265",
+    "model": "Core Ultra 7 265",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 20,
+      "threads": 20,
+      "base_clock": 2.4,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 65,
+    "benchmark_score": 2250,
+    "reference_price": 57000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 9 285",
+    "model": "Core Ultra 9 285",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 24,
+      "threads": 24,
+      "base_clock": 2.5,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 65,
+    "benchmark_score": 2300,
+    "reference_price": 95000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 5 225",
+    "model": "Core Ultra 5 225",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 10,
+      "threads": 10,
+      "base_clock": 3.3,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 65,
+    "benchmark_score": 1450,
+    "reference_price": 28000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core Ultra 5 225F",
+    "model": "Core Ultra 5 225F",
+    "specs": {
+      "socket": "LGA1851",
+      "cores": 10,
+      "threads": 10,
+      "base_clock": 3.3,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 6400
+    },
+    "tdp": 65,
+    "benchmark_score": 1440,
+    "reference_price": 25000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-14900KF",
+    "model": "Core i9-14900KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 3.2,
+      "boost_clock": 6.0,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 125,
+    "benchmark_score": 2700,
+    "reference_price": 81000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-14900F",
+    "model": "Core i9-14900F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 2.0,
+      "boost_clock": 5.8,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 2100,
+    "reference_price": 100000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-14900",
+    "model": "Core i9-14900",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 2.0,
+      "boost_clock": 5.8,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 2100,
+    "reference_price": 104000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-14700KF",
+    "model": "Core i7-14700KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 20,
+      "threads": 28,
+      "base_clock": 3.4,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 125,
+    "benchmark_score": 2450,
+    "reference_price": 63000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-14700F",
+    "model": "Core i7-14700F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 20,
+      "threads": 28,
+      "base_clock": 2.1,
+      "boost_clock": 5.4,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 1940,
+    "reference_price": 55000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-14700",
+    "model": "Core i7-14700",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 20,
+      "threads": 28,
+      "base_clock": 2.1,
+      "boost_clock": 5.4,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 1930,
+    "reference_price": 59000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-14500",
+    "model": "Core i5-14500",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "base_clock": 2.6,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1440,
+    "reference_price": 45000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-14400F",
+    "model": "Core i5-14400F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 10,
+      "threads": 16,
+      "base_clock": 2.5,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1180,
+    "reference_price": 26000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-14400",
+    "model": "Core i5-14400",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 10,
+      "threads": 16,
+      "base_clock": 2.5,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1160,
+    "reference_price": 29000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-14100F",
+    "model": "Core i3-14100F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.5,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 58,
+    "benchmark_score": 710,
+    "reference_price": 15000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-14100",
+    "model": "Core i3-14100",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.5,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 60,
+    "benchmark_score": 700,
+    "reference_price": 22000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-13900KF",
+    "model": "Core i9-13900KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 3.0,
+      "boost_clock": 5.8,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 125,
+    "benchmark_score": 2670,
+    "reference_price": 65000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-13900F",
+    "model": "Core i9-13900F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 2.0,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 2320,
+    "reference_price": 55000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-13900",
+    "model": "Core i9-13900",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "base_clock": 2.0,
+      "boost_clock": 5.6,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 2120,
+    "reference_price": 55000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-13700KF",
+    "model": "Core i7-13700KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 16,
+      "threads": 24,
+      "base_clock": 3.4,
+      "boost_clock": 5.4,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 125,
+    "benchmark_score": 2130,
+    "reference_price": 48000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-13700F",
+    "model": "Core i7-13700F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 16,
+      "threads": 24,
+      "base_clock": 2.1,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1780,
+    "reference_price": 40000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-13700",
+    "model": "Core i7-13700",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 16,
+      "threads": 24,
+      "base_clock": 2.1,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1690,
+    "reference_price": 42000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-13400",
+    "model": "Core i5-13400",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 10,
+      "threads": 16,
+      "base_clock": 2.5,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1140,
+    "reference_price": 27000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-13100",
+    "model": "Core i3-13100",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.4,
+      "boost_clock": 4.5,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 60,
+    "benchmark_score": 680,
+    "reference_price": 22000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-12900KF",
+    "model": "Core i9-12900KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 16,
+      "threads": 24,
+      "base_clock": 3.2,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 125,
+    "benchmark_score": 1890,
+    "reference_price": 42000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-12900",
+    "model": "Core i9-12900",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 16,
+      "threads": 24,
+      "base_clock": 2.4,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1560,
+    "reference_price": 40000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-12700KF",
+    "model": "Core i7-12700KF",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 12,
+      "threads": 20,
+      "base_clock": 3.6,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 125,
+    "benchmark_score": 1570,
+    "reference_price": 36000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-12700F",
+    "model": "Core i7-12700F",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 12,
+      "threads": 20,
+      "base_clock": 2.1,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1400,
+    "reference_price": 32000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-12700",
+    "model": "Core i7-12700",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 12,
+      "threads": 20,
+      "base_clock": 2.1,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 1400,
+    "reference_price": 35000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-12500",
+    "model": "Core i5-12500",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.0,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 910,
+    "reference_price": 24000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-12400",
+    "model": "Core i5-12400",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 2.5,
+      "boost_clock": 4.4,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 65,
+    "benchmark_score": 880,
+    "reference_price": 19000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-12100",
+    "model": "Core i3-12100",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.3,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "max_memory_speed": 4800
+    },
+    "tdp": 60,
+    "benchmark_score": 640,
+    "reference_price": 21000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-11900KF",
+    "model": "Core i9-11900KF",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.5,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 125,
+    "benchmark_score": 1140,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-11700KF",
+    "model": "Core i7-11700KF",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.6,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 125,
+    "benchmark_score": 1100,
+    "reference_price": 22000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-11700F",
+    "model": "Core i7-11700F",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 2.5,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 960,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-11700",
+    "model": "Core i7-11700",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 2.5,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 950,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-11600K",
+    "model": "Core i5-11600K",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.9,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 125,
+    "benchmark_score": 900,
+    "reference_price": 20000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-11600KF",
+    "model": "Core i5-11600KF",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.9,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 125,
+    "benchmark_score": 900,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-10900KF",
+    "model": "Core i9-10900KF",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 10,
+      "threads": 20,
+      "base_clock": 3.7,
+      "boost_clock": 5.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2933
+    },
+    "tdp": 125,
+    "benchmark_score": 1380,
+    "reference_price": 18000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-10700KF",
+    "model": "Core i7-10700KF",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.8,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2933
+    },
+    "tdp": 125,
+    "benchmark_score": 1220,
+    "reference_price": 14000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-10700F",
+    "model": "Core i7-10700F",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 2.9,
+      "boost_clock": 4.8,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 750,
+    "reference_price": 13000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-10700",
+    "model": "Core i7-10700",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 2.9,
+      "boost_clock": 4.8,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 750,
+    "reference_price": 13000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-10600K",
+    "model": "Core i5-10600K",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 4.1,
+      "boost_clock": 4.8,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 125,
+    "benchmark_score": 660,
+    "reference_price": 13000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-10600KF",
+    "model": "Core i5-10600KF",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 4.1,
+      "boost_clock": 4.8,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 125,
+    "benchmark_score": 650,
+    "reference_price": 12000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-10600",
+    "model": "Core i5-10600",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.3,
+      "boost_clock": 4.8,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 630,
+    "reference_price": 11000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-10500",
+    "model": "Core i5-10500",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.1,
+      "boost_clock": 4.5,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 610,
+    "reference_price": 10000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-10100",
+    "model": "Core i3-10100",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.6,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 410,
+    "reference_price": 9000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i3-10100F",
+    "model": "Core i3-10100F",
+    "specs": {
+      "socket": "LGA1200",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.6,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 400,
+    "reference_price": 7000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-9900KF",
+    "model": "Core i9-9900KF",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.6,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 1080,
+    "reference_price": 14000,
+    "release_year": 2019
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i9-9900",
+    "model": "Core i9-9900",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.1,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 750,
+    "reference_price": 13000,
+    "release_year": 2018
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-9700K",
+    "model": "Core i7-9700K",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 8,
+      "threads": 8,
+      "base_clock": 3.6,
+      "boost_clock": 4.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 660,
+    "reference_price": 12000,
+    "release_year": 2018
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-9600K",
+    "model": "Core i5-9600K",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 6,
+      "threads": 6,
+      "base_clock": 3.7,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 490,
+    "reference_price": 9000,
+    "release_year": 2018
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-9400F",
+    "model": "Core i5-9400F",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 6,
+      "threads": 6,
+      "base_clock": 2.9,
+      "boost_clock": 4.1,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 440,
+    "reference_price": 7000,
+    "release_year": 2019
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i7-8700",
+    "model": "Core i7-8700",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.2,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 590,
+    "reference_price": 7000,
+    "release_year": 2017
+  },
+  {
+    "category": "cpu",
+    "brand": "Intel",
+    "name": "Core i5-8400",
+    "model": "Core i5-8400",
+    "specs": {
+      "socket": "LGA1151",
+      "cores": 6,
+      "threads": 6,
+      "base_clock": 2.8,
+      "boost_clock": 4.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 430,
+    "reference_price": 6000,
+    "release_year": 2017
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 9950X3D",
+    "model": "Ryzen 9 9950X3D",
+    "specs": {
+      "socket": "AM5",
+      "cores": 16,
+      "threads": 32,
+      "base_clock": 4.3,
+      "boost_clock": 5.7,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 170,
+    "benchmark_score": 3250,
+    "reference_price": 115000,
+    "release_year": 2025
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 9900X3D",
+    "model": "Ryzen 9 9900X3D",
+    "specs": {
+      "socket": "AM5",
+      "cores": 12,
+      "threads": 24,
+      "base_clock": 4.4,
+      "boost_clock": 5.5,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 120,
+    "benchmark_score": 2600,
+    "reference_price": 98000,
+    "release_year": 2025
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 9800X3D",
+    "model": "Ryzen 7 9800X3D",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 4.7,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 120,
+    "benchmark_score": 1840,
+    "reference_price": 68000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 9600",
+    "model": "Ryzen 5 9600",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.8,
+      "boost_clock": 5.2,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 1350,
+    "reference_price": 37000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 9500F",
+    "model": "Ryzen 5 9500F",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.8,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5600
+    },
+    "tdp": 65,
+    "benchmark_score": 1310,
+    "reference_price": 36000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 8700G",
+    "model": "Ryzen 7 8700G",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 4.2,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1450,
+    "reference_price": 46000,
+    "release_year": 2024,
+    "notes": "内蔵GPU搭載 (Radeon 780M)"
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 8700F",
+    "model": "Ryzen 7 8700F",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 4.1,
+      "boost_clock": 5.1,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1440,
+    "reference_price": 39000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 8600G",
+    "model": "Ryzen 5 8600G",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 4.3,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1170,
+    "reference_price": 33000,
+    "release_year": 2024,
+    "notes": "内蔵GPU搭載 (Radeon 760M)"
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 8500G",
+    "model": "Ryzen 5 8500G",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.5,
+      "boost_clock": 5.0,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 990,
+    "reference_price": 26000,
+    "release_year": 2024,
+    "notes": "内蔵GPU搭載"
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 8400F",
+    "model": "Ryzen 5 8400F",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 4.2,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR5"
+      ],
+      "max_memory_speed": 5200
+    },
+    "tdp": 65,
+    "benchmark_score": 1120,
+    "reference_price": 28000,
+    "release_year": 2024
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 5700X",
+    "model": "Ryzen 7 5700X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.4,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1220,
+    "reference_price": 33000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 5700G",
+    "model": "Ryzen 7 5700G",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.8,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1130,
+    "reference_price": 25000,
+    "release_year": 2021,
+    "notes": "内蔵GPU搭載 (Radeon Graphics)"
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 5700X3D",
+    "model": "Ryzen 7 5700X3D",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.0,
+      "boost_clock": 4.1,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 1210,
+    "reference_price": 28000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 5700",
+    "model": "Ryzen 7 5700",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.7,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1120,
+    "reference_price": 31000,
+    "release_year": 2022
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 5600T",
+    "model": "Ryzen 5 5600T",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.5,
+      "boost_clock": 4.5,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 1020,
+    "reference_price": 23000,
+    "release_year": 2023
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 5600GT",
+    "model": "Ryzen 5 5600GT",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.6,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 930,
+    "reference_price": 23000,
+    "release_year": 2023,
+    "notes": "内蔵GPU搭載"
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 3900X",
+    "model": "Ryzen 9 3900X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 12,
+      "threads": 24,
+      "base_clock": 3.8,
+      "boost_clock": 4.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 1490,
+    "reference_price": 18000,
+    "release_year": 2019
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 9 3900XT",
+    "model": "Ryzen 9 3900XT",
+    "specs": {
+      "socket": "AM4",
+      "cores": 12,
+      "threads": 24,
+      "base_clock": 3.8,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 1500,
+    "reference_price": 18000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 3800X",
+    "model": "Ryzen 7 3800X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.9,
+      "boost_clock": 4.5,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 1060,
+    "reference_price": 13000,
+    "release_year": 2019
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 3800XT",
+    "model": "Ryzen 7 3800XT",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.9,
+      "boost_clock": 4.7,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 105,
+    "benchmark_score": 1080,
+    "reference_price": 13000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 3600X",
+    "model": "Ryzen 5 3600X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.8,
+      "boost_clock": 4.4,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 95,
+    "benchmark_score": 840,
+    "reference_price": 9000,
+    "release_year": 2019
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 3600XT",
+    "model": "Ryzen 5 3600XT",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.8,
+      "boost_clock": 4.5,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 95,
+    "benchmark_score": 860,
+    "reference_price": 9000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 3 3300X",
+    "model": "Ryzen 3 3300X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.8,
+      "boost_clock": 4.3,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 580,
+    "reference_price": 9000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 3 3100",
+    "model": "Ryzen 3 3100",
+    "specs": {
+      "socket": "AM4",
+      "cores": 4,
+      "threads": 8,
+      "base_clock": 3.6,
+      "boost_clock": 3.9,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 3200
+    },
+    "tdp": 65,
+    "benchmark_score": 530,
+    "reference_price": 7000,
+    "release_year": 2020
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 2700",
+    "model": "Ryzen 7 2700",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.2,
+      "boost_clock": 4.1,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2933
+    },
+    "tdp": 65,
+    "benchmark_score": 720,
+    "reference_price": 6000,
+    "release_year": 2018
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 1800X",
+    "model": "Ryzen 7 1800X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.6,
+      "boost_clock": 4.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 750,
+    "reference_price": 5000,
+    "release_year": 2017
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 7 1700X",
+    "model": "Ryzen 7 1700X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 8,
+      "threads": 16,
+      "base_clock": 3.4,
+      "boost_clock": 3.8,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 720,
+    "reference_price": 5000,
+    "release_year": 2017
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 1600X",
+    "model": "Ryzen 5 1600X",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.3,
+      "boost_clock": 4.0,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 95,
+    "benchmark_score": 600,
+    "reference_price": 4500,
+    "release_year": 2017
+  },
+  {
+    "category": "cpu",
+    "brand": "AMD",
+    "name": "Ryzen 5 1600",
+    "model": "Ryzen 5 1600",
+    "specs": {
+      "socket": "AM4",
+      "cores": 6,
+      "threads": 12,
+      "base_clock": 3.2,
+      "boost_clock": 3.6,
+      "memory_type": [
+        "DDR4"
+      ],
+      "max_memory_speed": 2666
+    },
+    "tdp": 65,
+    "benchmark_score": 560,
+    "reference_price": 4000,
+    "release_year": 2017
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4090",
+    "model": "RTX 4090 24GB",
+    "specs": {
+      "vram": 24,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 336,
+      "tdp": 450,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 450,
+    "benchmark_score": 25000,
+    "reference_price": 240000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4080 Super",
+    "model": "RTX 4080 Super 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 310,
+      "tdp": 320,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 320,
+    "benchmark_score": 21000,
+    "reference_price": 170000,
+    "release_year": 2024
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4080",
+    "model": "RTX 4080 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 310,
+      "tdp": 320,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 320,
+    "benchmark_score": 20000,
+    "reference_price": 150000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4070 Ti Super",
+    "model": "RTX 4070 Ti Super 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 298,
+      "tdp": 285,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 285,
+    "benchmark_score": 18000,
+    "reference_price": 120000,
+    "release_year": 2024
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4070 Ti",
+    "model": "RTX 4070 Ti 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 285,
+      "tdp": 285,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 285,
+    "benchmark_score": 16500,
+    "reference_price": 100000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4070 Super",
+    "model": "RTX 4070 Super 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 280,
+      "tdp": 220,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 220,
+    "benchmark_score": 15000,
+    "reference_price": 90000,
+    "release_year": 2024
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4070",
+    "model": "RTX 4070 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 270,
+      "tdp": 200,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 200,
+    "benchmark_score": 13500,
+    "reference_price": 75000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4060 Ti 16GB",
+    "model": "RTX 4060 Ti 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 240,
+      "tdp": 165,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 165,
+    "benchmark_score": 11000,
+    "reference_price": 65000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4060 Ti",
+    "model": "RTX 4060 Ti 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 240,
+      "tdp": 165,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 165,
+    "benchmark_score": 10500,
+    "reference_price": 55000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 4060",
+    "model": "RTX 4060 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 240,
+      "tdp": 115,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 115,
+    "benchmark_score": 9000,
+    "reference_price": 42000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3090 Ti",
+    "model": "RTX 3090 Ti 24GB",
+    "specs": {
+      "vram": 24,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 336,
+      "tdp": 450,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 450,
+    "benchmark_score": 19000,
+    "reference_price": 95000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3090",
+    "model": "RTX 3090 24GB",
+    "specs": {
+      "vram": 24,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 336,
+      "tdp": 350,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 350,
+    "benchmark_score": 17000,
+    "reference_price": 80000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3080 Ti",
+    "model": "RTX 3080 Ti 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 320,
+      "tdp": 350,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 350,
+    "benchmark_score": 15500,
+    "reference_price": 65000,
+    "release_year": 2021
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3080 12GB",
+    "model": "RTX 3080 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 320,
+      "tdp": 350,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 350,
+    "benchmark_score": 15000,
+    "reference_price": 60000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3080",
+    "model": "RTX 3080 10GB",
+    "specs": {
+      "vram": 10,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 320,
+      "tdp": 320,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 320,
+    "benchmark_score": 14500,
+    "reference_price": 55000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3070 Ti",
+    "model": "RTX 3070 Ti 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6X",
+      "pcie_version": "4.0",
+      "length": 290,
+      "tdp": 290,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 290,
+    "benchmark_score": 12000,
+    "reference_price": 45000,
+    "release_year": 2021
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3070",
+    "model": "RTX 3070 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 285,
+      "tdp": 220,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 220,
+    "benchmark_score": 11500,
+    "reference_price": 40000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3060 Ti",
+    "model": "RTX 3060 Ti 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 265,
+      "tdp": 200,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 200,
+    "benchmark_score": 10000,
+    "reference_price": 35000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3060",
+    "model": "RTX 3060 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 240,
+      "tdp": 170,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 170,
+    "benchmark_score": 8000,
+    "reference_price": 28000,
+    "release_year": 2021
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 3050",
+    "model": "RTX 3050 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 228,
+      "tdp": 130
+    },
+    "tdp": 130,
+    "benchmark_score": 6000,
+    "reference_price": 20000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 2080 Ti",
+    "model": "RTX 2080 Ti 11GB",
+    "specs": {
+      "vram": 11,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 300,
+      "tdp": 250
+    },
+    "tdp": 250,
+    "benchmark_score": 11000,
+    "reference_price": 28000,
+    "release_year": 2018
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 2080 Super",
+    "model": "RTX 2080 Super 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 285,
+      "tdp": 250
+    },
+    "tdp": 250,
+    "benchmark_score": 9500,
+    "reference_price": 20000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 2070 Super",
+    "model": "RTX 2070 Super 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 265,
+      "tdp": 215
+    },
+    "tdp": 215,
+    "benchmark_score": 8500,
+    "reference_price": 16000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 2060 Super",
+    "model": "RTX 2060 Super 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 250,
+      "tdp": 175
+    },
+    "tdp": 175,
+    "benchmark_score": 7200,
+    "reference_price": 14000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 2060",
+    "model": "RTX 2060 6GB",
+    "specs": {
+      "vram": 6,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 230,
+      "tdp": 160
+    },
+    "tdp": 160,
+    "benchmark_score": 6000,
+    "reference_price": 11000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1080 Ti",
+    "model": "GTX 1080 Ti 11GB",
+    "specs": {
+      "vram": 11,
+      "memory_type": "GDDR5X",
+      "pcie_version": "3.0",
+      "length": 298,
+      "tdp": 250
+    },
+    "tdp": 250,
+    "benchmark_score": 8000,
+    "reference_price": 14000,
+    "release_year": 2017
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1080",
+    "model": "GTX 1080 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR5X",
+      "pcie_version": "3.0",
+      "length": 267,
+      "tdp": 180
+    },
+    "tdp": 180,
+    "benchmark_score": 6200,
+    "reference_price": 9000,
+    "release_year": 2016
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1070 Ti",
+    "model": "GTX 1070 Ti 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 267,
+      "tdp": 180
+    },
+    "tdp": 180,
+    "benchmark_score": 5500,
+    "reference_price": 8000,
+    "release_year": 2017
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1070",
+    "model": "GTX 1070 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 267,
+      "tdp": 150
+    },
+    "tdp": 150,
+    "benchmark_score": 5000,
+    "reference_price": 7000,
+    "release_year": 2016
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1660 Ti",
+    "model": "GTX 1660 Ti 6GB",
+    "specs": {
+      "vram": 6,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 229,
+      "tdp": 120
+    },
+    "tdp": 120,
+    "benchmark_score": 5800,
+    "reference_price": 13000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1660 Super",
+    "model": "GTX 1660 Super 6GB",
+    "specs": {
+      "vram": 6,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 229,
+      "tdp": 125
+    },
+    "tdp": 125,
+    "benchmark_score": 5500,
+    "reference_price": 13000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1660",
+    "model": "GTX 1660 6GB",
+    "specs": {
+      "vram": 6,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 229,
+      "tdp": 120
+    },
+    "tdp": 120,
+    "benchmark_score": 5000,
+    "reference_price": 11000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1060 6GB",
+    "model": "GTX 1060 6GB",
+    "specs": {
+      "vram": 6,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 250,
+      "tdp": 120
+    },
+    "tdp": 120,
+    "benchmark_score": 4000,
+    "reference_price": 6000,
+    "release_year": 2016
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 7900 XTX",
+    "model": "RX 7900 XTX 24GB",
+    "specs": {
+      "vram": 24,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 320,
+      "tdp": 355,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 355,
+    "benchmark_score": 22000,
+    "reference_price": 130000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 7900 XT",
+    "model": "RX 7900 XT 20GB",
+    "specs": {
+      "vram": 20,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 308,
+      "tdp": 315,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 315,
+    "benchmark_score": 20000,
+    "reference_price": 110000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 7900 GRE",
+    "model": "RX 7900 GRE 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 300,
+      "tdp": 260,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 260,
+    "benchmark_score": 16000,
+    "reference_price": 80000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 7800 XT",
+    "model": "RX 7800 XT 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 275,
+      "tdp": 263,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 263,
+    "benchmark_score": 13500,
+    "reference_price": 65000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 7700 XT",
+    "model": "RX 7700 XT 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 260,
+      "tdp": 245,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 245,
+    "benchmark_score": 11500,
+    "reference_price": 55000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 7600 XT",
+    "model": "RX 7600 XT 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 240,
+      "tdp": 190,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 190,
+    "benchmark_score": 10000,
+    "reference_price": 52000,
+    "release_year": 2024
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 7600",
+    "model": "RX 7600 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 230,
+      "tdp": 165,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 165,
+    "benchmark_score": 8500,
+    "reference_price": 38000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6950 XT",
+    "model": "RX 6950 XT 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 300,
+      "tdp": 335
+    },
+    "tdp": 335,
+    "benchmark_score": 16500,
+    "reference_price": 60000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6900 XT",
+    "model": "RX 6900 XT 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 300,
+      "tdp": 300
+    },
+    "tdp": 300,
+    "benchmark_score": 15500,
+    "reference_price": 52000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6800 XT",
+    "model": "RX 6800 XT 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 272,
+      "tdp": 300
+    },
+    "tdp": 300,
+    "benchmark_score": 14000,
+    "reference_price": 42000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6800",
+    "model": "RX 6800 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 272,
+      "tdp": 250
+    },
+    "tdp": 250,
+    "benchmark_score": 12500,
+    "reference_price": 38000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6750 XT",
+    "model": "RX 6750 XT 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 267,
+      "tdp": 250
+    },
+    "tdp": 250,
+    "benchmark_score": 11500,
+    "reference_price": 35000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6700 XT",
+    "model": "RX 6700 XT 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 267,
+      "tdp": 230
+    },
+    "tdp": 230,
+    "benchmark_score": 10500,
+    "reference_price": 28000,
+    "release_year": 2021
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6700",
+    "model": "RX 6700 10GB",
+    "specs": {
+      "vram": 10,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 248,
+      "tdp": 220
+    },
+    "tdp": 220,
+    "benchmark_score": 9500,
+    "reference_price": 24000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6650 XT",
+    "model": "RX 6650 XT 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 235,
+      "tdp": 180
+    },
+    "tdp": 180,
+    "benchmark_score": 9000,
+    "reference_price": 25000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6600 XT",
+    "model": "RX 6600 XT 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 235,
+      "tdp": 160
+    },
+    "tdp": 160,
+    "benchmark_score": 8200,
+    "reference_price": 22000,
+    "release_year": 2021
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6600",
+    "model": "RX 6600 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 230,
+      "tdp": 132
+    },
+    "tdp": 132,
+    "benchmark_score": 7500,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 5700 XT",
+    "model": "RX 5700 XT 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 267,
+      "tdp": 225
+    },
+    "tdp": 225,
+    "benchmark_score": 7500,
+    "reference_price": 16000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 5700",
+    "model": "RX 5700 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 261,
+      "tdp": 180
+    },
+    "tdp": 180,
+    "benchmark_score": 6800,
+    "reference_price": 14000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 5600 XT",
+    "model": "RX 5600 XT 6GB",
+    "specs": {
+      "vram": 6,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 244,
+      "tdp": 150
+    },
+    "tdp": 150,
+    "benchmark_score": 6200,
+    "reference_price": 12000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 580 8GB",
+    "model": "RX 580 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 240,
+      "tdp": 185
+    },
+    "tdp": 185,
+    "benchmark_score": 3800,
+    "reference_price": 7000,
+    "release_year": 2017
+  },
+  {
+    "category": "gpu",
+    "brand": "Intel",
+    "name": "Arc A770 16GB",
+    "model": "Arc A770 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 272,
+      "tdp": 225,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 225,
+    "benchmark_score": 9000,
+    "reference_price": 40000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "Intel",
+    "name": "Arc A750 8GB",
+    "model": "Arc A750 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 267,
+      "tdp": 225,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 225,
+    "benchmark_score": 7500,
+    "reference_price": 30000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "Intel",
+    "name": "Arc A580 8GB",
+    "model": "Arc A580 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 254,
+      "tdp": 185
+    },
+    "tdp": 185,
+    "benchmark_score": 6800,
+    "reference_price": 25000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 5090",
+    "model": "RTX 5090 32GB",
+    "specs": {
+      "vram": 32,
+      "memory_type": "GDDR7",
+      "pcie_version": "5.0",
+      "length": 360,
+      "tdp": 575,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 575,
+    "benchmark_score": 33000,
+    "reference_price": 550000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 5080",
+    "model": "RTX 5080 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR7",
+      "pcie_version": "5.0",
+      "length": 336,
+      "tdp": 360,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 360,
+    "benchmark_score": 23000,
+    "reference_price": 207000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 5070 Ti",
+    "model": "RTX 5070 Ti 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR7",
+      "pcie_version": "5.0",
+      "length": 310,
+      "tdp": 300,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 300,
+    "benchmark_score": 19000,
+    "reference_price": 170000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 5070",
+    "model": "RTX 5070 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR7",
+      "pcie_version": "5.0",
+      "length": 290,
+      "tdp": 250,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 250,
+    "benchmark_score": 15500,
+    "reference_price": 104000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 5050",
+    "model": "RTX 5050 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR7",
+      "pcie_version": "5.0",
+      "length": 240,
+      "tdp": 130,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 130,
+    "benchmark_score": 7000,
+    "reference_price": 46000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 2080",
+    "model": "RTX 2080 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 285,
+      "tdp": 215
+    },
+    "tdp": 215,
+    "benchmark_score": 7600,
+    "reference_price": 18000,
+    "release_year": 2018
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 2070",
+    "model": "RTX 2070 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 265,
+      "tdp": 175
+    },
+    "tdp": 175,
+    "benchmark_score": 6300,
+    "reference_price": 14000,
+    "release_year": 2018
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1650 Super",
+    "model": "GTX 1650 Super 4GB",
+    "specs": {
+      "vram": 4,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 229,
+      "tdp": 100
+    },
+    "tdp": 100,
+    "benchmark_score": 4000,
+    "reference_price": 9000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1650 GDDR6",
+    "model": "GTX 1650 GDDR6 4GB",
+    "specs": {
+      "vram": 4,
+      "memory_type": "GDDR6",
+      "pcie_version": "3.0",
+      "length": 229,
+      "tdp": 75
+    },
+    "tdp": 75,
+    "benchmark_score": 2550,
+    "reference_price": 8000,
+    "release_year": 2020
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1650",
+    "model": "GTX 1650 4GB",
+    "specs": {
+      "vram": 4,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 229,
+      "tdp": 75
+    },
+    "tdp": 75,
+    "benchmark_score": 2350,
+    "reference_price": 7000,
+    "release_year": 2019
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce GTX 1050 Ti",
+    "model": "GTX 1050 Ti 4GB",
+    "specs": {
+      "vram": 4,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 229,
+      "tdp": 75
+    },
+    "tdp": 75,
+    "benchmark_score": 1600,
+    "reference_price": 5000,
+    "release_year": 2016
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 9070 XT",
+    "model": "RX 9070 XT 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "5.0",
+      "length": 310,
+      "tdp": 304,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 304,
+    "benchmark_score": 21000,
+    "reference_price": 103000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 9070",
+    "model": "RX 9070 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR6",
+      "pcie_version": "5.0",
+      "length": 290,
+      "tdp": 220,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 220,
+    "benchmark_score": 18500,
+    "reference_price": 95000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6500 XT",
+    "model": "RX 6500 XT 4GB",
+    "specs": {
+      "vram": 4,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 200,
+      "tdp": 107
+    },
+    "tdp": 107,
+    "benchmark_score": 3800,
+    "reference_price": 15000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 6400",
+    "model": "RX 6400 4GB",
+    "specs": {
+      "vram": 4,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 168,
+      "tdp": 53
+    },
+    "tdp": 53,
+    "benchmark_score": 2480,
+    "reference_price": 12000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 570 8GB",
+    "model": "RX 570 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 235,
+      "tdp": 150
+    },
+    "tdp": 150,
+    "benchmark_score": 2650,
+    "reference_price": 6000,
+    "release_year": 2017
+  },
+  {
+    "category": "gpu",
+    "brand": "AMD",
+    "name": "Radeon RX 480 8GB",
+    "model": "RX 480 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR5",
+      "pcie_version": "3.0",
+      "length": 235,
+      "tdp": 150
+    },
+    "tdp": 150,
+    "benchmark_score": 2850,
+    "reference_price": 6000,
+    "release_year": 2016
+  },
+  {
+    "category": "gpu",
+    "brand": "Intel",
+    "name": "Arc B580 12GB",
+    "model": "Arc B580 12GB",
+    "specs": {
+      "vram": 12,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 272,
+      "tdp": 190,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 190,
+    "benchmark_score": 11000,
+    "reference_price": 50000,
+    "release_year": 2024
+  },
+  {
+    "category": "gpu",
+    "brand": "Intel",
+    "name": "Arc A380 6GB",
+    "model": "Arc A380 6GB",
+    "specs": {
+      "vram": 6,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 190,
+      "tdp": 75
+    },
+    "tdp": 75,
+    "benchmark_score": 3600,
+    "reference_price": 18000,
+    "release_year": 2022
+  },
+  {
+    "category": "gpu",
+    "brand": "Intel",
+    "name": "Arc A310 4GB",
+    "model": "Arc A310 4GB",
+    "specs": {
+      "vram": 4,
+      "memory_type": "GDDR6",
+      "pcie_version": "4.0",
+      "length": 168,
+      "tdp": 75
+    },
+    "tdp": 75,
+    "benchmark_score": 2250,
+    "reference_price": 20000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "ROG Maximus Z890 Apex",
+    "model": "Z890 Apex",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "Z890",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 2,
+      "max_memory": 96,
+      "max_memory_speed": 9000,
+      "form_factor": "ATX",
+      "m2_slots": 5,
+      "sata_ports": 4,
+      "usb_c_rear": 2,
+      "wifi": false,
+      "thunderbolt": true
+    },
+    "tdp": 0,
+    "benchmark_score": 98,
+    "reference_price": 120000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "MAG Z890 Tomahawk WiFi",
+    "model": "Z890 Tomahawk WiFi",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "Z890",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 256,
+      "max_memory_speed": 9200,
+      "form_factor": "ATX",
+      "m2_slots": 4,
+      "sata_ports": 4,
+      "usb_c_rear": 2,
+      "wifi": "Wi-Fi 7",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 90,
+    "reference_price": 55000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "B860M DS3H",
+    "model": "B860M DS3H DDR5",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "B860",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 6400,
+      "form_factor": "mATX",
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "usb_c_rear": 1,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 72,
+    "reference_price": 20000,
+    "release_year": 2025
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "ROG Maximus Z790 Hero",
+    "model": "Z790 Hero",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 7600,
+      "form_factor": "ATX",
+      "m2_slots": 5,
+      "sata_ports": 6,
+      "usb_c_rear": 2,
+      "wifi": false,
+      "thunderbolt": true
+    },
+    "tdp": 0,
+    "benchmark_score": 95,
+    "reference_price": 85000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "MAG Z790 Tomahawk WiFi",
+    "model": "Z790 Tomahawk WiFi",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 7200,
+      "form_factor": "ATX",
+      "m2_slots": 4,
+      "sata_ports": 6,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 6E",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 88,
+    "reference_price": 40000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "B760 AORUS Elite AX",
+    "model": "B760 AORUS Elite AX DDR4",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 5333,
+      "form_factor": "ATX",
+      "m2_slots": 3,
+      "sata_ports": 4,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 6E",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 78,
+    "reference_price": 22000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "B760M DS3H",
+    "model": "B760M DS3H DDR4",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 4800,
+      "form_factor": "mATX",
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "usb_c_rear": 1,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 72,
+    "reference_price": 13000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "B760M Pro RS",
+    "model": "B760M Pro RS DDR4",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 4800,
+      "form_factor": "mATX",
+      "m2_slots": 3,
+      "sata_ports": 4,
+      "usb_c_rear": 1,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 73,
+    "reference_price": 15000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "PRO B660M-A DDR4",
+    "model": "PRO B660M-A DDR4",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B660",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 4400,
+      "form_factor": "mATX",
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "usb_c_rear": 0,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 70,
+    "reference_price": 12000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "PRIME H610M-E",
+    "model": "PRIME H610M-E D4",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "H610",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 2,
+      "max_memory": 64,
+      "max_memory_speed": 3200,
+      "form_factor": "mATX",
+      "m2_slots": 1,
+      "sata_ports": 4,
+      "usb_c_rear": 0,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 60,
+    "reference_price": 8000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "ROG Crosshair X670E Hero",
+    "model": "X670E Hero",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X670E",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 6400,
+      "form_factor": "ATX",
+      "m2_slots": 5,
+      "sata_ports": 6,
+      "usb_c_rear": 2,
+      "wifi": "Wi-Fi 6E",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 92,
+    "reference_price": 70000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "MEG X670E ACE",
+    "model": "X670E ACE",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X670E",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 6400,
+      "form_factor": "ATX",
+      "m2_slots": 5,
+      "sata_ports": 6,
+      "usb_c_rear": 2,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 91,
+    "reference_price": 65000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "B650 AORUS Elite AX",
+    "model": "B650 AORUS Elite AX",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 6000,
+      "form_factor": "ATX",
+      "m2_slots": 4,
+      "sata_ports": 4,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 6E",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 82,
+    "reference_price": 30000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "B650M PG Riptide WiFi",
+    "model": "B650M PG Riptide WiFi",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 6000,
+      "form_factor": "mATX",
+      "m2_slots": 3,
+      "sata_ports": 4,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 6",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 78,
+    "reference_price": 20000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "PRO B650M-A WiFi",
+    "model": "PRO B650M-A WiFi",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 5600,
+      "form_factor": "mATX",
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 6",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 75,
+    "reference_price": 18000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "TUF Gaming B550-F",
+    "model": "B550-F Gaming WiFi II",
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 4400,
+      "form_factor": "ATX",
+      "m2_slots": 2,
+      "sata_ports": 6,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 6",
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 80,
+    "reference_price": 17000,
+    "release_year": 2020
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "MAG B550 Tomahawk",
+    "model": "B550 Tomahawk",
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 4400,
+      "form_factor": "ATX",
+      "m2_slots": 2,
+      "sata_ports": 6,
+      "usb_c_rear": 0,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 79,
+    "reference_price": 15000,
+    "release_year": 2020
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "B550M DS3H",
+    "model": "B550M DS3H",
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 4000,
+      "form_factor": "mATX",
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "usb_c_rear": 0,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 70,
+    "reference_price": 9000,
+    "release_year": 2020
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "B450M Pro4-F",
+    "model": "B450M Pro4-F",
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B450",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 64,
+      "max_memory_speed": 3200,
+      "form_factor": "mATX",
+      "m2_slots": 1,
+      "sata_ports": 4,
+      "usb_c_rear": 0,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 65,
+    "reference_price": 7000,
+    "release_year": 2019
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "PRO Z370-A",
+    "model": "Z370-A PRO",
+    "specs": {
+      "socket": "LGA1151",
+      "chipset": "Z370",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 64,
+      "max_memory_speed": 4000,
+      "form_factor": "ATX",
+      "m2_slots": 2,
+      "sata_ports": 6,
+      "usb_c_rear": 0,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 68,
+    "reference_price": 7000,
+    "release_year": 2017
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "B360M DS3H",
+    "model": "B360M DS3H",
+    "specs": {
+      "socket": "LGA1151",
+      "chipset": "B360",
+      "memory_type": [
+        "DDR4"
+      ],
+      "memory_slots": 4,
+      "max_memory": 64,
+      "max_memory_speed": 2666,
+      "form_factor": "mATX",
+      "m2_slots": 1,
+      "sata_ports": 4,
+      "usb_c_rear": 0,
+      "wifi": false,
+      "thunderbolt": false
+    },
+    "tdp": 0,
+    "benchmark_score": 58,
+    "reference_price": 5000,
+    "release_year": 2018
+  },
+  {
+    "category": "memory",
+    "brand": "Corsair",
+    "name": "Vengeance DDR5-5600",
+    "model": "CMK32GX5M2B5600C36",
+    "specs": {
+      "memory_type": "DDR5",
+      "capacity": 32,
+      "speed": 5600,
+      "modules": 2,
+      "cas_latency": 36,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 5,
+    "benchmark_score": 88,
+    "reference_price": 18000,
+    "release_year": 2022
+  },
+  {
+    "category": "memory",
+    "brand": "G.Skill",
+    "name": "Trident Z5 DDR5-6400",
+    "model": "F5-6400J3239G16GX2-TZ5K",
+    "specs": {
+      "memory_type": "DDR5",
+      "capacity": 32,
+      "speed": 6400,
+      "modules": 2,
+      "cas_latency": 32,
+      "colors": [
+        "black",
+        "white",
+        "silver"
+      ]
+    },
+    "tdp": 5,
+    "benchmark_score": 95,
+    "reference_price": 28000,
+    "release_year": 2022
+  },
+  {
+    "category": "memory",
+    "brand": "G.Skill",
+    "name": "Trident Z5 Neo DDR5-6000",
+    "model": "F5-6000J3038F16GX2-TZ5NR",
+    "specs": {
+      "memory_type": "DDR5",
+      "capacity": 32,
+      "speed": 6000,
+      "modules": 2,
+      "cas_latency": 30,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 5,
+    "benchmark_score": 92,
+    "reference_price": 22000,
+    "release_year": 2023
+  },
+  {
+    "category": "memory",
+    "brand": "Kingston",
+    "name": "FURY Beast DDR5-5200",
+    "model": "KF552C40BBK2-32",
+    "specs": {
+      "memory_type": "DDR5",
+      "capacity": 32,
+      "speed": 5200,
+      "modules": 2,
+      "cas_latency": 40,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 5,
+    "benchmark_score": 84,
+    "reference_price": 13000,
+    "release_year": 2022
+  },
+  {
+    "category": "memory",
+    "brand": "Crucial",
+    "name": "Pro DDR5-5600 32GB",
+    "model": "CP2K16G56C46U5",
+    "specs": {
+      "memory_type": "DDR5",
+      "capacity": 32,
+      "speed": 5600,
+      "modules": 2,
+      "cas_latency": 46,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 5,
+    "benchmark_score": 80,
+    "reference_price": 11000,
+    "release_year": 2023
+  },
+  {
+    "category": "memory",
+    "brand": "Crucial",
+    "name": "Pro DDR5-4800 16GB",
+    "model": "CP2K8G48C40U5",
+    "specs": {
+      "memory_type": "DDR5",
+      "capacity": 16,
+      "speed": 4800,
+      "modules": 2,
+      "cas_latency": 40
+    },
+    "tdp": 5,
+    "benchmark_score": 72,
+    "reference_price": 7000,
+    "release_year": 2022
+  },
+  {
+    "category": "memory",
+    "brand": "Corsair",
+    "name": "Dominator Platinum DDR5-6200",
+    "model": "CMT64GX5M2B6200C32",
+    "specs": {
+      "memory_type": "DDR5",
+      "capacity": 64,
+      "speed": 6200,
+      "modules": 2,
+      "cas_latency": 32,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 6,
+    "benchmark_score": 97,
+    "reference_price": 52000,
+    "release_year": 2022
+  },
+  {
+    "category": "memory",
+    "brand": "Corsair",
+    "name": "Vengeance DDR4-3600 16GB",
+    "model": "CMK16GX4M2D3600C18",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 16,
+      "speed": 3600,
+      "modules": 2,
+      "cas_latency": 18,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 3,
+    "benchmark_score": 82,
+    "reference_price": 7000,
+    "release_year": 2020
+  },
+  {
+    "category": "memory",
+    "brand": "Corsair",
+    "name": "Vengeance DDR4-3200 16GB",
+    "model": "CMK16GX4M2E3200C16",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 16,
+      "speed": 3200,
+      "modules": 2,
+      "cas_latency": 16,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 3,
+    "benchmark_score": 78,
+    "reference_price": 6000,
+    "release_year": 2019
+  },
+  {
+    "category": "memory",
+    "brand": "G.Skill",
+    "name": "Ripjaws V DDR4-3200 16GB",
+    "model": "F4-3200C16D-16GVKB",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 16,
+      "speed": 3200,
+      "modules": 2,
+      "cas_latency": 16,
+      "colors": [
+        "black",
+        "red"
+      ]
+    },
+    "tdp": 3,
+    "benchmark_score": 80,
+    "reference_price": 5500,
+    "release_year": 2018
+  },
+  {
+    "category": "memory",
+    "brand": "G.Skill",
+    "name": "Trident Z Neo DDR4-3600 32GB",
+    "model": "F4-3600C16D-32GTZN",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 32,
+      "speed": 3600,
+      "modules": 2,
+      "cas_latency": 16,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 3,
+    "benchmark_score": 85,
+    "reference_price": 12000,
+    "release_year": 2020
+  },
+  {
+    "category": "memory",
+    "brand": "Crucial",
+    "name": "Ballistix DDR4-3200 32GB",
+    "model": "BL2K16G32C16U4B",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 32,
+      "speed": 3200,
+      "modules": 2,
+      "cas_latency": 16,
+      "colors": [
+        "black",
+        "white",
+        "red"
+      ]
+    },
+    "tdp": 3,
+    "benchmark_score": 79,
+    "reference_price": 10000,
+    "release_year": 2020
+  },
+  {
+    "category": "memory",
+    "brand": "Kingston",
+    "name": "ValueRAM DDR4-2666 16GB",
+    "model": "KVR26N19S8K2/16",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 16,
+      "speed": 2666,
+      "modules": 2,
+      "cas_latency": 19,
+      "colors": [
+        "green"
+      ]
+    },
+    "tdp": 2,
+    "benchmark_score": 65,
+    "reference_price": 4000,
+    "release_year": 2018
+  },
+  {
+    "category": "memory",
+    "brand": "Kingston",
+    "name": "ValueRAM DDR4-2666 8GB",
+    "model": "KVR26N19S8/8",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 8,
+      "speed": 2666,
+      "modules": 1,
+      "cas_latency": 19,
+      "colors": [
+        "green"
+      ]
+    },
+    "tdp": 2,
+    "benchmark_score": 60,
+    "reference_price": 2500,
+    "release_year": 2018
+  },
+  {
+    "category": "memory",
+    "brand": "Crucial",
+    "name": "DDR4-2666 32GB",
+    "model": "CT2K16G4DFD8266",
+    "specs": {
+      "memory_type": "DDR4",
+      "capacity": 32,
+      "speed": 2666,
+      "modules": 2,
+      "cas_latency": 19
+    },
+    "tdp": 3,
+    "benchmark_score": 70,
+    "reference_price": 8000,
+    "release_year": 2018
+  },
+  {
+    "category": "storage",
+    "brand": "Samsung",
+    "name": "9100 Pro 2TB",
+    "model": "MZ-X1P2T0B/IT",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 5.0",
+      "capacity": 2000,
+      "read_speed": 14800,
+      "write_speed": 13400
+    },
+    "tdp": 8,
+    "benchmark_score": 100,
+    "reference_price": 45000,
+    "release_year": 2024
+  },
+  {
+    "category": "storage",
+    "brand": "WD",
+    "name": "Black SN850X 2TB",
+    "model": "WDS200T2X0E",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 2000,
+      "read_speed": 7300,
+      "write_speed": 6600
+    },
+    "tdp": 8,
+    "benchmark_score": 95,
+    "reference_price": 26000,
+    "release_year": 2022
+  },
+  {
+    "category": "storage",
+    "brand": "Samsung",
+    "name": "990 Pro 2TB",
+    "model": "MZ-V9P2T0B/IT",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 2000,
+      "read_speed": 7450,
+      "write_speed": 6900
+    },
+    "tdp": 7,
+    "benchmark_score": 96,
+    "reference_price": 22000,
+    "release_year": 2022
+  },
+  {
+    "category": "storage",
+    "brand": "Samsung",
+    "name": "990 Pro 1TB",
+    "model": "MZ-V9P1T0B/IT",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 1000,
+      "read_speed": 7450,
+      "write_speed": 6900
+    },
+    "tdp": 7,
+    "benchmark_score": 95,
+    "reference_price": 14000,
+    "release_year": 2022
+  },
+  {
+    "category": "storage",
+    "brand": "Crucial",
+    "name": "T705 1TB PCIe 5.0",
+    "model": "CT1000T705SSD3",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 5.0",
+      "capacity": 1000,
+      "read_speed": 14500,
+      "write_speed": 12700
+    },
+    "tdp": 8,
+    "benchmark_score": 99,
+    "reference_price": 28000,
+    "release_year": 2023
+  },
+  {
+    "category": "storage",
+    "brand": "WD",
+    "name": "Black SN850X 1TB",
+    "model": "WDS100T2X0E",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 1000,
+      "read_speed": 7300,
+      "write_speed": 6600
+    },
+    "tdp": 7,
+    "benchmark_score": 93,
+    "reference_price": 13000,
+    "release_year": 2022
+  },
+  {
+    "category": "storage",
+    "brand": "Seagate",
+    "name": "FireCuda 530 2TB",
+    "model": "ZP2000GM3A013",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 2000,
+      "read_speed": 7300,
+      "write_speed": 6900
+    },
+    "tdp": 8,
+    "benchmark_score": 94,
+    "reference_price": 24000,
+    "release_year": 2021
+  },
+  {
+    "category": "storage",
+    "brand": "Seagate",
+    "name": "FireCuda 530 1TB",
+    "model": "ZP1000GM3A013",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 1000,
+      "read_speed": 7300,
+      "write_speed": 6000
+    },
+    "tdp": 8,
+    "benchmark_score": 92,
+    "reference_price": 12000,
+    "release_year": 2021
+  },
+  {
+    "category": "storage",
+    "brand": "Kingston",
+    "name": "NV2 2TB",
+    "model": "SNV2S/2000G",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 2000,
+      "read_speed": 3500,
+      "write_speed": 2800
+    },
+    "tdp": 4,
+    "benchmark_score": 72,
+    "reference_price": 11000,
+    "release_year": 2022
+  },
+  {
+    "category": "storage",
+    "brand": "Kingston",
+    "name": "NV2 1TB",
+    "model": "SNV2S/1000G",
+    "specs": {
+      "type": "SSD",
+      "interface": "M.2 NVMe PCIe 4.0",
+      "capacity": 1000,
+      "read_speed": 3500,
+      "write_speed": 2100
+    },
+    "tdp": 4,
+    "benchmark_score": 70,
+    "reference_price": 7000,
+    "release_year": 2022
+  },
+  {
+    "category": "storage",
+    "brand": "Samsung",
+    "name": "870 EVO 2TB",
+    "model": "MZ-77E2T0B/IT",
+    "specs": {
+      "type": "SSD",
+      "interface": "SATA",
+      "capacity": 2000,
+      "read_speed": 560,
+      "write_speed": 530
+    },
+    "tdp": 3,
+    "benchmark_score": 66,
+    "reference_price": 16000,
+    "release_year": 2021
+  },
+  {
+    "category": "storage",
+    "brand": "Samsung",
+    "name": "870 EVO 1TB",
+    "model": "MZ-77E1T0B/IT",
+    "specs": {
+      "type": "SSD",
+      "interface": "SATA",
+      "capacity": 1000,
+      "read_speed": 560,
+      "write_speed": 530
+    },
+    "tdp": 3,
+    "benchmark_score": 65,
+    "reference_price": 9000,
+    "release_year": 2021
+  },
+  {
+    "category": "storage",
+    "brand": "Crucial",
+    "name": "MX500 1TB",
+    "model": "CT1000MX500SSD1",
+    "specs": {
+      "type": "SSD",
+      "interface": "SATA",
+      "capacity": 1000,
+      "read_speed": 560,
+      "write_speed": 510
+    },
+    "tdp": 3,
+    "benchmark_score": 64,
+    "reference_price": 8000,
+    "release_year": 2018
+  },
+  {
+    "category": "storage",
+    "brand": "WD",
+    "name": "Blue 4TB HDD",
+    "model": "WD40EZAX",
+    "specs": {
+      "type": "HDD",
+      "interface": "SATA",
+      "capacity": 4000,
+      "read_speed": 180,
+      "write_speed": 180,
+      "rpm": 5400
+    },
+    "tdp": 5,
+    "benchmark_score": 30,
+    "reference_price": 10000,
+    "release_year": 2020
+  },
+  {
+    "category": "storage",
+    "brand": "WD",
+    "name": "Blue 2TB HDD",
+    "model": "WD20EZAZ",
+    "specs": {
+      "type": "HDD",
+      "interface": "SATA",
+      "capacity": 2000,
+      "read_speed": 180,
+      "write_speed": 180,
+      "rpm": 5400
+    },
+    "tdp": 5,
+    "benchmark_score": 28,
+    "reference_price": 6000,
+    "release_year": 2018
+  },
+  {
+    "category": "storage",
+    "brand": "Seagate",
+    "name": "Barracuda 4TB",
+    "model": "ST4000DM004",
+    "specs": {
+      "type": "HDD",
+      "interface": "SATA",
+      "capacity": 4000,
+      "read_speed": 210,
+      "write_speed": 210,
+      "rpm": 5400
+    },
+    "tdp": 6,
+    "benchmark_score": 32,
+    "reference_price": 9000,
+    "release_year": 2018
+  },
+  {
+    "category": "storage",
+    "brand": "Seagate",
+    "name": "Barracuda 2TB",
+    "model": "ST2000DM008",
+    "specs": {
+      "type": "HDD",
+      "interface": "SATA",
+      "capacity": 2000,
+      "read_speed": 220,
+      "write_speed": 220,
+      "rpm": 7200
+    },
+    "tdp": 6,
+    "benchmark_score": 32,
+    "reference_price": 6000,
+    "release_year": 2018
+  },
+  {
+    "category": "storage",
+    "brand": "WD",
+    "name": "Red Plus 4TB",
+    "model": "WD40EFPX",
+    "specs": {
+      "type": "HDD",
+      "interface": "SATA",
+      "capacity": 4000,
+      "read_speed": 180,
+      "write_speed": 180,
+      "rpm": 5400
+    },
+    "tdp": 5,
+    "benchmark_score": 30,
+    "reference_price": 11000,
+    "release_year": 2020,
+    "notes": "NAS向け"
+  },
+  {
+    "category": "storage",
+    "brand": "Seagate",
+    "name": "IronWolf 4TB",
+    "model": "ST4000VN006",
+    "specs": {
+      "type": "HDD",
+      "interface": "SATA",
+      "capacity": 4000,
+      "read_speed": 210,
+      "write_speed": 210,
+      "rpm": 5900
+    },
+    "tdp": 7,
+    "benchmark_score": 31,
+    "reference_price": 12000,
+    "release_year": 2021,
+    "notes": "NAS向け"
+  },
+  {
+    "category": "psu",
+    "brand": "Corsair",
+    "name": "RM1000x",
+    "model": "CP-9020201-JP",
+    "specs": {
+      "wattage": 1000,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 95,
+    "reference_price": 26000,
+    "release_year": 2020
+  },
+  {
+    "category": "psu",
+    "brand": "Corsair",
+    "name": "RM850x",
+    "model": "CP-9020200-JP",
+    "specs": {
+      "wattage": 850,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 93,
+    "reference_price": 20000,
+    "release_year": 2020
+  },
+  {
+    "category": "psu",
+    "brand": "Corsair",
+    "name": "RM750x",
+    "model": "CP-9020199-JP",
+    "specs": {
+      "wattage": 750,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 91,
+    "reference_price": 17000,
+    "release_year": 2020
+  },
+  {
+    "category": "psu",
+    "brand": "Corsair",
+    "name": "CX750M",
+    "model": "CP-9020103-JP",
+    "specs": {
+      "wattage": 750,
+      "efficiency": "80+ Bronze",
+      "modular": "Semi",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 75,
+    "reference_price": 9000,
+    "release_year": 2019
+  },
+  {
+    "category": "psu",
+    "brand": "Seasonic",
+    "name": "Focus GX-1000",
+    "model": "SSR-1000FX",
+    "specs": {
+      "wattage": 1000,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 96,
+    "reference_price": 24000,
+    "release_year": 2020
+  },
+  {
+    "category": "psu",
+    "brand": "Seasonic",
+    "name": "Focus GX-850",
+    "model": "SSR-850FX",
+    "specs": {
+      "wattage": 850,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 94,
+    "reference_price": 18000,
+    "release_year": 2020
+  },
+  {
+    "category": "psu",
+    "brand": "Seasonic",
+    "name": "Focus GX-750",
+    "model": "SSR-750FX",
+    "specs": {
+      "wattage": 750,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 92,
+    "reference_price": 15000,
+    "release_year": 2020
+  },
+  {
+    "category": "psu",
+    "brand": "Seasonic",
+    "name": "Prime TX-1000",
+    "model": "SSR-1000TR",
+    "specs": {
+      "wattage": 1000,
+      "efficiency": "80+ Titanium",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 99,
+    "reference_price": 38000,
+    "release_year": 2019
+  },
+  {
+    "category": "psu",
+    "brand": "be quiet!",
+    "name": "Dark Power 13 1000W",
+    "model": "BN336",
+    "specs": {
+      "wattage": 1000,
+      "efficiency": "80+ Titanium",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 98,
+    "reference_price": 40000,
+    "release_year": 2022
+  },
+  {
+    "category": "psu",
+    "brand": "be quiet!",
+    "name": "Straight Power 11 750W",
+    "model": "BN283",
+    "specs": {
+      "wattage": 750,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 92,
+    "reference_price": 15000,
+    "release_year": 2019
+  },
+  {
+    "category": "psu",
+    "brand": "ASUS",
+    "name": "ROG Thor 1000P2",
+    "model": "90YE00L0-B0NA00",
+    "specs": {
+      "wattage": 1000,
+      "efficiency": "80+ Platinum",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 97,
+    "reference_price": 35000,
+    "release_year": 2022
+  },
+  {
+    "category": "psu",
+    "brand": "Fractal Design",
+    "name": "Ion+ 2 760W",
+    "model": "FD-PSU-ION2P-760G",
+    "specs": {
+      "wattage": 760,
+      "efficiency": "80+ Platinum",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 94,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "psu",
+    "brand": "Cooler Master",
+    "name": "V850 Gold V2",
+    "model": "MPY-850V-AGBAG-JP",
+    "specs": {
+      "wattage": 850,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 90,
+    "reference_price": 16000,
+    "release_year": 2021
+  },
+  {
+    "category": "psu",
+    "brand": "Thermaltake",
+    "name": "Toughpower GF1 850W",
+    "model": "PS-TPD-0850FNFAGJ-1",
+    "specs": {
+      "wattage": 850,
+      "efficiency": "80+ Gold",
+      "modular": "Full",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 88,
+    "reference_price": 14000,
+    "release_year": 2020
+  },
+  {
+    "category": "psu",
+    "brand": "Antec",
+    "name": "NeoECO Gold 650W",
+    "model": "NE650G",
+    "specs": {
+      "wattage": 650,
+      "efficiency": "80+ Gold",
+      "modular": "Non",
+      "form_factor": "ATX"
+    },
+    "tdp": 0,
+    "benchmark_score": 80,
+    "reference_price": 8000,
+    "release_year": 2019
+  },
+  {
+    "category": "case",
+    "brand": "Fractal Design",
+    "name": "Define 7",
+    "model": "FD-C-DEF7A-01",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX"
+      ],
+      "max_gpu_length": 440,
+      "max_cpu_cooler_height": 185,
+      "drive_bays_35": 3,
+      "drive_bays_25": 4,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 90,
+    "reference_price": 22000,
+    "release_year": 2020
+  },
+  {
+    "category": "case",
+    "brand": "Fractal Design",
+    "name": "Meshify 2",
+    "model": "FD-C-MES2A-01",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX"
+      ],
+      "max_gpu_length": 460,
+      "max_cpu_cooler_height": 185,
+      "drive_bays_35": 2,
+      "drive_bays_25": 3,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 88,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "case",
+    "brand": "Fractal Design",
+    "name": "Meshify C",
+    "model": "FD-CA-MESH-C-BKO",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 315,
+      "max_cpu_cooler_height": 170,
+      "drive_bays_35": 3,
+      "drive_bays_25": 3,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 85,
+    "reference_price": 11000,
+    "release_year": 2018
+  },
+  {
+    "category": "case",
+    "brand": "Lian Li",
+    "name": "PC-O11 Dynamic EVO",
+    "model": "O11DERGB-X",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 420,
+      "max_cpu_cooler_height": 167,
+      "drive_bays_35": 2,
+      "drive_bays_25": 3,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 92,
+    "reference_price": 20000,
+    "release_year": 2022
+  },
+  {
+    "category": "case",
+    "brand": "Lian Li",
+    "name": "Lancool III",
+    "model": "LANCOOL III-X",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX",
+        "eATX"
+      ],
+      "max_gpu_length": 435,
+      "max_cpu_cooler_height": 176,
+      "drive_bays_35": 2,
+      "drive_bays_25": 6,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 91,
+    "reference_price": 18000,
+    "release_year": 2023
+  },
+  {
+    "category": "case",
+    "brand": "Corsair",
+    "name": "4000D Airflow",
+    "model": "CC-9011200-WW",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 360,
+      "max_cpu_cooler_height": 170,
+      "drive_bays_35": 2,
+      "drive_bays_25": 2,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 88,
+    "reference_price": 12000,
+    "release_year": 2021
+  },
+  {
+    "category": "case",
+    "brand": "Corsair",
+    "name": "5000D Airflow",
+    "model": "CC-9011210-WW",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX",
+        "eATX"
+      ],
+      "max_gpu_length": 420,
+      "max_cpu_cooler_height": 170,
+      "drive_bays_35": 4,
+      "drive_bays_25": 4,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 90,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "case",
+    "brand": "NZXT",
+    "name": "H510 Flow",
+    "model": "CC-H51FW-01",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 381,
+      "max_cpu_cooler_height": 165,
+      "drive_bays_35": 2,
+      "drive_bays_25": 2,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 82,
+    "reference_price": 12000,
+    "release_year": 2021
+  },
+  {
+    "category": "case",
+    "brand": "NZXT",
+    "name": "H710",
+    "model": "CA-H710B-B1",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX",
+        "eATX"
+      ],
+      "max_gpu_length": 413,
+      "max_cpu_cooler_height": 185,
+      "drive_bays_35": 2,
+      "drive_bays_25": 3,
+      "expansion_slots": 7,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 85,
+    "reference_price": 18000,
+    "release_year": 2019
+  },
+  {
+    "category": "case",
+    "brand": "be quiet!",
+    "name": "Silent Base 802",
+    "model": "BGW39",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "eATX"
+      ],
+      "max_gpu_length": 465,
+      "max_cpu_cooler_height": 185,
+      "drive_bays_35": 3,
+      "drive_bays_25": 3,
+      "expansion_slots": 8,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 88,
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "case",
+    "brand": "Cooler Master",
+    "name": "NR200P",
+    "model": "MCB-NR200P-KGNN-S00",
+    "specs": {
+      "form_factors": [
+        "mITX"
+      ],
+      "max_gpu_length": 330,
+      "max_cpu_cooler_height": 155,
+      "drive_bays_35": 1,
+      "drive_bays_25": 2,
+      "expansion_slots": 3,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 86,
+    "reference_price": 9500,
+    "release_year": 2020
+  },
+  {
+    "category": "case",
+    "brand": "Thermaltake",
+    "name": "The Tower 900",
+    "model": "CA-1H1-00F1WN-00",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX",
+        "eATX",
+        "SSI-EEB"
+      ],
+      "max_gpu_length": 450,
+      "max_cpu_cooler_height": 200,
+      "drive_bays_35": 6,
+      "drive_bays_25": 6,
+      "expansion_slots": 8,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 82,
+    "reference_price": 25000,
+    "release_year": 2017
+  },
+  {
+    "category": "case",
+    "brand": "Antec",
+    "name": "P120 Crystal",
+    "model": "P120 CRYSTAL",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 380,
+      "max_cpu_cooler_height": 170,
+      "drive_bays_35": 2,
+      "drive_bays_25": 2,
+      "expansion_slots": 7,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 0,
+    "benchmark_score": 78,
+    "reference_price": 9000,
+    "release_year": 2020
+  },
+  {
+    "category": "cooler",
+    "brand": "Noctua",
+    "name": "NH-D15",
+    "model": "NH-D15",
+    "specs": {
+      "type": "Air",
+      "height": 165,
+      "max_tdp": 250,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 140,
+      "colors": [
+        "tan"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 95,
+    "reference_price": 12000,
+    "release_year": 2014
+  },
+  {
+    "category": "cooler",
+    "brand": "Noctua",
+    "name": "NH-U12A",
+    "model": "NH-U12A",
+    "specs": {
+      "type": "Air",
+      "height": 158,
+      "max_tdp": 200,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "tan"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 88,
+    "reference_price": 9500,
+    "release_year": 2019
+  },
+  {
+    "category": "cooler",
+    "brand": "be quiet!",
+    "name": "Dark Rock Pro 4",
+    "model": "BK022",
+    "specs": {
+      "type": "Air",
+      "height": 162,
+      "max_tdp": 250,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 135,
+      "colors": [
+        "black"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 93,
+    "reference_price": 10000,
+    "release_year": 2018
+  },
+  {
+    "category": "cooler",
+    "brand": "DeepCool",
+    "name": "AK620",
+    "model": "R-AK620-BKNNMT-G",
+    "specs": {
+      "type": "Air",
+      "height": 160,
+      "max_tdp": 260,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 91,
+    "reference_price": 7000,
+    "release_year": 2021
+  },
+  {
+    "category": "cooler",
+    "brand": "Thermalright",
+    "name": "Peerless Assassin 120 SE",
+    "model": "PA120 SE ARGB",
+    "specs": {
+      "type": "Air",
+      "height": 155,
+      "max_tdp": 240,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 88,
+    "reference_price": 5000,
+    "release_year": 2022
+  },
+  {
+    "category": "cooler",
+    "brand": "Thermalright",
+    "name": "Frost Commander 140",
+    "model": "FC140",
+    "specs": {
+      "type": "Air",
+      "height": 167,
+      "max_tdp": 270,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 140,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 90,
+    "reference_price": 6000,
+    "release_year": 2023
+  },
+  {
+    "category": "cooler",
+    "brand": "Scythe",
+    "name": "Mugen 6 ARGB",
+    "model": "SCMG-6000A",
+    "specs": {
+      "type": "Air",
+      "height": 154,
+      "max_tdp": 200,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black"
+      ],
+      "airflow_direction": "top_flow",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 86,
+    "reference_price": 5500,
+    "release_year": 2023
+  },
+  {
+    "category": "cooler",
+    "brand": "Cooler Master",
+    "name": "Hyper 212 Black Edition",
+    "model": "RR-212S-20PK-R2",
+    "specs": {
+      "type": "Air",
+      "height": 158,
+      "max_tdp": 150,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 72,
+    "reference_price": 4000,
+    "release_year": 2019
+  },
+  {
+    "category": "cooler",
+    "brand": "ID-Cooling",
+    "name": "SE-226-XT ARGB",
+    "model": "SE-226-XT ARGB",
+    "specs": {
+      "type": "Air",
+      "height": 157,
+      "max_tdp": 250,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "airflow_direction": "tower",
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 85,
+    "reference_price": 4500,
+    "release_year": 2022
+  },
+  {
+    "category": "cooler",
+    "brand": "NZXT",
+    "name": "Kraken Elite 360",
+    "model": "RL-KR36E-B1",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 360,
+      "height": 0,
+      "max_tdp": 350,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 97,
+    "reference_price": 28000,
+    "release_year": 2023
+  },
+  {
+    "category": "cooler",
+    "brand": "NZXT",
+    "name": "Kraken X73 360mm",
+    "model": "RL-KRX73-01",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 360,
+      "height": 0,
+      "max_tdp": 350,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black"
+      ],
+      "lcd_display": true
+    },
+    "tdp": 0,
+    "benchmark_score": 96,
+    "reference_price": 22000,
+    "release_year": 2021
+  },
+  {
+    "category": "cooler",
+    "brand": "Corsair",
+    "name": "iCUE H150i Elite Capellix XT",
+    "model": "CW-9060070-WW",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 360,
+      "height": 0,
+      "max_tdp": 350,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 97,
+    "reference_price": 25000,
+    "release_year": 2022
+  },
+  {
+    "category": "cooler",
+    "brand": "Corsair",
+    "name": "iCUE H100i RGB Elite",
+    "model": "CW-9060046-WW",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 240,
+      "height": 0,
+      "max_tdp": 250,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black"
+      ],
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 90,
+    "reference_price": 15000,
+    "release_year": 2021
+  },
+  {
+    "category": "cooler",
+    "brand": "NZXT",
+    "name": "Kraken X63 280mm",
+    "model": "RL-KRX63-01",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 280,
+      "height": 0,
+      "max_tdp": 300,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4"
+      ],
+      "fan_size": 140,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "lcd_display": true
+    },
+    "tdp": 0,
+    "benchmark_score": 93,
+    "reference_price": 17000,
+    "release_year": 2021
+  },
+  {
+    "category": "cooler",
+    "brand": "Lian Li",
+    "name": "Galahad II 360 LCD",
+    "model": "GA2A360B",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 360,
+      "height": 0,
+      "max_tdp": 350,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 96,
+    "reference_price": 22000,
+    "release_year": 2023
+  },
+  {
+    "category": "cooler",
+    "brand": "be quiet!",
+    "name": "Pure Loop 2 FX 360mm",
+    "model": "BW014",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 360,
+      "height": 0,
+      "max_tdp": 350,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4",
+        "AM3+"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 92,
+    "reference_price": 18000,
+    "release_year": 2022
+  },
+  {
+    "category": "cooler",
+    "brand": "EK",
+    "name": "EK-Nucleus AIO CR360 Lux",
+    "model": "EK-Nucleus CR360",
+    "specs": {
+      "type": "AIO",
+      "aio_size": 360,
+      "height": 0,
+      "max_tdp": 350,
+      "sockets": [
+        "LGA1851",
+        "LGA1700",
+        "LGA1200",
+        "LGA1151",
+        "AM5",
+        "AM4"
+      ],
+      "fan_size": 120,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "lcd_display": false
+    },
+    "tdp": 0,
+    "benchmark_score": 95,
+    "reference_price": 20000,
+    "release_year": 2023
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 5060 Ti",
+    "model": "RTX 5060 Ti 16GB",
+    "specs": {
+      "vram": 16,
+      "memory_type": "GDDR7",
+      "pcie_version": "5.0",
+      "length": 285,
+      "tdp": 180,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "tdp": 180,
+    "benchmark_score": 14000,
+    "reference_price": 80000,
+    "release_year": 2025
+  },
+  {
+    "category": "gpu",
+    "brand": "NVIDIA",
+    "name": "GeForce RTX 5060",
+    "model": "RTX 5060 8GB",
+    "specs": {
+      "vram": 8,
+      "memory_type": "GDDR7",
+      "pcie_version": "5.0",
+      "length": 260,
+      "tdp": 150,
+      "colors": [
+        "black"
+      ]
+    },
+    "tdp": 150,
+    "benchmark_score": 11000,
+    "reference_price": 55000,
+    "release_year": 2025
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "ROG Crosshair X870E Hero",
+    "model": "ROG CROSSHAIR X870E HERO",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X870E",
+      "form_factor": "ATX",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory_speed": 8000,
+      "pcie_version": "5.0",
+      "m2_slots": 5,
+      "usb_c_rear": 2,
+      "wifi": "Wi-Fi 7",
+      "thunderbolt": false,
+      "sata_ports": 8,
+      "max_memory": 256
+    },
+    "benchmark_score": null,
+    "reference_price": 85000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "MEG X870E ACE",
+    "model": "MEG X870E ACE",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X870E",
+      "form_factor": "ATX",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory_speed": 8000,
+      "pcie_version": "5.0",
+      "m2_slots": 5,
+      "usb_c_rear": 2,
+      "wifi": "Wi-Fi 7",
+      "thunderbolt": false,
+      "sata_ports": 8,
+      "max_memory": 256
+    },
+    "benchmark_score": null,
+    "reference_price": 80000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "X870E AORUS Master",
+    "model": "X870E AORUS Master",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X870E",
+      "form_factor": "ATX",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory_speed": 8000,
+      "pcie_version": "5.0",
+      "m2_slots": 5,
+      "usb_c_rear": 2,
+      "wifi": "Wi-Fi 7",
+      "thunderbolt": false,
+      "sata_ports": 8,
+      "max_memory": 256
+    },
+    "benchmark_score": null,
+    "reference_price": 75000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "TUF Gaming X870-Plus WiFi",
+    "model": "TUF GAMING X870-PLUS WIFI",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X870",
+      "form_factor": "ATX",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory_speed": 7600,
+      "pcie_version": "5.0",
+      "m2_slots": 4,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 7",
+      "thunderbolt": false,
+      "sata_ports": 4,
+      "max_memory": 256
+    },
+    "benchmark_score": null,
+    "reference_price": 45000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "MAG X870 Tomahawk WiFi",
+    "model": "MAG X870 TOMAHAWK WIFI",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X870",
+      "form_factor": "ATX",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory_speed": 7600,
+      "pcie_version": "5.0",
+      "m2_slots": 4,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 7",
+      "thunderbolt": false,
+      "sata_ports": 4,
+      "max_memory": 256
+    },
+    "benchmark_score": null,
+    "reference_price": 42000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "X870 Pro RS WiFi",
+    "model": "X870 Pro RS WiFi",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X870",
+      "form_factor": "ATX",
+      "memory_type": [
+        "DDR5"
+      ],
+      "memory_slots": 4,
+      "max_memory_speed": 7600,
+      "pcie_version": "5.0",
+      "m2_slots": 3,
+      "usb_c_rear": 1,
+      "wifi": "Wi-Fi 6E",
+      "thunderbolt": false,
+      "sata_ports": 4,
+      "max_memory": 256
+    },
+    "benchmark_score": null,
+    "reference_price": 35000,
+    "release_year": 2024
+  },
+  {
+    "category": "case",
+    "brand": "Fractal Design",
+    "name": "North",
+    "model": "FD-C-NOR1X-02",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 355,
+      "max_cpu_cooler_height": 169,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": true,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 17000,
+    "release_year": 2023
+  },
+  {
+    "category": "case",
+    "brand": "Fractal Design",
+    "name": "North XL",
+    "model": "FD-C-NOR1X-06",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "eATX"
+      ],
+      "max_gpu_length": 461,
+      "max_cpu_cooler_height": 185,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": true,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 21000,
+    "release_year": 2023
+  },
+  {
+    "category": "case",
+    "brand": "NZXT",
+    "name": "H6 Flow",
+    "model": "CC-H61FW-01",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 365,
+      "max_cpu_cooler_height": 165,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": true,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 14000,
+    "release_year": 2023
+  },
+  {
+    "category": "case",
+    "brand": "Lian Li",
+    "name": "O11 Air Mini",
+    "model": "G99.O11AMX.00",
+    "specs": {
+      "form_factors": [
+        "mATX",
+        "mITX"
+      ],
+      "max_gpu_length": 340,
+      "max_cpu_cooler_height": 155,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": false,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 11000,
+    "release_year": 2023
+  },
+  {
+    "category": "case",
+    "brand": "Corsair",
+    "name": "7000D Airflow",
+    "model": "CC-9011218-WW",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX",
+        "eATX"
+      ],
+      "max_gpu_length": 420,
+      "max_cpu_cooler_height": 190,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 2,
+      "psu_shroud": true,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 28000,
+    "release_year": 2022
+  },
+  {
+    "category": "case",
+    "brand": "be quiet!",
+    "name": "Pure Base 500DX",
+    "model": "BG020",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX"
+      ],
+      "max_gpu_length": 369,
+      "max_cpu_cooler_height": 190,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": true,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 12000,
+    "release_year": 2020
+  },
+  {
+    "category": "case",
+    "brand": "DeepCool",
+    "name": "CH510",
+    "model": "R-CH510-BKNNE1-G",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "mITX"
+      ],
+      "max_gpu_length": 380,
+      "max_cpu_cooler_height": 175,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": true,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 7000,
+    "release_year": 2021
+  },
+  {
+    "category": "case",
+    "brand": "Phanteks",
+    "name": "Enthoo Pro 2",
+    "model": "PH-ES922E-DBK",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "eATX"
+      ],
+      "max_gpu_length": 503,
+      "max_cpu_cooler_height": 185,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": true,
+      "colors": [
+        "black"
+      ]
+    },
+    "reference_price": 18000,
+    "release_year": 2021
+  },
+  {
+    "category": "case",
+    "brand": "SilverStone",
+    "name": "SG13",
+    "model": "SST-SG13B",
+    "specs": {
+      "form_factors": [
+        "mITX"
+      ],
+      "max_gpu_length": 265,
+      "max_cpu_cooler_height": 83,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 0,
+      "psu_shroud": false,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 4500,
+    "release_year": 2019
+  },
+  {
+    "category": "case",
+    "brand": "Jonsbo",
+    "name": "U4 Plus",
+    "model": "U4-PLUS-BLACK",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX"
+      ],
+      "max_gpu_length": 360,
+      "max_cpu_cooler_height": 165,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": false,
+      "colors": [
+        "black",
+        "white"
+      ]
+    },
+    "reference_price": 13000,
+    "release_year": 2022
+  },
+  {
+    "category": "case",
+    "brand": "Thermaltake",
+    "name": "View 51 TG",
+    "model": "CA-1Q6-00M1WN-00",
+    "specs": {
+      "form_factors": [
+        "ATX",
+        "mATX",
+        "eATX"
+      ],
+      "max_gpu_length": 410,
+      "max_cpu_cooler_height": 185,
+      "front_panel_usb": 2,
+      "front_panel_usbc": 1,
+      "psu_shroud": false,
+      "colors": [
+        "black"
+      ]
+    },
+    "reference_price": 15000,
+    "release_year": 2021
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "ROG Strix Z890-E Gaming WiFi",
+    "model": "ROG-STRIX-Z890-E-GAMING-WIFI",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "Z890",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 256,
+      "max_memory_speed": 9200,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 5,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 2,
+      "wifi": "WiFi 7",
+      "thunderbolt": true
+    },
+    "reference_price": 85000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "Z890 Taichi",
+    "model": "Z890-TAICHI",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "Z890",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 256,
+      "max_memory_speed": 9200,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 5,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 2,
+      "wifi": "WiFi 7",
+      "thunderbolt": false
+    },
+    "reference_price": 70000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "PRIME Z890-P",
+    "model": "PRIME-Z890-P",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "Z890",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 8200,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 3,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 1,
+      "wifi": null,
+      "thunderbolt": false
+    },
+    "reference_price": 35000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "Z890 AORUS Elite WiFi7",
+    "model": "Z890-AORUS-ELITE-WIFI7",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "Z890",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 256,
+      "max_memory_speed": 9200,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 5,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 7",
+      "thunderbolt": false
+    },
+    "reference_price": 55000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "PRIME B860M-A WiFi",
+    "model": "PRIME-B860M-A-WIFI",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "B860",
+      "form_factor": "mATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 6400,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 3,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 22000,
+    "release_year": 2025
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "B860M Pro RS WiFi",
+    "model": "B860M-PRO-RS-WIFI",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "B860",
+      "form_factor": "mATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 6400,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 3,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 18000,
+    "release_year": 2025
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "PRO B860M-E",
+    "model": "PRO-B860M-E",
+    "specs": {
+      "socket": "LGA1851",
+      "chipset": "B860",
+      "form_factor": "mATX",
+      "memory_slots": 2,
+      "max_memory": 96,
+      "max_memory_speed": 6400,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 0,
+      "wifi": null,
+      "thunderbolt": false
+    },
+    "reference_price": 14000,
+    "release_year": 2025
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "Z790 AORUS Master",
+    "model": "Z790-AORUS-MASTER",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 7600,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 5,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 65000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "Z790 Taichi",
+    "model": "Z790-TAICHI",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 7600,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 5,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 2,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 60000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "PRO H770-P WiFi",
+    "model": "PRO-H770-P-WIFI",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "H770",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 5600,
+      "memory_type": [
+        "DDR4",
+        "DDR5"
+      ],
+      "m2_slots": 3,
+      "sata_ports": 6,
+      "pcie_slots": 2,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 25000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "PRIME H770-Plus D4",
+    "model": "PRIME-H770-PLUS-D4",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "H770",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 128,
+      "max_memory_speed": 4800,
+      "memory_type": [
+        "DDR4"
+      ],
+      "m2_slots": 2,
+      "sata_ports": 6,
+      "pcie_slots": 2,
+      "usb_c_rear": 1,
+      "wifi": null,
+      "thunderbolt": false
+    },
+    "reference_price": 18000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "X870E Taichi",
+    "model": "X870E-TAICHI",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X870E",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 256,
+      "max_memory_speed": 8000,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 5,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 3,
+      "wifi": "WiFi 7",
+      "thunderbolt": false
+    },
+    "reference_price": 72000,
+    "release_year": 2024
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "MAG B650E TOMAHAWK WiFi",
+    "model": "MAG-B650E-TOMAHAWK-WIFI",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650E",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 6600,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 4,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 38000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "TUF Gaming B650E-F WiFi",
+    "model": "TUF-GAMING-B650E-F-WIFI",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650E",
+      "form_factor": "ATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 6400,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 4,
+      "sata_ports": 4,
+      "pcie_slots": 2,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 35000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "B650M Gaming X AX",
+    "model": "B650M-GAMING-X-AX",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "mATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 6400,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 20000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASRock",
+    "name": "B650M PG Lightning WiFi",
+    "model": "B650M-PG-LIGHTNING-WIFI",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "mATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 6400,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 1,
+      "wifi": "WiFi 6E",
+      "thunderbolt": false
+    },
+    "reference_price": 17000,
+    "release_year": 2022
+  },
+  {
+    "category": "motherboard",
+    "brand": "ASUS",
+    "name": "PRIME A620M-A",
+    "model": "PRIME-A620M-A",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "A620",
+      "form_factor": "mATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 5200,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 0,
+      "wifi": null,
+      "thunderbolt": false
+    },
+    "reference_price": 12000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "MSI",
+    "name": "PRO A620M-E",
+    "model": "PRO-A620M-E",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "A620",
+      "form_factor": "mATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 5200,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 0,
+      "wifi": null,
+      "thunderbolt": false
+    },
+    "reference_price": 10000,
+    "release_year": 2023
+  },
+  {
+    "category": "motherboard",
+    "brand": "Gigabyte",
+    "name": "A620M DS3H",
+    "model": "A620M-DS3H",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "A620",
+      "form_factor": "mATX",
+      "memory_slots": 4,
+      "max_memory": 192,
+      "max_memory_speed": 5200,
+      "memory_type": [
+        "DDR5"
+      ],
+      "m2_slots": 2,
+      "sata_ports": 4,
+      "pcie_slots": 1,
+      "usb_c_rear": 0,
+      "wifi": null,
+      "thunderbolt": false
+    },
+    "reference_price": 9000,
+    "release_year": 2023
+  }
+]
