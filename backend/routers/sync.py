@@ -6,8 +6,18 @@ from fastapi import APIRouter, BackgroundTasks, Depends
 from pydantic import BaseModel
 from database import get_db
 from sync.kakaku_sync import sync_category, sync_all_categories, KAKAKU_CATEGORIES, KAKAKU_SCHEDULED_CATEGORIES
+from sync.rakuten_sync import sync_rakuten_category, RAKUTEN_CATEGORIES
+from sync.yahoo_sync import sync_yahoo_category, YAHOO_CATEGORIES
+from sync.tsukumo_sync import sync_tsukumo_category, TSUKUMO_CATEGORIES
 from sync.brands import BRANDS, ALL_BRANDS
 from auth import require_admin
+
+# ソースプレフィックス → 同期関数のマッピング
+_SOURCE_SYNC_FN = {
+    "rakuten": sync_rakuten_category,
+    "yahoo":   sync_yahoo_category,
+    "tsukumo": sync_tsukumo_category,
+}
 
 router = APIRouter()
 
@@ -83,7 +93,7 @@ def _upsert_parts(parts: list[dict]) -> tuple[int, int]:
 
 
 async def _run_sync(categories: list[str], max_pages: int, trigger: str = "manual"):
-    """バックグラウンドで実行される同期処理"""
+    """バックグラウンドで実行される同期処理（kakaku/楽天/Yahoo/ツクモ対応）"""
     global _sync_status
     _sync_status["running"] = True
     _sync_status["error"] = None
@@ -100,7 +110,13 @@ async def _run_sync(categories: list[str], max_pages: int, trigger: str = "manua
             added = skipped = 0
             error = None
             try:
-                parts = await sync_category(cat, max_pages, existing_models)
+                # ソースプレフィックスを解析（例: "rakuten_gpu" → source="rakuten", base_cat="gpu"）
+                source, base_cat = _parse_category_source(cat)
+                if source and source in _SOURCE_SYNC_FN:
+                    sync_fn = _SOURCE_SYNC_FN[source]
+                    parts = await sync_fn(base_cat, max_pages, existing_models)
+                else:
+                    parts = await sync_category(cat, max_pages, existing_models)
                 added, skipped = _upsert_parts(parts)
                 _sync_status["progress"][cat] = f"完了 ({added}件追加, {skipped}件スキップ)"
                 _sync_status["last_result"][cat] = {"added": added, "skipped": skipped, "total": len(parts)}
@@ -116,6 +132,17 @@ async def _run_sync(categories: list[str], max_pages: int, trigger: str = "manua
         _sync_status["error"] = str(e)
     finally:
         _sync_status["running"] = False
+
+
+def _parse_category_source(cat: str) -> tuple[str | None, str]:
+    """カテゴリ文字列からソースとベースカテゴリを分離
+    例: "rakuten_gpu" → ("rakuten", "gpu")
+        "gpu" → (None, "gpu")
+    """
+    for prefix in _SOURCE_SYNC_FN:
+        if cat.startswith(prefix + "_"):
+            return prefix, cat[len(prefix) + 1:]
+    return None, cat
 
 
 def _save_sync_history(category, started_at, added, skipped, error, trigger):
@@ -143,7 +170,11 @@ async def start_sync(background_tasks: BackgroundTasks, req: SyncRequest = SyncR
     if _sync_status["running"]:
         return {"message": "すでに同期中です", "status": _sync_status}
 
+    # 有効なカテゴリ一覧（kakaku + 外部ソース）
     all_valid = {**KAKAKU_CATEGORIES, **KAKAKU_SCHEDULED_CATEGORIES}
+    for prefix, cats in [("rakuten", RAKUTEN_CATEGORIES), ("yahoo", YAHOO_CATEGORIES), ("tsukumo", TSUKUMO_CATEGORIES)]:
+        for cat in cats:
+            all_valid[f"{prefix}_{cat}"] = True
     targets = req.categories or list(KAKAKU_CATEGORIES.keys())
     targets = [c for c in targets if c in all_valid]
 

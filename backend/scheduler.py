@@ -13,13 +13,23 @@ def _run_scheduled_sync():
     """スケジューラから呼ばれる同期タスク（非同期をブロッキングで実行）"""
     from routers.sync import _run_sync, _sync_status
     from sync.kakaku_sync import KAKAKU_SCHEDULED_CATEGORIES
+    from sync.rakuten_sync import RAKUTEN_CATEGORIES
+    from sync.yahoo_sync import YAHOO_CATEGORIES
+    from sync.tsukumo_sync import TSUKUMO_CATEGORIES
 
     if _sync_status.get("running"):
         logger.info("スケジュール同期: すでに同期中のためスキップ")
         return
 
-    logger.info("スケジュール同期: 開始 (全カテゴリ＋新着順 × 最大150ページ)")
-    categories = list(KAKAKU_SCHEDULED_CATEGORIES.keys())
+    # 価格.com（人気順＋新着順）+ 楽天 + Yahoo + ツクモ
+    kakaku_cats = list(KAKAKU_SCHEDULED_CATEGORIES.keys())
+    rakuten_cats = [f"rakuten_{c}" for c in RAKUTEN_CATEGORIES]
+    yahoo_cats   = [f"yahoo_{c}"   for c in YAHOO_CATEGORIES]
+    tsukumo_cats = [f"tsukumo_{c}" for c in TSUKUMO_CATEGORIES]
+
+    categories = kakaku_cats + rakuten_cats + yahoo_cats + tsukumo_cats
+
+    logger.info(f"スケジュール同期: 開始 ({len(categories)}カテゴリ × 最大150ページ)")
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
