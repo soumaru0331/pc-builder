@@ -20,8 +20,16 @@ _sync_status: dict = {
 }
 
 
+def _load_existing_models() -> set[str]:
+    """DB内の既存パーツを (brand|model) セットとして返す"""
+    conn = get_db()
+    rows = conn.execute("SELECT brand, model FROM parts").fetchall()
+    conn.close()
+    return {f"{r['brand']}|{r['model'][:80]}" for r in rows}
+
+
 def _upsert_parts(parts: list[dict]) -> tuple[int, int]:
-    """INSERT OR IGNORE で重複を避けて追加。(added, skipped) を返す"""
+    """新規パーツのみINSERT。(added, skipped) を返す"""
     conn = get_db()
     c = conn.cursor()
 
@@ -35,29 +43,10 @@ def _upsert_parts(parts: list[dict]) -> tuple[int, int]:
     price_updates = []
     for p in parts:
         try:
-            # 既存のreference_priceを取得
-            existing = c.execute(
-                "SELECT id, reference_price FROM parts WHERE brand=? AND model=?",
-                (p["brand"], p["model"])
-            ).fetchone()
-
             c.execute(
-                """INSERT INTO parts
+                """INSERT OR IGNORE INTO parts
                    (category, brand, name, model, specs, tdp, benchmark_score, reference_price, release_year, notes)
-                   VALUES (?,?,?,?,?,?,?,?,?,?)
-                   ON CONFLICT(brand, model) DO UPDATE SET
-                       reference_price = CASE WHEN excluded.reference_price > 0
-                                              THEN excluded.reference_price
-                                              ELSE reference_price END,
-                       specs           = CASE WHEN excluded.specs != '{}'
-                                              THEN excluded.specs
-                                              ELSE specs END,
-                       tdp             = CASE WHEN excluded.tdp > 0
-                                              THEN excluded.tdp
-                                              ELSE tdp END,
-                       benchmark_score = CASE WHEN excluded.benchmark_score > 0
-                                              THEN excluded.benchmark_score
-                                              ELSE benchmark_score END""",
+                   VALUES (?,?,?,?,?,?,?,?,?,?)""",
                 (
                     p["category"], p["brand"], p["name"], p["model"],
                     json.dumps(p.get("specs", {}), ensure_ascii=False),
@@ -69,15 +58,13 @@ def _upsert_parts(parts: list[dict]) -> tuple[int, int]:
             if c.rowcount > 0:
                 added += 1
                 new_price = p.get("reference_price", 0)
-                # 価格が変わった場合は price_history に記録
                 if new_price > 0:
-                    if existing is None or existing["reference_price"] != new_price:
-                        part_row = c.execute(
-                            "SELECT id FROM parts WHERE brand=? AND model=?",
-                            (p["brand"], p["model"])
-                        ).fetchone()
-                        if part_row:
-                            price_updates.append((part_row["id"], new_price))
+                    part_row = c.execute(
+                        "SELECT id FROM parts WHERE brand=? AND model=?",
+                        (p["brand"], p["model"])
+                    ).fetchone()
+                    if part_row:
+                        price_updates.append((part_row["id"], new_price))
             else:
                 skipped += 1
         except Exception:
@@ -104,13 +91,16 @@ async def _run_sync(categories: list[str], max_pages: int, trigger: str = "manua
     _sync_status["last_result"] = {}
 
     try:
+        # 同期開始前にDB既存モデルセットを一括取得（早期終了判定に使用）
+        existing_models = _load_existing_models()
+
         for cat in categories:
             started_at = datetime.now().isoformat()
             _sync_status["progress"][cat] = "取得中..."
             added = skipped = 0
             error = None
             try:
-                parts = await sync_category(cat, max_pages)
+                parts = await sync_category(cat, max_pages, existing_models)
                 added, skipped = _upsert_parts(parts)
                 _sync_status["progress"][cat] = f"完了 ({added}件追加, {skipped}件スキップ)"
                 _sync_status["last_result"][cat] = {"added": added, "skipped": skipped, "total": len(parts)}
@@ -144,7 +134,7 @@ def _save_sync_history(category, started_at, added, skipped, error, trigger):
 
 class SyncRequest(BaseModel):
     categories: list[str] | None = None
-    max_pages: int = 10
+    max_pages: int = 20
 
 
 @router.post("/start", dependencies=[Depends(require_admin)])

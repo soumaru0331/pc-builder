@@ -20,9 +20,22 @@ KAKAKU_CATEGORIES = {
     "motherboard": "https://kakaku.com/pc/motherboard/itemlist.aspx",
     "memory":      "https://kakaku.com/pc/pc-memory/itemlist.aspx",
     "storage":     "https://kakaku.com/pc/ssd/itemlist.aspx",
+    "storage_hdd": "https://kakaku.com/pc/hdd-35/itemlist.aspx",
+    "storage_hdd25": "https://kakaku.com/pc/hdd-25/itemlist.aspx",
     "psu":         "https://kakaku.com/pc/power-supply/itemlist.aspx",
     "case":        "https://kakaku.com/pc/pc-case/itemlist.aspx",
     "cooler":      "https://kakaku.com/pc/cpu-cooler/itemlist.aspx",
+}
+
+# DBに登録する際のカテゴリ名マッピング（HDDはstorageとして登録）
+CATEGORY_DB_NAME = {
+    "storage_hdd":   "storage",
+    "storage_hdd25": "storage",
+}
+
+SPEC_PARSERS_KEY = {
+    "storage_hdd":   "storage",
+    "storage_hdd25": "storage",
 }
 
 SPEC_PARSERS = {
@@ -246,14 +259,25 @@ def _should_skip(part: dict) -> bool:
     return False
 
 
-async def sync_category(category: str, max_pages: int = 3) -> list[dict]:
-    """指定カテゴリの最大 max_pages ページを取得してパーツリストを返す"""
+async def sync_category(
+    category: str,
+    max_pages: int = 3,
+    existing_models: set[str] | None = None,
+) -> list[dict]:
+    """指定カテゴリの最大 max_pages ページを取得してパーツリストを返す。
+    existing_models: DBに既存の (brand|model) セット。全件既存ページで早期終了。
+    """
     base_url = KAKAKU_CATEGORIES.get(category)
     if not base_url:
         return []
 
+    # DBカテゴリ名を解決（HDD → storage）
+    db_category = CATEGORY_DB_NAME.get(category, category)
+    parser_key  = SPEC_PARSERS_KEY.get(category, category)
+
     all_parts: list[dict] = []
     seen_names: set[str] = set()
+    consecutive_existing_pages = 0  # 全件既存だったページ数
 
     for page in range(1, max_pages + 1):
         url = base_url if page == 1 else base_url + f"?pdf_pg={page}"
@@ -261,19 +285,42 @@ async def sync_category(category: str, max_pages: int = 3) -> list[dict]:
         if not html:
             break
 
-        parts = _parse_page(html, category)
+        parts = _parse_page(html, parser_key)
         if not parts:
             break  # ページに商品がなければ終了
 
+        new_on_page = 0
         for p in parts:
+            # DBカテゴリ名に統一
+            p["category"] = db_category
+
             if _should_skip(p):
                 continue
-            key = f"{p['brand']}|{p['name'][:50]}"
-            if key not in seen_names:
-                seen_names.add(key)
-                all_parts.append(p)
 
-        # 最終ページ判定: .pageNextOn があれば次ページあり
+            # セッション内重複チェック
+            key = f"{p['brand']}|{p['name'][:50]}"
+            if key in seen_names:
+                continue
+            seen_names.add(key)
+
+            # DB既存チェック（渡された場合のみ）
+            if existing_models is not None:
+                db_key = f"{p['brand']}|{p['model'][:80]}"
+                if db_key in existing_models:
+                    continue  # 既存ならスキップ
+
+            all_parts.append(p)
+            new_on_page += 1
+
+        # 早期終了: ページ内に新規アイテムが0件なら打ち切り
+        if existing_models is not None and new_on_page == 0:
+            consecutive_existing_pages += 1
+            if consecutive_existing_pages >= 2:  # 連続2ページ全既存で終了
+                break
+        else:
+            consecutive_existing_pages = 0
+
+        # 最終ページ判定
         soup = BeautifulSoup(html, "lxml")
         has_next = bool(
             soup.select_one(".pageNextOn") or
