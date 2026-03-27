@@ -522,6 +522,155 @@ body {
   margin-top: auto;
 }
 
+/* ── Skeleton Loading ─────────────────────────── */
+.skeleton-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 9px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.skeleton-block {
+  background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: shimmer 1.5s infinite;
+}
+.skeleton-icon  { width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; }
+.skeleton-line  { height: 12px; margin-bottom: 6px; }
+.skeleton-line.short { width: 60%; }
+.skeleton-line.long  { width: 100%; }
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Compare Modal ────────────────────────────── */
+.compare-modal { max-width: 900px !important; }
+.compare-grid {
+  display: grid;
+  gap: 12px;
+  overflow-x: auto;
+}
+.compare-grid.count-2 { grid-template-columns: repeat(2, 1fr); }
+.compare-grid.count-3 { grid-template-columns: repeat(3, 1fr); }
+.compare-grid.count-4 { grid-template-columns: repeat(4, 1fr); }
+.compare-col {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 160px;
+}
+.compare-col.selected-col { border-color: var(--success); background: #F0FDF4; }
+.compare-col h4 { font-size: .85rem; font-weight: 700; margin: 0 0 10px; color: var(--primary); }
+.compare-spec-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: .78rem; gap: 8px; }
+.compare-spec-row:last-child { border-bottom: none; }
+.compare-spec-label { color: var(--muted); flex-shrink: 0; }
+.compare-spec-val   { font-weight: 600; text-align: right; }
+.compare-checkbox {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}
+.part-card { position: relative; }
+.compare-btn {
+  font-size: .7rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.compare-btn.active { background: var(--accent); color: #fff; }
+.compare-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 18px;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  z-index: 150;
+  animation: slideIn .2s ease;
+}
+
+/* ── Price History ────────────────────────────── */
+.price-history-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.price-history-table th { background: var(--bg); padding: 6px 10px; text-align: left; font-size: .75rem; color: var(--muted); }
+.price-history-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
+.source-badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 8px;
+  font-size: .7rem;
+  font-weight: 600;
+}
+.source-sync   { background: #DBEAFE; color: #1D4ED8; }
+.source-scrape { background: #D1FAE5; color: #065F46; }
+.source-manual { background: #FEF3C7; color: #92400E; }
+
+/* ── Share View ───────────────────────────────── */
+.share-banner {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .9rem;
+}
+.share-banner .share-icon { font-size: 1.4rem; }
+
+/* ── Build Notes ──────────────────────────────── */
+.notes-area {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-size: .82rem;
+  resize: vertical;
+  min-height: 64px;
+  max-height: 120px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color .2s;
+}
+.notes-area:focus { border-color: var(--accent); }
+
+/* ── Admin Modal ──────────────────────────────── */
+.admin-modal { max-width: 380px !important; }
+.admin-modal .lock-icon { font-size: 2.5rem; text-align: center; margin-bottom: 12px; }
+.admin-modal input[type=password] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s;
+  margin: 10px 0 16px;
+}
+.admin-modal input[type=password]:focus { border-color: var(--accent); }
+
+/* ── Sync History ─────────────────────────────── */
+.sync-history-row { display: flex; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: .78rem; }
+.sync-history-row:last-child { border-bottom: none; }
+.sync-cat-badge { width: 80px; flex-shrink: 0; }
+.sync-trigger { font-size: .7rem; color: var(--muted); }
+
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 1024px) {
   #builder-layout {
@@ -530,4 +679,60 @@ body {
   }
   #cat-sidebar { flex-direction: row; flex-wrap: wrap; }
   .cat-btn { width: auto; }
+}
+
+/* ── Mobile (768px以下) ──────────────────────── */
+@media (max-width: 768px) {
+  #navbar { padding: 0 12px; }
+  #navbar .logo { font-size: 1rem; margin-right: 0; }
+  #navbar .nav-links { display: none; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--primary); padding: 8px; z-index: 99; gap: 2px; }
+  #navbar .nav-links.mobile-open { display: flex; }
+  #navbar .nav-links button { text-align: left; padding: 10px 16px; font-size: .95rem; }
+  #navbar .hamburger { display: flex !important; margin-left: auto; }
+
+  .container { padding: 12px; }
+
+  #builder-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 12px;
+  }
+
+  #cat-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cat-btn {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: .82rem;
+    white-space: nowrap;
+  }
+
+  #parts-panel { gap: 8px; }
+  #build-panel { gap: 8px; }
+
+  .modal-box { padding: 16px; border-radius: 10px; }
+  .modal-title { font-size: 1rem; }
+
+  .compare-grid.count-3,
+  .compare-grid.count-4 { grid-template-columns: repeat(2, 1fr); }
+
+  .stat-val { font-size: 1.5rem; }
+
+  .build-card { padding: 14px; }
+}
+
+/* ── Hamburger Button ─────────────────────────── */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 1.3rem;
 }

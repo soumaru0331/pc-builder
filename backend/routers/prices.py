@@ -2,13 +2,16 @@ import json
 import asyncio
 import urllib.parse
 from datetime import datetime, timedelta
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 from database import get_db
 from scrapers.kakaku import search_kakaku
 from scrapers.mercari import search_mercari
 from scrapers.yahooauction import search_yahoo_auction, search_yahoo_flea
 
 router = APIRouter()
+limiter = Limiter(key_func=get_remote_address)
 
 CACHE_MINUTES = 30
 
@@ -34,8 +37,19 @@ def _save_cache(conn, part_id: int, results: list[dict]):
     conn.commit()
 
 
+def _save_price_history(conn, part_id: int, results: list[dict]):
+    """スクレイプで取得した最安値を price_history に記録"""
+    new_prices = [r for r in results if not r.get("is_used")]
+    if new_prices:
+        cheapest = min(new_prices, key=lambda x: x["price"])
+        conn.execute(
+            "INSERT INTO price_history (part_id, price, source) VALUES (?, ?, 'scrape')",
+            (part_id, cheapest["price"])
+        )
+        conn.commit()
+
+
 def _make_search_links(query: str) -> dict:
-    """Always return search URLs so users can check manually even if scraping fails."""
     enc = urllib.parse.quote(query)
     return {
         "kakaku":      f"https://kakaku.com/search_results/?query={enc}",
@@ -49,7 +63,8 @@ def _make_search_links(query: str) -> dict:
 
 
 @router.get("/{part_id}")
-async def get_prices(part_id: int, force_refresh: bool = False):
+@limiter.limit("10/minute")
+async def get_prices(request: Request, part_id: int, force_refresh: bool = False):
     conn = get_db()
     part = conn.execute("SELECT * FROM parts WHERE id=?", (part_id,)).fetchone()
     if not part:
@@ -66,10 +81,10 @@ async def get_prices(part_id: int, force_refresh: bool = False):
             conn.close()
             return _format_results(cached, part, search_links)
 
-    # Fetch from all sources concurrently (with timeout protection)
+    # タイムアウト5秒に短縮
     async def safe(coro):
         try:
-            return await asyncio.wait_for(coro, timeout=12)
+            return await asyncio.wait_for(coro, timeout=5)
         except Exception:
             return []
 
@@ -87,6 +102,7 @@ async def get_prices(part_id: int, force_refresh: bool = False):
 
     if all_results:
         _save_cache(conn, part_id, all_results)
+        _save_price_history(conn, part_id, all_results)
 
     conn.close()
     return _format_results(all_results, part, search_links)
@@ -106,7 +122,7 @@ def _format_results(results: list[dict], part: dict, search_links: dict) -> dict
         discount = (ref_price - cheapest_new["price"]) / ref_price
         if discount >= 0.05:
             sale_detected = True
-            sale_message  = f"🏷️ 参考価格より {int(discount * 100)}% 安い！"
+            sale_message  = f"参考価格より {int(discount * 100)}% 安い！"
 
     return {
         "part_id":       part["id"],
@@ -118,13 +134,13 @@ def _format_results(results: list[dict], part: dict, search_links: dict) -> dict
         "cheapest_used": cheapest_used,
         "sale_detected": sale_detected,
         "sale_message":  sale_message,
-        "search_links":  search_links,   # ← 常に返す
+        "search_links":  search_links,
         "scrape_success": len(results) > 0,
     }
 
 
 @router.get("/check-sales/{build_id}")
-async def check_build_sales(build_id: int):
+async def check_build_sales(request: Request, build_id: int):
     conn = get_db()
     rows = conn.execute(
         """SELECT p.id, p.brand, p.model, p.reference_price
@@ -139,7 +155,16 @@ async def check_build_sales(build_id: int):
 
     async def safe_price(part_id):
         try:
-            return await get_prices(part_id)
+            # check-sales はレートリミット対象外の内部呼び出し
+            conn2 = get_db()
+            part = dict(conn2.execute("SELECT * FROM parts WHERE id=?", (part_id,)).fetchone())
+            query = f"{part['brand']} {part['name']}"
+            search_links = _make_search_links(query)
+            cached = _get_cached(conn2, part_id)
+            conn2.close()
+            if cached:
+                return _format_results(cached, part, search_links)
+            return None
         except Exception:
             return None
 

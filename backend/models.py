@@ -34,6 +34,7 @@ class BuildCreate(BaseModel):
     description: str = ""
     purpose: str = "balanced"
     budget: int = 0
+    notes: str = ""
 
 
 class BuildUpdate(BaseModel):
@@ -41,6 +42,7 @@ class BuildUpdate(BaseModel):
     description: Optional[str] = None
     purpose: Optional[str] = None
     budget: Optional[int] = None
+    notes: Optional[str] = None
 
 
 class BuildPartAdd(BaseModel):

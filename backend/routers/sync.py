@@ -1,11 +1,13 @@
 """パーツDB自動同期 API"""
 import json
 import asyncio
-from fastapi import APIRouter, BackgroundTasks
+from datetime import datetime
+from fastapi import APIRouter, BackgroundTasks, Depends
 from pydantic import BaseModel
 from database import get_db
 from sync.kakaku_sync import sync_category, sync_all_categories, KAKAKU_CATEGORIES
 from sync.brands import BRANDS, ALL_BRANDS
+from auth import require_admin
 
 router = APIRouter()
 
@@ -30,8 +32,15 @@ def _upsert_parts(parts: list[dict]) -> tuple[int, int]:
     """)
 
     added = skipped = 0
+    price_updates = []
     for p in parts:
         try:
+            # 既存のreference_priceを取得
+            existing = c.execute(
+                "SELECT id, reference_price FROM parts WHERE brand=? AND model=?",
+                (p["brand"], p["model"])
+            ).fetchone()
+
             c.execute(
                 """INSERT INTO parts
                    (category, brand, name, model, specs, tdp, benchmark_score, reference_price, release_year, notes)
@@ -57,21 +66,36 @@ def _upsert_parts(parts: list[dict]) -> tuple[int, int]:
                     p.get("notes", ""),
                 ),
             )
-            # rowcount==1 は新規挿入、rowcount==0 は競合なし(変化なし)
-            # ON CONFLICT DO UPDATE の場合も rowcount==1 になる
             if c.rowcount > 0:
                 added += 1
+                new_price = p.get("reference_price", 0)
+                # 価格が変わった場合は price_history に記録
+                if new_price > 0:
+                    if existing is None or existing["reference_price"] != new_price:
+                        part_row = c.execute(
+                            "SELECT id FROM parts WHERE brand=? AND model=?",
+                            (p["brand"], p["model"])
+                        ).fetchone()
+                        if part_row:
+                            price_updates.append((part_row["id"], new_price))
             else:
                 skipped += 1
         except Exception:
             skipped += 1
+
+    # 価格履歴を一括記録
+    for part_id, price in price_updates:
+        c.execute(
+            "INSERT INTO price_history (part_id, price, source) VALUES (?,?,'sync')",
+            (part_id, price)
+        )
 
     conn.commit()
     conn.close()
     return added, skipped
 
 
-async def _run_sync(categories: list[str], max_pages: int):
+async def _run_sync(categories: list[str], max_pages: int, trigger: str = "manual"):
     """バックグラウンドで実行される同期処理"""
     global _sync_status
     _sync_status["running"] = True
@@ -81,15 +105,22 @@ async def _run_sync(categories: list[str], max_pages: int):
 
     try:
         for cat in categories:
+            started_at = datetime.now().isoformat()
             _sync_status["progress"][cat] = "取得中..."
+            added = skipped = 0
+            error = None
             try:
                 parts = await sync_category(cat, max_pages)
                 added, skipped = _upsert_parts(parts)
                 _sync_status["progress"][cat] = f"完了 ({added}件追加, {skipped}件スキップ)"
                 _sync_status["last_result"][cat] = {"added": added, "skipped": skipped, "total": len(parts)}
             except Exception as e:
-                _sync_status["progress"][cat] = f"エラー: {str(e)[:60]}"
-                _sync_status["last_result"][cat] = {"error": str(e)}
+                error = str(e)
+                _sync_status["progress"][cat] = f"エラー: {error[:60]}"
+                _sync_status["last_result"][cat] = {"error": error}
+
+            # sync_history に記録
+            _save_sync_history(cat, started_at, added, skipped, error, trigger)
             await asyncio.sleep(2)
     except Exception as e:
         _sync_status["error"] = str(e)
@@ -97,28 +128,52 @@ async def _run_sync(categories: list[str], max_pages: int):
         _sync_status["running"] = False
 
 
+def _save_sync_history(category, started_at, added, skipped, error, trigger):
+    try:
+        conn = get_db()
+        conn.execute(
+            """INSERT INTO sync_history (category, started_at, completed_at, added, skipped, error, trigger)
+               VALUES (?, ?, datetime('now'), ?, ?, ?, ?)""",
+            (category, started_at, added, skipped, error, trigger)
+        )
+        conn.commit()
+        conn.close()
+    except Exception:
+        pass
+
+
 class SyncRequest(BaseModel):
     categories: list[str] | None = None
     max_pages: int = 10
 
 
-@router.post("/start")
+@router.post("/start", dependencies=[Depends(require_admin)])
 async def start_sync(background_tasks: BackgroundTasks, req: SyncRequest = SyncRequest()):
-    """同期を開始する（バックグラウンド実行）"""
+    """同期を開始する（バックグラウンド実行、管理者のみ）"""
     if _sync_status["running"]:
         return {"message": "すでに同期中です", "status": _sync_status}
 
     targets = req.categories or list(KAKAKU_CATEGORIES.keys())
-    # 不正なカテゴリを除外
     targets = [c for c in targets if c in KAKAKU_CATEGORIES]
 
-    background_tasks.add_task(_run_sync, targets, req.max_pages)
+    background_tasks.add_task(_run_sync, targets, req.max_pages, "manual")
     return {"message": f"{len(targets)}カテゴリの同期を開始しました", "categories": targets}
 
 
 @router.get("/status")
 def get_sync_status():
     return _sync_status
+
+
+@router.get("/history")
+def get_sync_history():
+    """直近20件の同期履歴を返す"""
+    conn = get_db()
+    rows = conn.execute(
+        """SELECT * FROM sync_history ORDER BY id DESC LIMIT 20"""
+    ).fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
 
 
 @router.get("/brands")
@@ -134,9 +189,9 @@ def get_sync_categories():
     return list(KAKAKU_CATEGORIES.keys())
 
 
-@router.post("/recalc-benchmarks")
+@router.post("/recalc-benchmarks", dependencies=[Depends(require_admin)])
 def recalc_benchmarks():
-    """全パーツのベンチマークスコアを spec_parser で再計算して DB に保存"""
+    """全パーツのベンチマークスコアを spec_parser で再計算して DB に保存（管理者のみ）"""
     import json as _json
     from sync.spec_parser import parse_cpu, parse_gpu, estimate_benchmark
     conn = get_db()
@@ -162,9 +217,9 @@ def recalc_benchmarks():
     return {"updated": updated, "total": len(rows)}
 
 
-@router.get("/debug-scrape")
+@router.get("/debug-scrape", dependencies=[Depends(require_admin)])
 async def debug_scrape(category: str = "cpu"):
-    """スクレイパーデバッグ用（開発時のみ）"""
+    """スクレイパーデバッグ用（管理者のみ）"""
     from sync.kakaku_sync import _fetch, _parse_page, KAKAKU_CATEGORIES as KC
     url = KC.get(category, "")
     html = await _fetch(url)

@@ -1,7 +1,8 @@
 import json
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from database import get_db
 from models import PartCreate, PartUpdate
+from auth import require_admin
 
 router = APIRouter()
 
@@ -53,6 +54,23 @@ def get_brands(category: str = None):
     return [r[0] for r in rows]
 
 
+@router.get("/{part_id}/price-history")
+def get_price_history(part_id: int):
+    """パーツの価格履歴を返す（直近30件）"""
+    conn = get_db()
+    part = conn.execute("SELECT id FROM parts WHERE id=?", (part_id,)).fetchone()
+    if not part:
+        conn.close()
+        raise HTTPException(404, "パーツが見つかりません")
+    rows = conn.execute(
+        """SELECT price, source, recorded_at FROM price_history
+           WHERE part_id=? ORDER BY id DESC LIMIT 30""",
+        (part_id,)
+    ).fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+
 @router.get("/{part_id}")
 def get_part(part_id: int):
     conn = get_db()
@@ -63,7 +81,7 @@ def get_part(part_id: int):
     return row_to_part(row)
 
 
-@router.post("", status_code=201)
+@router.post("", status_code=201, dependencies=[Depends(require_admin)])
 def create_part(part: PartCreate):
     conn = get_db()
     c = conn.cursor()
@@ -81,7 +99,7 @@ def create_part(part: PartCreate):
     return {"id": part_id, "message": "パーツを追加しました"}
 
 
-@router.put("/{part_id}")
+@router.put("/{part_id}", dependencies=[Depends(require_admin)])
 def update_part(part_id: int, part: PartUpdate):
     conn = get_db()
     existing = conn.execute("SELECT * FROM parts WHERE id=?", (part_id,)).fetchone()
@@ -105,7 +123,7 @@ def update_part(part_id: int, part: PartUpdate):
     return {"message": "パーツを更新しました"}
 
 
-@router.delete("/{part_id}")
+@router.delete("/{part_id}", dependencies=[Depends(require_admin)])
 def delete_part(part_id: int):
     conn = get_db()
     conn.execute("DELETE FROM parts WHERE id=?", (part_id,))

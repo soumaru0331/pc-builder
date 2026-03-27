@@ -4,6 +4,13 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PC Builder Tool</title>
+  <!-- OGP / SNS シェア用 -->
+  <meta property="og:title" content="PC Builder - 自作PC構成ツール"/>
+  <meta property="og:description" content="パーツ選択・互換性チェック・最安値検索ができる自作PC構成ツール"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="PC Builder"/>
+  <meta name="twitter:description" content="自作PC構成ツール — パーツ互換性チェック・最安値検索"/>
   <link rel="stylesheet" href="/static/css/style.css"/>
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
@@ -13,13 +20,14 @@
 <!-- Navbar -->
 <nav id="navbar">
   <div class="logo">🖥️ PC Builder</div>
-  <div class="nav-links">
-    <button :class="{active: view==='home'}"    @click="view='home'">🏠 ホーム</button>
-    <button :class="{active: view==='builder'}" @click="goBuilder">🔧 構成ビルダー</button>
-    <button :class="{active: view==='suggest'}" @click="view='suggest'">💡 サジェスト</button>
-    <button :class="{active: view==='builds'}"  @click="view='builds';loadBuilds()">📋 保存済み</button>
-    <button :class="{active: view==='partsdb'}" @click="loadPartsDb();view='partsdb'">🗄️ パーツDB</button>
+  <div class="nav-links" :class="{'mobile-open': mobileMenuOpen}">
+    <button :class="{active: view==='home'}"    @click="view='home';mobileMenuOpen=false">🏠 ホーム</button>
+    <button :class="{active: view==='builder'}" @click="goBuilder;mobileMenuOpen=false">🔧 構成ビルダー</button>
+    <button :class="{active: view==='suggest'}" @click="view='suggest';mobileMenuOpen=false">💡 サジェスト</button>
+    <button :class="{active: view==='builds'}"  @click="view='builds';loadBuilds();mobileMenuOpen=false">📋 保存済み</button>
+    <button :class="{active: view==='partsdb'}" @click="loadPartsDb();view='partsdb';mobileMenuOpen=false">🗄️ パーツDB</button>
   </div>
+  <button class="hamburger" @click="mobileMenuOpen=!mobileMenuOpen">☰</button>
 </nav>
 
 <div id="app">
@@ -89,7 +97,7 @@
 
 <!-- ════════════════════════════════ BUILDER ════════════════════════════ -->
 <div class="view" :class="{active: view==='builder'}" style="padding:12px">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
     <input class="form-input" style="max-width:280px" v-model="currentBuild.name" placeholder="構成名" @blur="saveBuildName"/>
     <select class="form-select" style="max-width:160px" v-model="currentBuild.purpose" @change="saveBuildName">
       <option value="gaming">ゲーミング</option>
@@ -102,6 +110,7 @@
     <button class="btn btn-ghost btn-sm" @click="checkFinalPrices">🏷️ セール確認</button>
     <button class="btn btn-accent btn-sm" @click="exportExcel" :disabled="!currentBuild.id">📊 Excel出力</button>
     <button class="btn btn-primary btn-sm" @click="exportPdf" :disabled="!currentBuild.id">📄 PDF出力</button>
+    <button class="btn btn-ghost btn-sm" @click="copyShareUrl" :disabled="!currentBuild.id" title="共有URLをコピー">🔗 共有URL</button>
   </div>
 
   <div id="builder-layout">
@@ -415,7 +424,16 @@
         </select>
       </div>
       <div id="parts-list">
-        <div v-if="loadingParts" style="display:flex;justify-content:center;padding:30px"><div class="spinner"></div></div>
+        <!-- スケルトンローディング -->
+        <template v-if="loadingParts">
+          <div class="skeleton-card" v-for="n in 5" :key="n">
+            <div class="skeleton-block skeleton-icon"></div>
+            <div style="flex:1">
+              <div class="skeleton-block skeleton-line long"></div>
+              <div class="skeleton-block skeleton-line short"></div>
+            </div>
+          </div>
+        </template>
         <div v-else-if="filteredParts.length===0" style="text-align:center;color:var(--muted);padding:30px">パーツが見つかりません</div>
         <div v-else v-for="part in filteredParts" :key="part.id"
              class="part-card"
@@ -440,12 +458,17 @@
               <span v-else-if="getDisplayPrice(part)===null" style="font-size:.68rem;color:var(--muted);display:block;text-align:right">参考価格</span>
             </div>
             <button class="btn btn-sm btn-ghost" @click.stop="showPriceModal(part)">💴 価格確認</button>
-            <button v-if="part.benchmark_score" class="btn btn-sm" style="background:#F0F4F8;color:var(--text)" @click.stop="">
-              Score: {{part.benchmark_score}}
+            <button class="compare-btn" :class="{active: compareList.some(p=>p.id===part.id)}"
+                    @click.stop="toggleCompare(part)">
+              {{ compareList.some(p=>p.id===part.id) ? '✓ 比較中' : '+ 比較' }}
             </button>
           </div>
         </div>
       </div>
+      <!-- 比較フローティングボタン -->
+      <button v-if="compareList.length >= 2" class="compare-fab" @click="showCompareModal=true">
+        📊 比較 ({{compareList.length}}件)
+      </button>
     </div>
 
     <!-- Build Summary Panel -->
@@ -493,6 +516,12 @@
         <div v-for="issue in compatIssues" :key="issue.category" class="compat-issue" :class="issue.level" style="margin-bottom:4px">
           {{issue.message}}
         </div>
+      </div>
+
+      <!-- ビルドメモ欄 -->
+      <div style="margin-top:10px">
+        <div style="font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:4px">📝 メモ</div>
+        <textarea class="notes-area" v-model="buildNotes" placeholder="構成メモ、購入予定日など…" @input="debounceSaveNotes"></textarea>
       </div>
 
       <!-- 構成確認ボタン -->
@@ -641,6 +670,7 @@
           <div style="display:flex;gap:4px">
             <button class="btn btn-sm btn-ghost" @click.stop="exportExcelById(b.id)" title="Excel出力">📊</button>
             <button class="btn btn-sm btn-ghost" @click.stop="exportPdfById(b.id)" title="PDF出力">📄</button>
+            <button class="btn btn-sm btn-ghost" @click.stop="copyShareUrlById(b.id)" title="共有URL">🔗</button>
           </div>
         </div>
       </div>
@@ -659,7 +689,7 @@
     </select>
     <input class="form-input" style="max-width:220px" v-model="dbFilter.q" placeholder="🔍 検索…" @input="loadPartsDb"/>
     <button class="btn btn-primary" @click="openAddPartModal">＋ 手動追加</button>
-    <button class="btn btn-accent" @click="openSyncModal">🔄 価格.com 自動同期</button>
+    <button class="btn btn-accent" @click="openSyncModalWithAuth">🔄 価格.com 自動同期</button>
     <span style="font-size:.82rem;color:var(--muted)">登録数: {{dbParts.length}}件</span>
   </div>
   <div style="overflow-x:auto">
@@ -707,10 +737,11 @@
     <div v-else>
       <div v-if="priceModal.saleDetected" class="sale-badge" style="display:inline-block;margin-bottom:12px">{{priceModal.saleMessage}}</div>
 
-      <!-- new prices -->
+      <!-- タブ -->
       <div class="tab-bar">
         <button class="tab-btn" :class="{active:priceModal.tab==='new'}"  @click="priceModal.tab='new'">🆕 新品 ({{priceModal.newPrices.length}}件)</button>
         <button class="tab-btn" :class="{active:priceModal.tab==='used'}" @click="priceModal.tab='used'">♻️ 中古 ({{priceModal.usedPrices.length}}件)</button>
+        <button class="tab-btn" :class="{active:priceModal.tab==='history'}" @click="priceModal.tab='history';loadPriceHistory(priceModal.partId)">📈 価格履歴</button>
       </div>
 
       <div v-if="priceModal.tab==='new'">
@@ -732,6 +763,22 @@
           <span class="price-val" :class="{cheapest: i===0}">¥{{r.price.toLocaleString()}}</span>
           <button class="btn btn-sm btn-accent" @click="usePrice(r.price, true)">選択</button>
         </div>
+      </div>
+
+      <!-- 価格履歴タブ -->
+      <div v-if="priceModal.tab==='history'">
+        <div v-if="priceModal.historyLoading" style="text-align:center;padding:20px"><div class="spinner" style="margin:0 auto"></div></div>
+        <div v-else-if="priceModal.history.length===0" style="color:var(--muted);text-align:center;padding:20px">価格履歴がありません</div>
+        <table v-else class="price-history-table">
+          <thead><tr><th>日時</th><th>価格</th><th>ソース</th></tr></thead>
+          <tbody>
+            <tr v-for="h in priceModal.history" :key="h.recorded_at+h.price">
+              <td>{{formatDate(h.recorded_at)}}</td>
+              <td style="font-weight:700;color:var(--primary)">¥{{h.price.toLocaleString()}}</td>
+              <td><span class="source-badge" :class="'source-'+h.source">{{h.source}}</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- 手動検索リンク (スクレイピング失敗時も常に表示) -->
@@ -888,6 +935,20 @@
         <button class="btn btn-ghost btn-sm" @click="syncModal.started=false">再度実行</button>
       </div>
     </div>
+
+    <!-- 同期履歴 -->
+    <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:14px">
+      <div style="font-weight:700;font-size:.85rem;margin-bottom:8px;color:var(--primary)">📅 直近の同期履歴</div>
+      <div v-if="syncHistory.length===0" style="font-size:.8rem;color:var(--muted)">履歴がありません</div>
+      <div v-else>
+        <div v-for="h in syncHistory.slice(0,10)" :key="h.id" class="sync-history-row">
+          <span class="chip chip-blue sync-cat-badge">{{getCatLabel(h.category)}}</span>
+          <span v-if="h.error" style="color:var(--danger);font-size:.78rem">❌ {{h.error.slice(0,40)}}</span>
+          <span v-else style="color:var(--success);font-size:.78rem">✓ +{{h.added}}件</span>
+          <span class="sync-trigger" style="margin-left:auto">{{h.trigger==='scheduled'?'⏰自動':'👤手動'}} {{formatDate(h.completed_at)}}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1023,6 +1084,103 @@
       <button class="btn btn-accent btn-sm" style="padding:8px 16px" @click="exportExcel" :disabled="!currentBuild.id">📊 Excel出力</button>
       <button class="btn btn-primary" style="padding:8px 20px" @click="exportPdf" :disabled="!currentBuild.id">📄 PDF出力</button>
       <button class="btn btn-ghost" @click="reviewModal.show=false">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ADMIN PASSWORD MODAL ═══════════════════════ -->
+<div class="modal-overlay" v-if="adminModal.show" @click.self="adminModal.show=false">
+  <div class="modal-box admin-modal" style="position:relative">
+    <button class="modal-close" @click="adminModal.show=false;adminModal.reject&&adminModal.reject()">✕</button>
+    <div class="lock-icon">🔐</div>
+    <div class="modal-title" style="text-align:center">管理者認証</div>
+    <p style="font-size:.85rem;color:var(--muted);text-align:center;margin:0">管理者パスワードを入力してください</p>
+    <input type="password" v-model="adminModal.input" placeholder="パスワード"
+           @keyup.enter="confirmAdminPassword"
+           @keyup.esc="adminModal.show=false"/>
+    <div v-if="adminModal.error" style="color:var(--danger);font-size:.82rem;margin-bottom:8px;text-align:center">
+      {{adminModal.error}}
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn btn-ghost" @click="adminModal.show=false;adminModal.reject&&adminModal.reject()">キャンセル</button>
+      <button class="btn btn-primary" @click="confirmAdminPassword">認証する</button>
+    </div>
+    <div style="margin-top:12px;font-size:.72rem;color:var(--muted);text-align:center">
+      セッション中はパスワードを保持します（ページリロードでリセット）
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ COMPARE MODAL ══════════════════════════════ -->
+<div class="modal-overlay" v-if="showCompareModal" @click.self="showCompareModal=false">
+  <div class="modal-box compare-modal" style="position:relative">
+    <button class="modal-close" @click="showCompareModal=false">✕</button>
+    <div class="modal-title">📊 パーツ比較 ({{compareList.length}}件)</div>
+    <div class="compare-grid" :class="'count-'+compareList.length">
+      <div v-for="part in compareList" :key="part.id"
+           class="compare-col" :class="{'selected-col': selectedParts[selectedCat]?.id===part.id}">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:8px">
+          <h4>{{part.brand}}<br/>{{part.model}}</h4>
+          <button @click="toggleCompare(part)" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:.9rem">✕</button>
+        </div>
+        <div class="compare-spec-row">
+          <span class="compare-spec-label">価格</span>
+          <span class="compare-spec-val" style="color:var(--primary)">¥{{(part.reference_price||0).toLocaleString()}}</span>
+        </div>
+        <div class="compare-spec-row" v-if="part.benchmark_score">
+          <span class="compare-spec-label">スコア</span>
+          <span class="compare-spec-val">{{part.benchmark_score}}</span>
+        </div>
+        <div class="compare-spec-row" v-if="part.tdp">
+          <span class="compare-spec-label">TDP</span>
+          <span class="compare-spec-val">{{part.tdp}}W</span>
+        </div>
+        <template v-for="(val, key) in part.specs" :key="key">
+          <div class="compare-spec-row" v-if="val && typeof val !== 'object'">
+            <span class="compare-spec-label">{{key}}</span>
+            <span class="compare-spec-val">{{val}}</span>
+          </div>
+        </template>
+        <button class="btn btn-success btn-sm" style="width:100%;margin-top:10px"
+                @click="selectPart(part);showCompareModal=false">
+          選択する
+        </button>
+      </div>
+    </div>
+    <div style="text-align:right;margin-top:12px">
+      <button class="btn btn-ghost btn-sm" @click="compareList=[];showCompareModal=false">比較をリセット</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SHARE VIEW MODAL ══════════════════════════ -->
+<div class="modal-overlay" v-if="shareView.show" @click.self="shareView.show=false">
+  <div class="modal-box" style="position:relative;max-width:700px">
+    <button class="modal-close" @click="shareView.show=false">✕</button>
+    <div class="share-banner">
+      <span class="share-icon">🔗</span>
+      <div>
+        <div style="font-weight:700">共有された構成</div>
+        <div style="font-size:.82rem;opacity:.85">読み取り専用 — 編集するにはコピーしてください</div>
+      </div>
+    </div>
+    <div v-if="shareView.loading" style="text-align:center;padding:30px"><div class="spinner" style="margin:0 auto"></div></div>
+    <div v-else-if="shareView.build">
+      <h2 style="font-size:1.2rem;font-weight:800;color:var(--primary);margin:0 0 8px">{{shareView.build.name}}</h2>
+      <div style="font-size:.82rem;color:var(--muted);margin-bottom:16px">用途: {{shareView.build.purpose}} · 合計: ¥{{(shareView.build.total_price||0).toLocaleString()}}</div>
+      <div v-for="p in shareView.build.parts" :key="p.id" class="build-part-row">
+        <span class="bpr-cat">{{getCatIcon(p.category)}} {{getCatLabel(p.category)}}</span>
+        <span class="bpr-name">{{p.brand}} {{p.model}}</span>
+        <span class="bpr-price">¥{{(p.effective_price||p.reference_price||0).toLocaleString()}}</span>
+      </div>
+      <div id="total-bar" style="margin-top:10px">
+        <span>合計</span>
+        <span class="total-amount">¥{{(shareView.build.total_price||0).toLocaleString()}}</span>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn btn-primary" @click="copySharedBuild(shareView.build)">📋 自分のビルドとしてコピー</button>
+        <button class="btn btn-ghost" @click="shareView.show=false">閉じる</button>
+      </div>
     </div>
   </div>
 </div>

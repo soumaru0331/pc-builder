@@ -33,6 +33,42 @@ createApp({
     ];
     const features = featuresCfg;
 
+    // ── Mobile Menu ─────────────────────────────────────────────────────
+    const mobileMenuOpen = ref(false);
+
+    // ── Admin Auth ───────────────────────────────────────────────────────
+    let _adminPassword = "";
+    const adminModal = reactive({
+      show: false, input: "", error: "",
+      resolve: null, reject: null,
+    });
+    function adminHeaders() {
+      return _adminPassword ? { "Content-Type": "application/json", "X-Admin-Password": _adminPassword } : { "Content-Type": "application/json" };
+    }
+    function requireAdmin() {
+      if (_adminPassword) return Promise.resolve(_adminPassword);
+      return new Promise((resolve, reject) => {
+        adminModal.input = "";
+        adminModal.error = "";
+        adminModal.resolve = resolve;
+        adminModal.reject = reject;
+        adminModal.show = true;
+      });
+    }
+    async function confirmAdminPassword() {
+      if (!adminModal.input) { adminModal.error = "パスワードを入力してください"; return; }
+      // テスト認証: /api/sync/history を叩いてみる (認証不要エンドポイント)
+      // ここではパスワードを一時保存して呼び出し元に解決を返す
+      _adminPassword = adminModal.input;
+      adminModal.show = false;
+      adminModal.error = "";
+      if (adminModal.resolve) {
+        adminModal.resolve(_adminPassword);
+        adminModal.resolve = null;
+        adminModal.reject = null;
+      }
+    }
+
     // ── Builder State ────────────────────────────────────────────────────
     const currentBuild  = reactive({ id: null, name: "新しい構成", purpose: "gaming" });
     const selectedCat   = ref("cpu");
@@ -212,14 +248,27 @@ createApp({
     // ── API Helpers ───────────────────────────────────────────────────────
     async function apiFetch(path, opts = {}) {
       const res = await fetch(API + path, {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...(opts.extraHeaders || {}) },
         ...opts,
       });
+      if (res.status === 401) {
+        // 認証エラー: パスワードをリセットして再認証を促す
+        _adminPassword = "";
+        throw new Error("管理者パスワードが間違っています");
+      }
       if (!res.ok) {
         const err = await res.json().catch(() => ({ detail: "エラーが発生しました" }));
         throw new Error(err.detail || "APIエラー");
       }
       return res.json();
+    }
+    async function adminFetch(path, opts = {}) {
+      try {
+        await requireAdmin();
+      } catch (e) {
+        throw new Error("認証がキャンセルされました");
+      }
+      return apiFetch(path, { ...opts, extraHeaders: { "X-Admin-Password": _adminPassword } });
     }
 
     // ── Load Home Stats ───────────────────────────────────────────────────
@@ -270,6 +319,7 @@ createApp({
         currentBuild.id      = data.id;
         currentBuild.name    = data.name;
         currentBuild.purpose = data.purpose;
+        buildNotes.value     = data.notes || "";
         // Restore selected parts
         for (const k of Object.keys(selectedParts)) delete selectedParts[k];
         for (const k of Object.keys(customPrices)) delete customPrices[k];
@@ -294,6 +344,22 @@ createApp({
         method: "PUT",
         body: JSON.stringify({ name: currentBuild.name, purpose: currentBuild.purpose }),
       });
+    }
+
+    // ── Build Notes ──────────────────────────────────────────────────────
+    const buildNotes = ref("");
+    let notesTimer = null;
+    function debounceSaveNotes() {
+      clearTimeout(notesTimer);
+      notesTimer = setTimeout(async () => {
+        if (!currentBuild.id) return;
+        try {
+          await apiFetch(`/api/builds/${currentBuild.id}`, {
+            method: "PUT",
+            body: JSON.stringify({ notes: buildNotes.value }),
+          });
+        } catch (e) { /* silent */ }
+      }, 1000);
     }
 
     function getGpuSeries(name) {
@@ -563,7 +629,17 @@ createApp({
       partId: null, partName: "", currentPart: null,
       newPrices: [], usedPrices: [], cheapestNew: null, cheapestUsed: null,
       saleDetected: false, saleMessage: "", searchLinks: null,
+      history: [], historyLoading: false,
     });
+
+    async function loadPriceHistory(partId) {
+      priceModal.historyLoading = true;
+      priceModal.history = [];
+      try {
+        priceModal.history = await apiFetch(`/api/parts/${partId}/price-history`);
+      } catch (e) { /* silent */ }
+      finally { priceModal.historyLoading = false; }
+    }
 
     async function showPriceModal(part) {
       priceModal.partId   = part.id;
@@ -812,10 +888,10 @@ createApp({
       const payload = { ...partFormModal.data, specs };
       try {
         if (partFormModal.isEdit) {
-          await apiFetch(`/api/parts/${partFormModal.editId}`, { method: "PUT", body: JSON.stringify(payload) });
+          await adminFetch(`/api/parts/${partFormModal.editId}`, { method: "PUT", body: JSON.stringify(payload) });
           toast("パーツを更新しました", "success");
         } else {
-          await apiFetch("/api/parts", { method: "POST", body: JSON.stringify(payload) });
+          await adminFetch("/api/parts", { method: "POST", body: JSON.stringify(payload) });
           toast("パーツを追加しました", "success");
         }
         partFormModal.show = false;
@@ -827,27 +903,43 @@ createApp({
     }
     async function deletePart(id) {
       if (!confirm("このパーツを削除しますか？")) return;
-      await apiFetch(`/api/parts/${id}`, { method: "DELETE" });
-      await loadPartsDb();
-      await loadStats();
-      toast("パーツを削除しました", "info");
+      try {
+        await adminFetch(`/api/parts/${id}`, { method: "DELETE" });
+        await loadPartsDb();
+        await loadStats();
+        toast("パーツを削除しました", "info");
+      } catch (e) {
+        toast(e.message, "error");
+      }
     }
 
     // ── Sync ──────────────────────────────────────────────────────────────
-    const syncCats = categories;  // 同じカテゴリリストを流用
+    const syncCats = categories;
     const syncModal = reactive({
       show: false, running: false, started: false,
       selected: ["cpu", "gpu", "motherboard", "memory", "storage", "psu", "case", "cooler"],
       maxPages: 10,
       progress: {},
     });
+    const syncHistory = ref([]);
 
-    function openSyncModal() {
+    async function loadSyncHistory() {
+      try { syncHistory.value = await apiFetch("/api/sync/history"); } catch (e) { /* silent */ }
+    }
+
+    async function openSyncModalWithAuth() {
+      try {
+        await requireAdmin();
+      } catch (e) { return; }
       syncModal.show = true;
       syncModal.started = false;
       syncModal.running = false;
       syncModal.progress = {};
+      await loadSyncHistory();
     }
+
+    // 後方互換: HTMLから直接呼べるようにも残す
+    function openSyncModal() { openSyncModalWithAuth(); }
 
     let syncPollTimer = null;
     async function startSync() {
@@ -858,8 +950,8 @@ createApp({
         await apiFetch(`/api/sync/start`, {
           method: "POST",
           body: JSON.stringify({ categories: syncModal.selected, max_pages: syncModal.maxPages }),
+          extraHeaders: { "X-Admin-Password": _adminPassword },
         });
-        // ポーリングで進捗確認
         syncPollTimer = setInterval(async () => {
           try {
             const status = await apiFetch("/api/sync/status");
@@ -868,13 +960,83 @@ createApp({
               syncModal.running = false;
               clearInterval(syncPollTimer);
               await loadStats();
+              await loadSyncHistory();
               toast(`同期完了！`, "success");
             }
           } catch (e) { /* ignore */ }
         }, 2000);
       } catch (e) {
         syncModal.running = false;
-        toast("同期の開始に失敗しました", "error");
+        toast(e.message || "同期の開始に失敗しました", "error");
+      }
+    }
+
+    // ── Compare ────────────────────────────────────────────────────────────
+    const compareList = ref([]);
+    const showCompareModal = ref(false);
+    function toggleCompare(part) {
+      const idx = compareList.value.findIndex(p => p.id === part.id);
+      if (idx >= 0) {
+        compareList.value.splice(idx, 1);
+      } else {
+        if (compareList.value.length >= 4) {
+          toast("比較は最大4件です", "info"); return;
+        }
+        compareList.value.push(part);
+      }
+    }
+
+    // ── Share URL ─────────────────────────────────────────────────────────
+    const shareView = reactive({ show: false, loading: false, build: null });
+
+    async function copyShareUrl() {
+      if (!currentBuild.id) return;
+      await copyShareUrlById(currentBuild.id);
+    }
+    async function copyShareUrlById(buildId) {
+      try {
+        const res = await apiFetch(`/api/builds/${buildId}/share-url`);
+        const url = `${location.origin}/#share/${res.share_token}`;
+        await navigator.clipboard.writeText(url);
+        toast("共有URLをコピーしました！", "success");
+      } catch (e) {
+        toast("URLのコピーに失敗しました", "error");
+      }
+    }
+    async function loadShareBuild(token) {
+      shareView.show = true;
+      shareView.loading = true;
+      shareView.build = null;
+      try {
+        shareView.build = await apiFetch(`/api/builds/share/${token}`);
+        // OGPを動的に更新
+        document.title = `${shareView.build.name} — PC Builder`;
+        document.querySelector('meta[property="og:title"]')?.setAttribute("content", shareView.build.name);
+      } catch (e) {
+        toast("共有構成が見つかりません", "error");
+        shareView.show = false;
+      } finally {
+        shareView.loading = false;
+      }
+    }
+    async function copySharedBuild(build) {
+      try {
+        const res = await apiFetch("/api/builds", {
+          method: "POST",
+          body: JSON.stringify({ name: build.name + " (コピー)", purpose: build.purpose || "balanced" }),
+        });
+        const newId = res.id;
+        for (const p of (build.parts || [])) {
+          await apiFetch(`/api/builds/${newId}/parts`, {
+            method: "POST",
+            body: JSON.stringify({ part_id: p.id, quantity: p.quantity || 1, custom_price: p.custom_price }),
+          }).catch(() => {});
+        }
+        shareView.show = false;
+        toast("構成をコピーしました！ビルダーで確認できます", "success");
+        await loadBuildAndGo(newId);
+      } catch (e) {
+        toast("コピーに失敗しました", "error");
       }
     }
 
@@ -883,12 +1045,11 @@ createApp({
     async function recalcBenchmarks() {
       recalcLoading.value = true;
       try {
-        const res = await apiFetch("/api/sync/recalc-benchmarks", { method: "POST" });
+        const res = await adminFetch("/api/sync/recalc-benchmarks", { method: "POST" });
         toast(`スコア再計算完了: ${res.updated}件更新`, "success");
-        // 現在のカテゴリを再読み込み
         await loadCategoryParts(selectedCat.value);
       } catch (e) {
-        toast("再計算に失敗しました", "error");
+        toast(e.message || "再計算に失敗しました", "error");
       } finally {
         recalcLoading.value = false;
       }
@@ -897,10 +1058,21 @@ createApp({
     // ── Init ───────────────────────────────────────────────────────────────
     onMounted(async () => {
       await loadStats();
+      // URLハッシュで共有ビルドを開く
+      const hash = location.hash;
+      if (hash.startsWith("#share/")) {
+        const token = hash.replace("#share/", "");
+        if (token) await loadShareBuild(token);
+      }
     });
 
     return {
+      // core
       view, stats, recentBuilds, features, categories,
+      mobileMenuOpen,
+      // admin auth
+      adminModal, confirmAdminPassword,
+      // builder
       currentBuild, selectedCat, selectedParts, customPrices,
       allParts, filteredParts, loadingParts, searchQ, sortBy, maxScore,
       genFilter, memCapFilter, memGenFilter, getCpuGeneration, catFilters, getGpuSeries,
@@ -911,18 +1083,33 @@ createApp({
       goBuilder, newBuildAndGo, loadBuildAndGo, saveBuildName,
       selectCategory, selectPart, removePart, filterParts,
       getCatIcon, getCatLabel, getSelectedPart, catHasError, getEffectivePrice, getPartSubtext, formatDate,
+      // build notes
+      buildNotes, debounceSaveNotes,
+      // review
       reviewModal, openReview,
-      priceModal, showPriceModal, fetchPrice, usePrice, siteLabel,
+      // price modal + history
+      priceModal, showPriceModal, fetchPrice, usePrice, siteLabel, loadPriceHistory,
+      // sales
       salesModal, checkFinalPrices,
+      // export
       exportExcel, exportPdf, exportExcelById, exportPdfById,
+      // suggest
       suggestForm, suggestResults, suggestLoading, selectedSuggest, purposes,
       runSuggest, loadSuggestIntoBuild,
       compatModal, showSuggestCompat,
+      // builds list
       savedBuilds, loadBuilds, deleteBuild,
+      // parts db
       dbParts, dbFilter, loadPartsDb, dbSort, dbSortedParts, sortDbBy,
       partFormModal, openAddPartModal, openEditPartModal, savePart, deletePart,
       toasts,
-      syncModal, syncCats, openSyncModal, startSync,
+      // sync
+      syncModal, syncCats, openSyncModal, openSyncModalWithAuth, startSync,
+      syncHistory, loadSyncHistory,
+      // compare
+      compareList, showCompareModal, toggleCompare,
+      // share
+      shareView, copyShareUrl, copyShareUrlById, loadShareBuild, copySharedBuild,
     };
   },
 }).mount("#root");

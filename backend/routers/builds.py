@@ -1,4 +1,5 @@
 import json
+import uuid
 from fastapi import APIRouter, HTTPException
 from database import get_db
 from models import BuildCreate, BuildUpdate, BuildPartAdd
@@ -10,8 +11,11 @@ def row_to_dict(row):
     return dict(row)
 
 
-def get_build_full(conn, build_id: int):
-    build = conn.execute("SELECT * FROM builds WHERE id=?", (build_id,)).fetchone()
+def get_build_full(conn, build_id: int = None, share_token: str = None):
+    if build_id:
+        build = conn.execute("SELECT * FROM builds WHERE id=?", (build_id,)).fetchone()
+    else:
+        build = conn.execute("SELECT * FROM builds WHERE share_token=?", (share_token,)).fetchone()
     if not build:
         return None
     build = dict(build)
@@ -24,7 +28,7 @@ def get_build_full(conn, build_id: int):
            FROM build_parts bp
            JOIN parts p ON bp.part_id = p.id
            WHERE bp.build_id=?""",
-        (build_id,),
+        (build["id"],),
     ).fetchall()
 
     parts = []
@@ -55,7 +59,6 @@ def list_builds():
     result = []
     for row in rows:
         b = dict(row)
-        # total_price・パーツ情報をまとめて取得
         part_rows = conn.execute(
             """SELECT p.category, p.brand, p.name,
                       CASE WHEN bp.custom_price IS NOT NULL THEN bp.custom_price
@@ -88,10 +91,38 @@ def list_builds():
     return result
 
 
+@router.get("/share/{share_token}")
+def get_shared_build(share_token: str):
+    """共有トークンで読み取り専用ビルドを取得（認証不要）"""
+    conn = get_db()
+    build = get_build_full(conn, share_token=share_token)
+    conn.close()
+    if not build:
+        raise HTTPException(404, "共有構成が見つかりません")
+    return build
+
+
+@router.get("/{build_id}/share-url")
+def get_share_url(build_id: int):
+    """ビルドの共有トークンを返す。未生成なら生成して保存。"""
+    conn = get_db()
+    row = conn.execute("SELECT share_token FROM builds WHERE id=?", (build_id,)).fetchone()
+    if not row:
+        conn.close()
+        raise HTTPException(404, "構成が見つかりません")
+    token = row["share_token"]
+    if not token:
+        token = uuid.uuid4().hex
+        conn.execute("UPDATE builds SET share_token=? WHERE id=?", (token, build_id))
+        conn.commit()
+    conn.close()
+    return {"share_token": token}
+
+
 @router.get("/{build_id}")
 def get_build(build_id: int):
     conn = get_db()
-    build = get_build_full(conn, build_id)
+    build = get_build_full(conn, build_id=build_id)
     conn.close()
     if not build:
         raise HTTPException(404, "構成が見つかりません")
@@ -102,14 +133,15 @@ def get_build(build_id: int):
 def create_build(build: BuildCreate):
     conn = get_db()
     c = conn.cursor()
+    share_token = uuid.uuid4().hex
     c.execute(
-        "INSERT INTO builds (name,description,purpose,budget) VALUES (?,?,?,?)",
-        (build.name, build.description, build.purpose, build.budget),
+        "INSERT INTO builds (name,description,purpose,budget,notes,share_token) VALUES (?,?,?,?,?,?)",
+        (build.name, build.description, build.purpose, build.budget, build.notes, share_token),
     )
     conn.commit()
     build_id = c.lastrowid
     conn.close()
-    return {"id": build_id, "message": "構成を作成しました"}
+    return {"id": build_id, "message": "構成を作成しました", "share_token": share_token}
 
 
 @router.put("/{build_id}")
@@ -121,10 +153,9 @@ def update_build(build_id: int, build: BuildUpdate):
         raise HTTPException(404, "構成が見つかりません")
     updates = build.model_dump(exclude_none=True)
     if updates:
-        updates["updated_at"] = "datetime('now')"
-        set_clause = ", ".join(f"{k}=?" for k in updates if k != "updated_at")
+        set_clause = ", ".join(f"{k}=?" for k in updates)
         set_clause += ", updated_at=datetime('now')"
-        values = [v for k, v in updates.items() if k != "updated_at"] + [build_id]
+        values = list(updates.values()) + [build_id]
         conn.execute(f"UPDATE builds SET {set_clause} WHERE id=?", values)
         conn.commit()
     conn.close()
@@ -152,7 +183,6 @@ def add_part_to_build(build_id: int, req: BuildPartAdd):
         conn.close()
         raise HTTPException(404, "パーツが見つかりません")
 
-    # remove existing part of same category (one per category rule, except storage)
     if part["category"] not in ("storage",):
         conn.execute(
             """DELETE FROM build_parts WHERE build_id=? AND part_id IN
@@ -196,6 +226,11 @@ def update_part_price(build_id: int, part_id: int, req: PriceUpdate):
         (req.custom_price, 1 if req.is_used else 0, build_id, part_id),
     )
     conn.execute("UPDATE builds SET updated_at=datetime('now') WHERE id=?", (build_id,))
+    # 手動入力価格を price_history に記録
+    conn.execute(
+        "INSERT INTO price_history (part_id, price, source) VALUES (?, ?, 'manual')",
+        (part_id, req.custom_price)
+    )
     conn.commit()
     conn.close()
     return {"message": "価格を更新しました"}

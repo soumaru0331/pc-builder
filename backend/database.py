@@ -10,6 +10,8 @@ def get_db():
     conn = sqlite3.connect(str(DB_PATH))
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
     return conn
 
 
@@ -39,6 +41,8 @@ def init_db():
         description TEXT,
         purpose TEXT DEFAULT 'balanced',
         budget INTEGER DEFAULT 0,
+        notes TEXT DEFAULT '',
+        share_token TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
@@ -64,9 +68,31 @@ def init_db():
         is_used INTEGER DEFAULT 0,
         fetched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
+
+    CREATE TABLE IF NOT EXISTS price_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        part_id INTEGER NOT NULL REFERENCES parts(id) ON DELETE CASCADE,
+        price INTEGER NOT NULL,
+        source TEXT NOT NULL,
+        recorded_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS sync_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        category TEXT NOT NULL,
+        started_at TEXT,
+        completed_at TEXT,
+        added INTEGER DEFAULT 0,
+        skipped INTEGER DEFAULT 0,
+        error TEXT,
+        trigger TEXT DEFAULT 'manual'
+    );
     """)
 
     conn.commit()
+
+    # マイグレーション: 既存DBに新カラムを追加
+    _migrate(conn)
 
     # seed initial data if parts table is empty
     row = c.execute("SELECT COUNT(*) FROM parts").fetchone()
@@ -74,6 +100,19 @@ def init_db():
         _seed_initial_data(conn)
 
     conn.close()
+
+
+def _migrate(conn):
+    """既存DBへの後方互換マイグレーション"""
+    c = conn.cursor()
+    existing = {row[1] for row in c.execute("PRAGMA table_info(builds)").fetchall()}
+    if "notes" not in existing:
+        c.execute("ALTER TABLE builds ADD COLUMN notes TEXT DEFAULT ''")
+    if "share_token" not in existing:
+        # SQLiteはUNIQUE付きALTER TABLE不可 → カラム追加後にインデックスを作成
+        c.execute("ALTER TABLE builds ADD COLUMN share_token TEXT")
+        c.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_builds_share_token ON builds(share_token) WHERE share_token IS NOT NULL")
+    conn.commit()
 
 
 def _seed_initial_data(conn):
