@@ -5,7 +5,7 @@ from datetime import datetime
 from fastapi import APIRouter, BackgroundTasks, Depends
 from pydantic import BaseModel
 from database import get_db
-from sync.kakaku_sync import sync_category, sync_all_categories, KAKAKU_CATEGORIES
+from sync.kakaku_sync import sync_category, sync_all_categories, KAKAKU_CATEGORIES, KAKAKU_SCHEDULED_CATEGORIES
 from sync.brands import BRANDS, ALL_BRANDS
 from auth import require_admin
 
@@ -143,8 +143,9 @@ async def start_sync(background_tasks: BackgroundTasks, req: SyncRequest = SyncR
     if _sync_status["running"]:
         return {"message": "すでに同期中です", "status": _sync_status}
 
+    all_valid = {**KAKAKU_CATEGORIES, **KAKAKU_SCHEDULED_CATEGORIES}
     targets = req.categories or list(KAKAKU_CATEGORIES.keys())
-    targets = [c for c in targets if c in KAKAKU_CATEGORIES]
+    targets = [c for c in targets if c in all_valid]
 
     background_tasks.add_task(_run_sync, targets, req.max_pages, "manual")
     return {"message": f"{len(targets)}カテゴリの同期を開始しました", "categories": targets}

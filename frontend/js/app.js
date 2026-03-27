@@ -917,7 +917,7 @@ createApp({
     const syncCats = categories;
     const syncModal = reactive({
       show: false, running: false, started: false,
-      selected: ["cpu", "gpu", "motherboard", "memory", "storage", "storage_hdd", "storage_hdd25", "psu", "case", "cooler"],
+      selected: ["cpu", "gpu", "motherboard", "memory", "storage", "storage_m2", "storage_hdd", "storage_hdd25", "psu", "case", "cooler", "cooler_water"],
       maxPages: 150,
       progress: {},
     });

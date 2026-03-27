@@ -12,14 +12,14 @@ scheduler = BackgroundScheduler(timezone="Asia/Tokyo")
 def _run_scheduled_sync():
     """スケジューラから呼ばれる同期タスク（非同期をブロッキングで実行）"""
     from routers.sync import _run_sync, _sync_status
-    from sync.kakaku_sync import KAKAKU_CATEGORIES
+    from sync.kakaku_sync import KAKAKU_SCHEDULED_CATEGORIES
 
     if _sync_status.get("running"):
         logger.info("スケジュール同期: すでに同期中のためスキップ")
         return
 
-    logger.info("スケジュール同期: 開始 (全カテゴリ × 最大150ページ)")
-    categories = list(KAKAKU_CATEGORIES.keys())
+    logger.info("スケジュール同期: 開始 (全カテゴリ＋新着順 × 最大150ページ)")
+    categories = list(KAKAKU_SCHEDULED_CATEGORIES.keys())
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)

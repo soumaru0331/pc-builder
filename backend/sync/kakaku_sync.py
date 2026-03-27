@@ -15,27 +15,73 @@ from sync.spec_parser import (
 
 # カテゴリ → 価格.com URL + パーサー
 KAKAKU_CATEGORIES = {
-    "cpu":         "https://kakaku.com/pc/cpu/itemlist.aspx",
-    "gpu":         "https://kakaku.com/pc/videocard/itemlist.aspx",
-    "motherboard": "https://kakaku.com/pc/motherboard/itemlist.aspx",
-    "memory":      "https://kakaku.com/pc/pc-memory/itemlist.aspx",
-    "storage":     "https://kakaku.com/pc/ssd/itemlist.aspx",
-    "storage_hdd": "https://kakaku.com/pc/hdd-35/itemlist.aspx",
+    "cpu":           "https://kakaku.com/pc/cpu/itemlist.aspx",
+    "gpu":           "https://kakaku.com/pc/videocard/itemlist.aspx",
+    "motherboard":   "https://kakaku.com/pc/motherboard/itemlist.aspx",
+    "memory":        "https://kakaku.com/pc/pc-memory/itemlist.aspx",
+    "storage":       "https://kakaku.com/pc/ssd/itemlist.aspx",
+    "storage_m2":    "https://kakaku.com/pc/ssd-m2/itemlist.aspx",
+    "storage_hdd":   "https://kakaku.com/pc/hdd-35/itemlist.aspx",
     "storage_hdd25": "https://kakaku.com/pc/hdd-25/itemlist.aspx",
-    "psu":         "https://kakaku.com/pc/power-supply/itemlist.aspx",
-    "case":        "https://kakaku.com/pc/pc-case/itemlist.aspx",
-    "cooler":      "https://kakaku.com/pc/cpu-cooler/itemlist.aspx",
+    "psu":           "https://kakaku.com/pc/power-supply/itemlist.aspx",
+    "case":          "https://kakaku.com/pc/pc-case/itemlist.aspx",
+    "cooler":        "https://kakaku.com/pc/cpu-cooler/itemlist.aspx",
+    "cooler_water":  "https://kakaku.com/pc/water-cooler/itemlist.aspx",
 }
 
-# DBに登録する際のカテゴリ名マッピング（HDDはstorageとして登録）
+# 深夜自動同期用: 人気順 + 新着順の両方を回して最大バリエーションを確保
+# pdf_so=p4 = 新着順ソート
+KAKAKU_SCHEDULED_CATEGORIES = {
+    **{k: v for k, v in KAKAKU_CATEGORIES.items()},
+    # 新着順バリアント（既存カテゴリに上書き追加）
+    "cpu_new":           "https://kakaku.com/pc/cpu/itemlist.aspx?pdf_so=p4",
+    "gpu_new":           "https://kakaku.com/pc/videocard/itemlist.aspx?pdf_so=p4",
+    "motherboard_new":   "https://kakaku.com/pc/motherboard/itemlist.aspx?pdf_so=p4",
+    "memory_new":        "https://kakaku.com/pc/pc-memory/itemlist.aspx?pdf_so=p4",
+    "storage_new":       "https://kakaku.com/pc/ssd/itemlist.aspx?pdf_so=p4",
+    "storage_m2_new":    "https://kakaku.com/pc/ssd-m2/itemlist.aspx?pdf_so=p4",
+    "storage_hdd_new":   "https://kakaku.com/pc/hdd-35/itemlist.aspx?pdf_so=p4",
+    "psu_new":           "https://kakaku.com/pc/power-supply/itemlist.aspx?pdf_so=p4",
+    "case_new":          "https://kakaku.com/pc/pc-case/itemlist.aspx?pdf_so=p4",
+    "cooler_new":        "https://kakaku.com/pc/cpu-cooler/itemlist.aspx?pdf_so=p4",
+    "cooler_water_new":  "https://kakaku.com/pc/water-cooler/itemlist.aspx?pdf_so=p4",
+}
+
+# DBに登録する際のカテゴリ名マッピング
 CATEGORY_DB_NAME = {
-    "storage_hdd":   "storage",
-    "storage_hdd25": "storage",
+    "storage_m2":        "storage",
+    "storage_hdd":       "storage",
+    "storage_hdd25":     "storage",
+    "cooler_water":      "cooler",
+    "cpu_new":           "cpu",
+    "gpu_new":           "gpu",
+    "motherboard_new":   "motherboard",
+    "memory_new":        "memory",
+    "storage_new":       "storage",
+    "storage_m2_new":    "storage",
+    "storage_hdd_new":   "storage",
+    "psu_new":           "psu",
+    "case_new":          "case",
+    "cooler_new":        "cooler",
+    "cooler_water_new":  "cooler",
 }
 
 SPEC_PARSERS_KEY = {
-    "storage_hdd":   "storage",
-    "storage_hdd25": "storage",
+    "storage_m2":        "storage",
+    "storage_hdd":       "storage",
+    "storage_hdd25":     "storage",
+    "cooler_water":      "cooler",
+    "cpu_new":           "cpu",
+    "gpu_new":           "gpu",
+    "motherboard_new":   "motherboard",
+    "memory_new":        "memory",
+    "storage_new":       "storage",
+    "storage_m2_new":    "storage",
+    "storage_hdd_new":   "storage",
+    "psu_new":           "psu",
+    "case_new":          "case",
+    "cooler_new":        "cooler",
+    "cooler_water_new":  "cooler",
 }
 
 SPEC_PARSERS = {
@@ -267,11 +313,11 @@ async def sync_category(
     """指定カテゴリの最大 max_pages ページを取得してパーツリストを返す。
     existing_models: DBに既存の (brand|model) セット。全件既存ページで早期終了。
     """
-    base_url = KAKAKU_CATEGORIES.get(category)
+    base_url = KAKAKU_SCHEDULED_CATEGORIES.get(category) or KAKAKU_CATEGORIES.get(category)
     if not base_url:
         return []
 
-    # DBカテゴリ名を解決（HDD → storage）
+    # DBカテゴリ名を解決（HDD/M.2/水冷 → storage/cooler）
     db_category = CATEGORY_DB_NAME.get(category, category)
     parser_key  = SPEC_PARSERS_KEY.get(category, category)
 
@@ -279,8 +325,11 @@ async def sync_category(
     seen_names: set[str] = set()
     consecutive_existing_pages = 0  # 全件既存だったページ数
 
+    # base_urlにすでにクエリパラメータがある場合は & で繋ぐ
+    sep = "&" if "?" in base_url else "?"
+
     for page in range(1, max_pages + 1):
-        url = base_url if page == 1 else base_url + f"?pdf_pg={page}"
+        url = base_url if page == 1 else base_url + f"{sep}pdf_pg={page}"
         html = await _fetch(url)
         if not html:
             break
@@ -315,7 +364,7 @@ async def sync_category(
         # 早期終了: ページ内に新規アイテムが0件なら打ち切り
         if existing_models is not None and new_on_page == 0:
             consecutive_existing_pages += 1
-            if consecutive_existing_pages >= 2:  # 連続2ページ全既存で終了
+            if consecutive_existing_pages >= 5:  # 連続5ページ全既存で終了
                 break
         else:
             consecutive_existing_pages = 0
