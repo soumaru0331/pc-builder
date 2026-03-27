@@ -16,18 +16,20 @@ def _run_scheduled_sync():
     from sync.rakuten_sync import RAKUTEN_CATEGORIES
     from sync.yahoo_sync import YAHOO_CATEGORIES
     from sync.tsukumo_sync import TSUKUMO_CATEGORIES
+    from sync.dospara_sync import DOSPARA_CATEGORIES
 
     if _sync_status.get("running"):
         logger.info("スケジュール同期: すでに同期中のためスキップ")
         return
 
-    # 価格.com（人気順＋新着順）+ 楽天 + Yahoo + ツクモ
-    kakaku_cats = list(KAKAKU_SCHEDULED_CATEGORIES.keys())
+    # 価格.com（人気順＋新着順）+ 楽天 + Yahoo + ツクモ + ドスパラ
+    kakaku_cats  = list(KAKAKU_SCHEDULED_CATEGORIES.keys())
     rakuten_cats = [f"rakuten_{c}" for c in RAKUTEN_CATEGORIES]
     yahoo_cats   = [f"yahoo_{c}"   for c in YAHOO_CATEGORIES]
     tsukumo_cats = [f"tsukumo_{c}" for c in TSUKUMO_CATEGORIES]
+    dospara_cats = [f"dospara_{c}" for c in DOSPARA_CATEGORIES]
 
-    categories = kakaku_cats + rakuten_cats + yahoo_cats + tsukumo_cats
+    categories = kakaku_cats + rakuten_cats + yahoo_cats + tsukumo_cats + dospara_cats
 
     logger.info(f"スケジュール同期: 開始 ({len(categories)}カテゴリ × 最大150ページ)")
 

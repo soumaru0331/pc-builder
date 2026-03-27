@@ -9,6 +9,7 @@ from sync.kakaku_sync import sync_category, sync_all_categories, KAKAKU_CATEGORI
 from sync.rakuten_sync import sync_rakuten_category, RAKUTEN_CATEGORIES
 from sync.yahoo_sync import sync_yahoo_category, YAHOO_CATEGORIES
 from sync.tsukumo_sync import sync_tsukumo_category, TSUKUMO_CATEGORIES
+from sync.dospara_sync import sync_dospara_category, DOSPARA_CATEGORIES
 from sync.brands import BRANDS, ALL_BRANDS
 from auth import require_admin
 
@@ -17,6 +18,7 @@ _SOURCE_SYNC_FN = {
     "rakuten": sync_rakuten_category,
     "yahoo":   sync_yahoo_category,
     "tsukumo": sync_tsukumo_category,
+    "dospara": sync_dospara_category,
 }
 
 router = APIRouter()
@@ -172,7 +174,7 @@ async def start_sync(background_tasks: BackgroundTasks, req: SyncRequest = SyncR
 
     # 有効なカテゴリ一覧（kakaku + 外部ソース）
     all_valid = {**KAKAKU_CATEGORIES, **KAKAKU_SCHEDULED_CATEGORIES}
-    for prefix, cats in [("rakuten", RAKUTEN_CATEGORIES), ("yahoo", YAHOO_CATEGORIES), ("tsukumo", TSUKUMO_CATEGORIES)]:
+    for prefix, cats in [("rakuten", RAKUTEN_CATEGORIES), ("yahoo", YAHOO_CATEGORIES), ("tsukumo", TSUKUMO_CATEGORIES), ("dospara", DOSPARA_CATEGORIES)]:
         for cat in cats:
             all_valid[f"{prefix}_{cat}"] = True
     targets = req.categories or list(KAKAKU_CATEGORIES.keys())
