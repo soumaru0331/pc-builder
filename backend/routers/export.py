@@ -47,7 +47,10 @@ def _get_build_data(build_id: int) -> dict:
         total += price * d["quantity"]
         total_tdp += (d["tdp"] or 0) * d["quantity"]
         parts.append(d)
-        by_cat[d["category"]] = d
+        if d["category"] == "storage":
+            by_cat.setdefault("storage", []).append(d)
+        else:
+            by_cat[d["category"]] = d
 
     compat = check_compatibility(by_cat)
     conn.close()
