@@ -208,6 +208,33 @@ def recalc_benchmarks():
     return {"updated": updated, "total": len(rows)}
 
 
+@router.get("/export-seed", dependencies=[Depends(require_admin)])
+def export_seed():
+    """現在のDBを initial_parts.json 形式でエクスポート（管理者のみ）
+    ダウンロードしてリポジトリの backend/data/initial_parts.json に上書きすると
+    デプロイ後もパーツデータが維持される。
+    """
+    import json as _json
+    from fastapi.responses import JSONResponse
+    conn = get_db()
+    rows = conn.execute(
+        "SELECT category, brand, name, model, specs, tdp, benchmark_score, reference_price, release_year, notes FROM parts ORDER BY category, brand, name"
+    ).fetchall()
+    conn.close()
+    parts = []
+    for r in rows:
+        d = dict(r)
+        try:
+            d["specs"] = _json.loads(d["specs"] or "{}")
+        except Exception:
+            d["specs"] = {}
+        parts.append(d)
+    return JSONResponse(
+        content=parts,
+        headers={"Content-Disposition": "attachment; filename=initial_parts.json"},
+    )
+
+
 @router.get("/debug-scrape", dependencies=[Depends(require_admin)])
 async def debug_scrape(category: str = "cpu"):
     """スクレイパーデバッグ用（管理者のみ）"""

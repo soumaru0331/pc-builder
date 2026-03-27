@@ -151,5 +151,11 @@ async def _try_mercari_scrape(query: str, limit: int) -> list[dict]:
 
 
 def _parse_price(text: str) -> int:
-    nums = re.sub(r"[^\d]", "", text)
-    return int(nums) if nums else 0
+    m = re.search(r"[\d,]+", text)
+    if not m:
+        return 0
+    try:
+        v = int(m.group().replace(",", ""))
+        return v if 100 <= v <= 10_000_000 else 0
+    except Exception:
+        return 0

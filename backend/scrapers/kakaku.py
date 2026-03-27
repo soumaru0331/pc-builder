@@ -78,5 +78,12 @@ async def _scrape_kakaku(url: str, limit: int) -> list[dict]:
 
 
 def _parse_price(text: str) -> int:
-    nums = re.sub(r"[^\d]", "", text)
-    return int(nums) if nums and len(nums) < 8 else 0
+    # カンマ区切りの数字を探す（例: "¥57,000" → 57000）
+    m = re.search(r"[\d,]+", text)
+    if not m:
+        return 0
+    try:
+        v = int(m.group().replace(",", ""))
+        return v if 1000 <= v <= 10_000_000 else 0
+    except Exception:
+        return 0
