@@ -1031,7 +1031,7 @@ createApp({
         for (const p of (build.parts || [])) {
           await apiFetch(`/api/builds/${newId}/parts`, {
             method: "POST",
-            body: JSON.stringify({ part_id: p.id, quantity: p.quantity || 1, custom_price: p.custom_price }),
+            body: JSON.stringify({ part_id: p.id, quantity: p.quantity || 1, custom_price: p.custom_price, is_used: p.is_used || false }),
           }).catch(() => {});
         }
         shareView.show = false;

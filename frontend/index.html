@@ -754,7 +754,7 @@
           <button class="btn btn-sm btn-success" @click="usePrice(r.price, false)">選択</button>
         </div>
       </div>
-      <div v-else>
+      <div v-else-if="priceModal.tab==='used'">
         <div v-if="priceModal.usedPrices.length===0" style="color:var(--muted);text-align:center;padding:20px">中古価格が見つかりませんでした</div>
         <div v-else class="price-row" v-for="(r,i) in priceModal.usedPrices" :key="i">
           <span class="price-source">{{r.source}}</span>
