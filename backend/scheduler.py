@@ -18,13 +18,13 @@ def _run_scheduled_sync():
         logger.info("スケジュール同期: すでに同期中のためスキップ")
         return
 
-    logger.info("スケジュール同期: 開始 (全カテゴリ × 最大80ページ)")
+    logger.info("スケジュール同期: 開始 (全カテゴリ × 最大150ページ)")
     categories = list(KAKAKU_CATEGORIES.keys())
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     try:
-        loop.run_until_complete(_run_sync(categories, max_pages=80, trigger="scheduled"))
+        loop.run_until_complete(_run_sync(categories, max_pages=150, trigger="scheduled"))
         logger.info("スケジュール同期: 完了")
     except Exception as e:
         logger.error(f"スケジュール同期: エラー - {e}")

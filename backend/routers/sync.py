@@ -134,7 +134,7 @@ def _save_sync_history(category, started_at, added, skipped, error, trigger):
 
 class SyncRequest(BaseModel):
     categories: list[str] | None = None
-    max_pages: int = 20
+    max_pages: int = 150
 
 
 @router.post("/start", dependencies=[Depends(require_admin)])
