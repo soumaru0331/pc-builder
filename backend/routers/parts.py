@@ -38,6 +38,17 @@ def list_parts(category: str = None, q: str = None, brand: str = None):
     return [row_to_part(r) for r in rows]
 
 
+@router.get("/count")
+def count_parts(category: str = None):
+    conn = get_db()
+    if category:
+        row = conn.execute("SELECT COUNT(*) FROM parts WHERE category=?", (category,)).fetchone()
+    else:
+        row = conn.execute("SELECT COUNT(*) FROM parts").fetchone()
+    conn.close()
+    return {"count": row[0]}
+
+
 @router.get("/categories")
 def get_categories():
     return CATEGORIES

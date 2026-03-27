@@ -274,10 +274,12 @@ createApp({
     // ── Load Home Stats ───────────────────────────────────────────────────
     async function loadStats() {
       try {
-        const parts = await apiFetch("/api/parts");
-        const builds = await apiFetch("/api/builds");
-        const brands = await apiFetch("/api/parts/brands");
-        stats.parts  = parts.length;
+        const [partsCount, builds, brands] = await Promise.all([
+          apiFetch("/api/parts/count"),
+          apiFetch("/api/builds"),
+          apiFetch("/api/parts/brands"),
+        ]);
+        stats.parts  = partsCount.count;
         stats.builds = builds.length;
         stats.brands = brands.length;
         recentBuilds.value = builds.slice(0, 3);
